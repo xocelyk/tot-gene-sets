@@ -1,0 +1,187 @@
+blood coagulation, intrinsic pathway
+inner ear development
+negative regulation of telomere maintenance in response to DNA damage
+regulation of cardiac muscle contraction
+positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator
+positive regulation of sphingomyelin catabolic process
+negative regulation of astrocyte differentiation
+manganese ion homeostasis
+protein localization to juxtaparanode region of axon
+response to histamine
+positive regulation of DNA methylation
+virion assembly
+diterpenoid biosynthetic process
+detection of gravity
+dopamine receptor signaling pathway
+negative regulation of carbohydrate metabolic process
+B cell costimulation
+blood vessel development
+glomerular mesangial cell proliferation
+antifungal humoral response
+regulation of phosphatase activity
+histamine metabolic process
+negative regulation of cell-cell adhesion mediated by integrin
+paraxial mesoderm morphogenesis
+regulation of bone mineralization
+regulation of rRNA processing
+heparin biosynthetic process
+tRNA wobble cytosine modification
+positive regulation of glucose transmembrane transport
+negative regulation by host of viral transcription
+negative regulation of mast cell activation
+phospholipase C-activating serotonin receptor signaling pathway
+regulation of Golgi lumen acidification
+regulation of cell cycle
+polysaccharide biosynthetic process
+alcohol metabolic process
+T-helper 1 cell activation
+behavioral response to acetic acid induced pain
+keratinocyte migration
+gamma-tubulin complex localization
+pituitary gland development
+protein localization to nucleoplasm
+negative regulation of intestinal cholesterol absorption
+protein K33-linked deubiquitination
+negative regulation of nucleocytoplasmic transport
+G-quadruplex DNA unwinding
+positive regulation of glutamate uptake involved in transmission of nerve impulse
+cellular response to water deprivation
+hepatic immune response
+biological phase
+regulation of protein binding
+negative regulation of complement activation, alternative pathway
+cellular response to interleukin-17
+endothelial cell-matrix adhesion
+biological process involved in interspecies interaction between organisms
+glomerular mesangial cell development
+glycogen metabolic process
+positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage
+farnesyl diphosphate biosynthetic process, mevalonate pathway
+retina layer formation
+activation of cysteine-type endopeptidase activity
+positive regulation of biological process
+pyrimidine deoxyribonucleotide biosynthetic process
+phagosome maturation
+astrocyte development
+lamellipodium organization
+immunoglobulin heavy chain V-D-J recombination
+pre-B cell allelic exclusion
+post-embryonic retina morphogenesis in camera-type eye
+vasodilation
+regulation of transcription from RNA polymerase II promoter in response to stress
+regulation of nucleobase-containing compound metabolic process
+positive regulation of guanylate cyclase activity
+positive regulation of killing of cells of another organism
+negative regulation of granulocyte differentiation
+cell envelope organization
+pentose-phosphate shunt
+central nervous system morphogenesis
+DNA-templated transcription initiation
+regulation of blastocyst development
+spinal cord development
+response to cycloheximide
+negative regulation of protein secretion
+positive regulation of small GTPase mediated signal transduction
+corticotropin hormone secreting cell differentiation
+negative regulation of double-strand break repair via nonhomologous end joining
+cellular response to vitamin
+histone H2B conserved C-terminal lysine deubiquitination
+positive regulation of T-helper 17 cell lineage commitment
+nicotinamide nucleotide metabolic process
+mRNA 3'-end processing
+regulation of protein localization to ciliary membrane
+hepatocyte differentiation
+canonical Wnt signaling pathway involved in cardiac muscle cell fate commitment
+positive regulation of coagulation
+developmental pigmentation
+regulation of phospholipase A2 activity
+leukemia inhibitory factor signaling pathway
+response to interleukin-18
+endothelin receptor signaling pathway involved in heart process
+cellular response to bleomycin
+mitochondrial respiratory chain complex assembly
+galactosylceramide biosynthetic process
+pyruvate transmembrane transport
+ribonucleoside metabolic process
+extracellular matrix constituent secretion
+nervous system development
+germ-line stem cell population maintenance
+negative regulation of proteolysis involved in protein catabolic process
+negative regulation of membrane hyperpolarization
+interleukin-18 production
+vagus nerve morphogenesis
+chorion development
+virus maturation
+protein K63-linked deubiquitination
+regulation of glial cell apoptotic process
+negative regulation of respiratory burst
+antibacterial innate immune response
+mRNA cleavage involved in mRNA processing
+lysosomal microautophagy
+regulation of lipid catabolic process
+regulation of type IV hypersensitivity
+regulation of granulocyte macrophage colony-stimulating factor production
+nuclear export
+DNA protection
+nuclear membrane reassembly
+branching involved in salivary gland morphogenesis
+cell cycle process
+positive regulation of establishment of T cell polarity
+toll-like receptor 2 signaling pathway
+toll-like receptor 3 signaling pathway
+negative regulation of amide metabolic process
+regulation of cell-cell adhesion mediated by integrin
+negative regulation of inclusion body assembly
+cotranslational protein targeting to membrane
+somite rostral/caudal axis specification
+neuron-neuron synaptic transmission
+regulation of anatomical structure size
+positive regulation of axonogenesis
+glycerolipid metabolic process
+negative regulation of protein folding
+appendage development
+amine transport
+prostaglandin transport
+cardiac ventricle morphogenesis
+negative regulation of biosynthetic process
+positive regulation of cell migration involved in sprouting angiogenesis
+positive regulation of vitamin metabolic process
+response to interleukin-6
+response to ultrasound
+monocyte differentiation
+negative regulation of transcription involved in G1/S transition of mitotic cell cycle
+histidine transport
+CD4-positive, CD25-positive, alpha-beta regulatory T cell differentiation
+regulation of DNA repair
+establishment of protein localization to chromatin
+dUDP biosynthetic process
+metaphase/anaphase transition of mitotic cell cycle
+phosphatidylinositol metabolic process
+positive regulation of anterior head development
+response to other organism
+regulation of antigen processing and presentation of peptide or polysaccharide antigen via MHC class II
+prostate gland growth
+dADP metabolic process
+regulation of phospholipase activity
+histidine catabolic process to glutamate and formate
+protein linear polyubiquitination
+positive regulation of aldosterone biosynthetic process
+regulation of parkin-mediated stimulation of mitophagy in response to mitochondrial depolarization
+mammary gland epithelial cell proliferation
+trans-synaptic signaling by trans-synaptic complex
+osteoblast fate commitment
+somatostatin secretion
+connective tissue replacement
+sequestering of calcium ion
+phosphatidylinositol acyl-chain remodeling
+negative regulation of peptidyl-tyrosine phosphorylation
+ciliary basal body-plasma membrane docking
+induction of bacterial agglutination
+organelle disassembly
+positive regulation of granulocyte colony-stimulating factor production
+regulation of synaptic membrane adhesion
+anion transmembrane transport
+metanephric podocyte development
+methylguanosine-cap decapping
+interleukin-13 production
+regulation of postsynapse organization
