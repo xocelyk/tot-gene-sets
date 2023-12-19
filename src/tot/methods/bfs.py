@@ -248,7 +248,7 @@ def solve(args, task, idx, to_print=True):
         y_paths = select_new_y_paths
 
         dot = trie.visualize()
-        dot.render('trie_visualization_{}'.format(idx), format='png')
+        dot.render('viz/trie_visualization_{}'.format(idx), format='png')
   
     if args.task == 'bio_name':
         final_answer, new_ys = get_final_answer_for_bionames(task, x, ys[0], args.n_generate_sample, prompt_sample=args.prompt_sample)
@@ -258,7 +258,7 @@ def solve(args, task, idx, to_print=True):
         # print('solve -- ys', ys)
 
     dot = trie.visualize()
-    dot.render('trie_visualization_'.format(idx), format='png')
+    dot.render('viz/trie_visualization_'.format(idx), format='png')
     for path in y_paths:
         if [json.loads(y)['Biological Process'] for y in path][-1] == final_answer:
             final_path = path
