@@ -79,13 +79,14 @@ class Bio_Name(Task):
     @staticmethod
     def propose_prompt_wrap(x: str, y: str='', step_num=None) -> str:
         if step_num == None: raise ValueError('Step not found in the prompt')
-        json_format = format_0
-        system_message = system_prompt.format(json_format = json_format)
-        if step_num == 0:
-            user_message = propose_prompt.format(input=x, format_0=json.dumps(format_0)) + y
-        else:
-            user_message = next_step_prompt.format(input=x, step_num=step_num+1, prev_step_num=step_num, y=y, format_1=json.dumps(format_1))
         
+        if step_num == 0:
+            json_format = format_0
+            user_message = propose_prompt.format(input=x)
+        else:
+            json_format = format_1
+            user_message = next_step_prompt.format(input=x, step_num=step_num+1, prev_step_num=step_num, y=y, format_1=json.dumps(format_1))
+        system_message = system_prompt.format(json_format=json_format)
         return system_message, user_message
     
     @staticmethod
@@ -129,14 +130,13 @@ class Bio_Name(Task):
         for vote_output in vote_outputs:
             vote_output = vote_output.replace('\n','')
             vote_output = json.loads(vote_output)
-            vote = int(vote_output['Best biological perspective']['index'])
-            name = vote_output['Best biological perspective']['Biological Perspective']
+            vote = int(vote_output['Best Biological Process']['index'])
+            name = vote_output['Best Biological Process']['Biological Process']
             
             #checking if gpt gives the right index. 
-            if vote_output['Analysis'][vote]['Biological Perspective'] != name:
-                print('vote_outputs_unwrap, wrong index')
+            if vote_output['Analysis'][vote]['Biological Process'] != name:
                 for i, y in enumerate(vote_output['Analysis']):
-                    if y['Biological  Perspective'] == name:
+                    if y['Biological  Process'] == name:
                         vote = i
                         break
                         
@@ -144,15 +144,6 @@ class Bio_Name(Task):
                 vote_results[vote] += 1
             else:
                 print(f'vote no match: {[vote_output]}')
-            
-#             pattern = r".*best biological perspective is .*(\d+).*"
-#             match = re.match(pattern, vote_output, re.DOTALL)
-#             if match:
-#                 vote = int(match.groups()[0]) - 1
-#                 if vote in range(n_candidates):
-#                     vote_results[vote] += 1
-#             else:
-#                 print(f'vote no match: {[vote_output]}')
         return vote_results
 
     @staticmethod
@@ -177,76 +168,38 @@ class Bio_Name(Task):
 #             return -1
     @staticmethod
     def into_choices(answer: str, y: str, step_num:int):
-        print('Step Num:', step_num)
+        # print('Step Num:', step_num)
         # NOTES: changed how we handle the response to the first step.
         # 0th step prompt returns only "Biological Perspective" because there is no need to distinguish between the previous and new biological perspectives.
         # So, no need to change the answer keys before returning the choices
+        answer = answer[0]
         answer = answer.replace('\n','')
-        answer_f =  json.loads(answer)
-        print('Answers:')
-        for answer_choice in answer_f:
-            if step_num == 0:
-                print(answer_choice['Biological Perspective'])
-            else:
-                print(answer_choice['New Biological Perspective'])
+        answer_f = json.loads(answer)
+        answer_f = [answer_f['Answer 1'], answer_f['Answer 2'], answer_f['Answer 3']]
         new_answer = []
         if step_num == 0:
             for a in answer_f:
                 new_answer.append(json.dumps(a))
         else:
             for a in answer_f:
-                del a['Selected Biological Perspective']
-                a['Biological Perspective'] = a['New Biological Perspective']
-                del a['New Biological Perspective']
+                del a['Previous Biological Process']
+                a['Biological Process'] = a['New Biological Process']
+                del a['New Biological Process']
                 new_answer.append(json.dumps(a))
-#         y_f =  json.loads(y)
-        
-#         for a in answer_f:
-#             y_f.append(a)
-        
         return new_answer
-        
-#         pattern = re.compile(r'(Biological Perspective \d(?:_\d)*:.*?)(?=Biological Perspective \d(?:_\d)*:|$)', re.DOTALL)
-#         matches = pattern.findall(answer)
 
-#         if step_num > 0:
-#             outputs = []
-#             processed_outputs = []
-#             for match in matches:
-#                 pattern_2 = re.compile(r'Biological Perspective (\d(?:_\d)*)')
-#                 num1 = int(pattern_2.findall(match)[0][0]) #number of perspectives: e.g., Biological Perspective 2_1 --> 2
-#                 num2 = int(pattern_2.findall(y)[0]) #number of the perspective from step 1
-#                 if num1 == num2:
-#                     outputs.append(f'{y}\n{match}')
-#                     processed_outputs.append(f'{y}\n Step:{step_num+1}\n{match}')
-#         else:
-#             outputs = [_ + '\n' for _ in matches]
-#             processed_outputs = [f'\nStep: {step_num+1}\n' + _ + '\n' for _ in matches]
-#         return outputs, processed_outputs
             
     @staticmethod
     def process_final_answers(answer: str, y: str):
-        print('process_final_answers')
-        print('answer',answer)
+        # print('process_final_answers')
+        # print('answer',answer)
         answer = json.loads(answer)
         reasons = answer['Reasons']
         name = answer['Proposed Name']
-        print('name', name)
-        print('reasons',reasons)
+        # print('name', name)
+        # print('reasons',reasons)
         return name, reasons
-#         pattern = re.compile(r'Proposed Name: (.+)')
-#         match = pattern.search(answer)
-#         if match:
-#             final_answer = match.group(1).strip()
-#         else:
-#             final_answer = None
-#             print(f'Proposed Name no match')
-#         return final_answer, y + answer
-    
-#     @staticmethod
-#     def process_vote_outputs(vote_outputs: list):
-  
-#         return new_ys
+
     
     @staticmethod
     def combine_vote_to_answer(vote_output: str, ys: str):   
@@ -257,18 +210,18 @@ class Bio_Name(Task):
         
         for i, (v, _) in enumerate(zip(vote_output['Analysis'], ys)):
             ys[i] = json.loads(ys[i])
-            if v['Biological Perspective'] == ys[i]["Biological Perspective"]:
+            if v['Biological Process'] == ys[i]["Biological Process"]:
                 ys[i].update({'Pros': v['Pros']})
                 ys[i].update({'Cons': v['Cons']})
             # TODO: why would they be out of order?
             else:
                 for j, v_ in enumerate(vote_output['Analysis']):
-                    if v_['Biological Perspective'] == ys[i]["Biological Perspective"]:
+                    if v_['Biological Process'] == ys[i]["Biological Process"]:
                         ys[j].update({'Pros': v['Pros']})
                         ys[j].update({'Cons': v['Cons']})
                         break
         
-        print('ys',ys)
+        # print('ys',ys)
         return [json.dumps(y) for y in ys]
     
     @staticmethod
@@ -279,62 +232,12 @@ class Bio_Name(Task):
         
         for i, (v, _) in enumerate(zip(tool_output['Analysis'], ys)):
             ys[i] = json.loads(ys[i])
-            if v['Biological Perspective'] == ys[i]["Biological Perspective"]:
+            if v['Biological Process'] == ys[i]["Biological Process"]:
                 ys[i].update({'Comparison': v['Comparison']})
             else:
                 for j, v_ in enumerate(tool_output['Analysis']):
-                    if v_['Biological Perspective'] == ys[i]["Biological Perspective"]:
+                    if v_['Biological Process'] == ys[i]["Biological Process"]:
                         ys[j].update({'Comparison': v['Comparison']})
                         break
         return [json.dumps(y) for y in ys]
-        
-        
-        
-        
-#         for match, y in zip(matches, ys):
-            
-#         pattern = r'(?P<title>Biological Perspective) (?P<number>\d[^\n]*)(?:: [^-\n]+)?\n(?:- )?(?P<pros>Pros:[^\n]+)\n(?:- )?(?P<cons>Cons:[^\n]+)'
-
-#         matches = re.finditer(pattern, text)
-#         new_ys = []
-#         # combine pros/cons to ys. 
-#         for match, y in zip(matches, ys):
-#             label = match.group('title')
-#             number = match.group('number')[0]
-#             pros = match.group('pros')
-#             cons = match.group('cons')
-
-#             pattern = re.compile(r'Biological Perspective (\d(?:_\d)*)')
-#             matches = pattern.findall(y)
-#             y_num = matches[0]
-#             combined_content = f"Pros & Cons:\n{pros}\n{cons}"
-#             new_ys.append(f'{y}{combined_content}')
-           
-    
-    
-    
-          #---
-#         # Use regex to match each block of text starting with "Biological Perspective" 
-#         matches = re.findall(r'(Biological Perspective) (\d+):[^\n]+(?:\n- (Pros:[^\n]+))(?:\n- (Cons:[^\n]+))', text)
-
-#         assert len(matches) == len(ys), f'combine_vote_to_answer -- {len(matches)} != {len(ys)} \n text\n{text}'
-        
-#         new_ys = []
-#         # combine pros/cons to ys. 
-#         for match, y in zip(matches, ys):
-#             label, number, pros, cons = match
-#             pattern = re.compile(r'Biological Perspective (\d(?:_\d)*)')
-#             matches = pattern.findall(y)
-#             y_num = matches[0]
-#             if number != y_num:
-#                 print('combine_vote_to_answer -- match', match)
-#                 print('combine_vote_to_answer -- y',y)
-#                 print('combine_vote_to_answer -- number',number)
-#                 print('combine_vote_to_answer -- y_num',y_num)
-#                 error
-#             combined_content = f"Pros & Cons:\n{pros}\n{cons}"
-#             print(f'combine_vote_to_answer -- Step: {step_num+1}\n{y}\n{combined_content}\n')
-#             new_ys.append(f'Step: {step_num+1}\n{y}\n{combined_content}')
-                
-#         return new_ys
     

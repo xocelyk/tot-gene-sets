@@ -1,60 +1,62 @@
+# TODO: is there extra whitespace surrounding the input? proteins or genes?
+
+# CURRENTLY: generate three reasons for each step
+
 system_prompt = 'You are a helpful and knowledgable assistant to a molecular biologist. Respond to questions in JSON format, following this template: {json_format}.'
 
-format_0 = {"Step": '1',"Biological Process": "<your proposed biological perspective", "Analysis & Reason": {"Genes involved": "list all the genes involved (count: number of genes involved).", "Reason": "Your reason should include why did you choose this name? How does this help you to infer the name?"}}
+# propose initial biological processes
+format_0 = {"Answer 1": {"Step": "1", "Biological Process": "<Your first proposed biological process>", "Reason": "<Why did you choose this name?>"},           "Answer 2": {"Step": "1", "Biological Process": "<Your second proposed biological process>", "Reason": "<Why did you choose this name?>"},
+            "Answer 3": {"Step": "1", "Biological Process": "<Your third proposed biological process>", "Reason": "<Why did you choose this name?>"}}
+
+
+# propose more specific biological processes
+format_1 = {"Answer 1": {"Step": "{step_num}",\
+           "Previous Biological Process": "<The previous biological process>",\
+           "New Biological Process": "<Your first proposed biological process, more specific than the previous",\
+            "Reason": "<Why did you choose this name?>"},\
+            "Answer 2": {"Step": "{step_num}",\
+           "Previous Biological Process": "<The previous biological process>",\
+           "New Biological Process": "<Your second proposed biological process, more specific than the previous",\
+            "Reason": "<Why did you choose this name?>"},\
+            "Answer 3": {"Step": "{step_num}",\
+           "Previous Biological Process": "<The previous biological process>",\
+           "New Biological Process": "<Your third proposed biological process, more specific than the previous",\
+            "Reason": "<Why did you choose this name?>"}}
+
+
+# vote prompt
+format_2 = {'Analysis': [\
+    {'Biological Process': 'The First Biological Process',\
+   'Pros': 'Your Pros', \
+   'Cons' : 'Your Cons'}, \
+    {'Biological Process': 'The Second Biological Process', \
+   'Pros': 'Your Pros', \
+   'Cons' : 'Your Cons'}], \
+  'Best Biological Process': {'Biological Process': '<The best biological process>', 'index': '<s>'}}
+
 
 propose_prompt = '''
-You are given a set of genes, and your task is to propose a biological process that is likely to be performed by the system involving expression of these genes.
+You are given a set of genes, and your task is to propose three high-level biological processes that may be likely to be performed by the system involving expression of these genes. Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy. For example, "cellular process" is a general biological process, and "cellular response to stimulus" is a more specific biological process. You should propose three biological processes that are as general as possible.
 
 Here is the set of genes:
 Genes: {input}
-Goal: Propose a brief name for the most prominent biological process performed by the system. 
 
-You should write your thought process in steps. For now, please give me only Step 1 and as many potential biological perspectives as possible (at least three) for this set of genes. 
-
-Please answer strictly in JSON format, do not use \\n:
-{format_0}
+Given the set of genes, propose three biological processes that may be likely to be performed by the system involving expression of these genes.
 '''
 
-
-
 next_step_prompt = '''
-You are an efficient and insightful assistant to a molecular biologist.
+Given a set of genes and proposed biological processes describing the system, your task is to generate more specific biological processes describing the system. Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy. For example, "cellular process" is a general biological process, and "cellular response to stimulus" is a more specific biological process. You should propose three biological processes that are more specific than the proposed biological process.
 
-Be concise; do not use unnecessary words. Be specific; avoid overly general
-statements, such as "the proteins are involved in various cellular processes."
-Be factual; do not editorialize.
-Be inclusive; be sure to include all proteins.
-Be comprehensive, but don't overgeneralize.   
-Stay on the subject; do not deviate from the goal. (Goal: Propose a brief name for the most prominent biological process performed by the system.)
+Here is the set of genes:
+Genes: {input}
 
-Here are the interacting proteins:
-Proteins: {input}
-
-Here are the biological perspectives we've discussed: 
+Here is the current biological process:
 ---
 {y}
 ---
 
-Base on the last step (Step: {prev_step_num}):
-1) Determine if the selected perspective is specific enough to infer a biological name. 
-2) Please review the selected perspective, edit improve the selected perspectives based on the pros and cons to provide as many biological perspectives as possible (at least three), and describe their interaction. 
-
-step_num = {step_num}
-
-Please answer strictly in JSON format, do not use \\n::
-{format_1}
+Given the set of genes and the current biological process, propose three biological processes that are more specific than the current biological process.
 '''
-
-format_1 = [{"Step": "{step_num}",\
-           "Selected Biological Perspective": "The selected perspective",\
-           "New Biological Perspective": "Your First Biological Perspective",\
-           "Analysis & Reason": {"Genes involved": "list all the genes involved (count: number of genes involved).",\
-                                 "Reason": "Your reason should include why did you choose this name? How does this help you to infer the name?"}},\
-          {"Step": "{step_num}",\
-           "Selected Biological Perspective": "The selected perspective",\
-           "New Biological Perspective": "Your First Biological Perspective",\
-           "Analysis & Reason": {"Genes involved": "list all the genes involved (count: number of genes involved).",\
-                                 "Reason": "Your reason should include why did you choose this name? How does this help you to infer the name?"}}]
 
 last_step_prompt = '''You are an efficient and insightful assistant to a molecular biologist.
          
@@ -84,56 +86,36 @@ format_3 = {'Reasons': 'Your Reason',\
  'Proposed Name': 'Your Proposed Name'}
 
 
-vote_prompt = '''
-You are an efficient and insightful assistant to a molecular biologist.
+vote_prompt = '''Given a set of genes and proposed biological processes describing the system, your task is to vote on the best biological process describing the system. Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy. For example, "cellular process" is a general biological process, and "cellular response to stimulus" is a more specific biological process. You should vote on the best biological process.
 
-Here are the biological perspectives we're going to discuss:
-{choice}
+Here is the set of genes:
+Genes: {input}
 
-Goal: Analyze whether each biological perspective appropriately describes the proteins listed below, as well as analyze the criteria described in the following: 
-Be concise; do not use unnecessary words. Be specific; avoid overly general
-statements, such as "the proteins are involved in various cellular processes."
-Be factual; do not editorialize.
-Be inclusive; be sure to include all proteins.
-Be comprehensive, but don't overgeneralize.   
-Stay on the subject; do not deviate from the goal. (Goal: Propose a brief name for the most prominent biological process performed by the system.) 
+Here are the biological processes we're going to discuss:
+Biological Processes: {choice}
 
-Proteins: {input}
-
-Lastly, provide pros and cons of each biological perspective and conclude the best biological perspective is 's', where 's' is the index of the choice, 0 is the first index.
-
-Please answer strictly in JSON format, do not use \\n::
-{format_2}
+Lastly, provide pros and cons of each biological process and conclude the best biological process is 's', where 's' is the index of the choice, 0 is the first index.
 '''
-
-format_2 = {'Analysis': [\
-    {'Biological Perspective': 'The First Biological Perspective',\
-   'Pros': 'Your Pros', \
-   'Cons' : 'Your Cons'}, \
-    {'Biological Perspective': 'The Second Biological Perspective', \
-   'Pros': 'Your Pros', \
-   'Cons' : 'Your Cons'}], \
-  'Best biological perspective': {'Biological Perspective': 'The Best Biological Perspective', 'index': 's'}}
 
 
 GO_Enrich_prompt = '''
-Here are the perspectives we've discussed: 
+Here are the processes we've discussed: 
 {y}
 
-Enrichr has proposed these perspectives: {terms}. 
-Could you use these perspectives to compare against the proposed biological perspectives mentioned above, name the differences between them, and provide a summary? 
-Conclude, out of all the perspectives, including perspectives by Enrichr, which perspective is the best. 
+Enrichr has proposed these processes: {terms}. 
+Could you use these processes to compare against the proposed biological processes mentioned above, name the differences between them, and provide a summary? 
+Conclude, out of all the processes, including processes by Enrichr, which process is the best. 
 
 Please answer strictly in JSON format:
 {format_4}
 '''
 
 format_4 = {'Analysis': [
-            {'Biological Perspective': 'Your First Biological Perspective', 
-             'Comparison': 'Comparing the biological perspectives to terms proposed by Enrichr'}, 
-            {'Biological Perspective': 'Your Second Biological Perspective', 
-             'Comparison': 'Comparing the biological perspectives to terms proposed by Enrichr'}], 
-             'Best biological perspective': {'Biological Perspective': 'The Best Biological Perspective'}
+            {'Biological Process': 'Your First Biological Process', 
+             'Comparison': 'Comparing the biological processes to terms proposed by Enrichr'}, 
+            {'Biological Process': 'Your Second Biological Process', 
+             'Comparison': '<Comparing the biological processes to terms proposed by Enrichr>'}], 
+             'Best Biological Process': {'Biological Process': '<The best biological Process>'}
            }
 
 

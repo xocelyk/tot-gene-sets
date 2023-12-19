@@ -27,50 +27,6 @@ format_0 = [{"Step": '1',\
              "Analysis & Reason": {"Genes involved": "list all the genes involved (count: number of genes involved).", \
                                    "Reason": "Your reason should include why did you choose this name? How does this help you to infer the name?"}},\
 ]
-# '''
-# Your output should be in the following format:
-# Step 1:
-# Biological Perspective 1: Your Biological Perspective 
-# - Analysis & Reason: Your analysis should list out all the genes that are involved. Your reason should include why did you choose this name? How does this help you to infer the name?
-# Biological Perspective 2: Your Biological Perspective
-# - Analysis & Reason: Your analysis should list out all the genes that are involved. Your reason should include why did you choose this name? How does this help you to infer the name?
-# ...
-# '''
-
-# next_step_prompt = '''
-# You are an efficient and insightful assistant to a molecular biologist.
-         
-# Be concise; do not use unnecessary words. 
-# Be specific; avoid overly general statements, such as "the proteins are involved in various cellular processes."
-# Be factual; do not editorialize.
-# Be inclusive; the analysis needs to include all genes
-    
-# Here are the interacting genes:
-# {input}
-
-# Goal: Propose a brief name for the most prominent biological process performed by the system. 
-
-# You should write your thought process in steps and use biological systems to come up with the name. For now, please give me only Step {step_num} and a biological system for this set of genes, which can lead to a meaningful biological process. 
-
-
-# Now, given the following information: 
-
-# {y}
-
-# Given the previous biological system, please do the following:
-
-# 1) Determine if the previous answer is sufficient to provide a name for the gene set. 
-# 2) If not, give me the next step and a potential biological system for the next step and their connection to the previous step.
-
-# Your output should be in the following format:
-# Step {step_num}:
-# Continue: Yes or No
-# -Reason: Your reason to continue or stop.
-
-# Biological System: Your proposed biological system. Write "None" if Continue is "No". 
-# - Reason: Why do you choose this system? How does this help you to infer the name? 
-# - Analysis: Your analysis Write "None" if Continue is "No". 
-# '''
 
 next_step_prompt = '''
 You are an efficient and insightful assistant to a molecular biologist.
@@ -111,17 +67,6 @@ format_1 = [{"Step": "{step_num}",\
            "Analysis & Reason": {"Genes involved": "list all the genes involved (count: number of genes involved).",\
                                  "Reason": "Your reason should include why did you choose this name? How does this help you to infer the name?"}}]
 
-# '''
-# Your output should be in the following format: 
-
-# Step {step_num}: 
-# Biological Perspective 1_1: Your Biological Perspective. 
-# - Analysis & Reason: Your analysis should list out all the genes that are involved. Your reason should include why did you choose this perspective? How does this help you to infer the name?
-
-# Biological Perspective 1_2: Your Biological Perspective. 
-# - Analysis & Reason: Your analysis should list out all the genes that are involved. Your reason should include why did you choose this perspective? How does this help you to infer the name?
-# '''
-
 last_step_prompt = '''You are an efficient and insightful assistant to a molecular biologist.
          
 Be concise; do not use unnecessary words. Be specific; avoid overly general
@@ -148,7 +93,6 @@ Please answer strictly in JSON format, do not use \\n::
 
 format_3 = {'Reasons': 'Your Reason',\
  'Proposed Name': 'Your Proposed Name'}
-
 
 
 vote_prompt = '''
