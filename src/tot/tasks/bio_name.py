@@ -6,6 +6,8 @@ from tot.prompts.bio_name_kyle import *
 from tot.models import gpt
 import json
 from tot.external_tools.external_tools import *
+from collections import defaultdict
+
 
 class Bio_Name(Task):
     """
@@ -125,26 +127,43 @@ class Bio_Name(Task):
 #         return value_prompt.format(input=current_numbers)
     
     @staticmethod
-    def vote_outputs_unwrap(vote_outputs: list, n_candidates: int) -> list:
-        vote_results = [0] * n_candidates
-        for vote_output in vote_outputs:
-            vote_output = vote_output.replace('\n','')
-            vote_output = json.loads(vote_output)
-            vote = int(vote_output['Best Biological Process']['index'])
-            name = vote_output['Best Biological Process']['Biological Process']
+    def vote_outputs_unwrap(vote_outputs: list, ys: list) -> list:
+        new_ys = []
+        for json_str in ys:
+            data = json.loads(json_str)
+            new_ys.append(data["Biological Process"])
+        ys = new_ys
+
+        vote_results = defaultdict(int)
+        vote_output = vote_outputs[0]
+        vote_output = vote_output.replace('\n','')
+        vote_output = json.loads(vote_output)
+        for i, y in enumerate(vote_output['Votes']):
+            vote_results[y['Biological Process']] += 1
+        values = []
+        for y in ys:
+            values.append(vote_results[y])
+        return values
+
+        # vote_results = [0] * n_candidates
+        # for vote_output in vote_outputs:
+        #     vote_output = vote_output.replace('\n','')
+        #     vote_output = json.loads(vote_output)
+        #     vote = int(vote_output['Best Biological Process']['index'])
+        #     name = vote_output['Best Biological Process']['Biological Process']
             
-            #checking if gpt gives the right index. 
-            if vote_output['Analysis'][vote]['Biological Process'] != name:
-                for i, y in enumerate(vote_output['Analysis']):
-                    if y['Biological  Process'] == name:
-                        vote = i
-                        break
+        #     #checking if gpt gives the right index. 
+        #     if vote_output['Analysis'][vote]['Biological Process'] != name:
+        #         for i, y in enumerate(vote_output['Analysis']):
+        #             if y['Biological  Process'] == name:
+        #                 vote = i
+        #                 break
                         
-            if vote in range(n_candidates):
-                vote_results[vote] += 1
-            else:
-                print(f'vote no match: {[vote_output]}')
-        return vote_results
+        #     if vote in range(n_candidates):
+        #         vote_results[vote] += 1
+        #     else:
+        #         print(f'vote no match: {[vote_output]}')
+        # return vote_results
 
     @staticmethod
     def compare_prompt_wrap(x: str, ys: list) -> str:

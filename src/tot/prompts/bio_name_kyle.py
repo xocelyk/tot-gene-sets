@@ -1,4 +1,5 @@
 # TODO: is there extra whitespace surrounding the input? proteins or genes?
+# TODO: I think sometimes it is doing step num 1, 2, 3 for different items in same step
 
 # CURRENTLY: generate three reasons for each step
 
@@ -7,7 +8,6 @@ system_prompt = 'You are a helpful and knowledgable assistant to a molecular bio
 # propose initial biological processes
 format_0 = {"Answer 1": {"Step": "1", "Biological Process": "<Your first proposed biological process>", "Reason": "<Why did you choose this name?>"},           "Answer 2": {"Step": "1", "Biological Process": "<Your second proposed biological process>", "Reason": "<Why did you choose this name?>"},
             "Answer 3": {"Step": "1", "Biological Process": "<Your third proposed biological process>", "Reason": "<Why did you choose this name?>"}}
-
 
 # propose more specific biological processes
 format_1 = {"Answer 1": {"Step": "{step_num}",\
@@ -25,15 +25,10 @@ format_1 = {"Answer 1": {"Step": "{step_num}",\
 
 
 # vote prompt
-format_2 = {'Analysis': [\
-    {'Biological Process': 'The First Biological Process',\
-   'Pros': 'Your Pros', \
-   'Cons' : 'Your Cons'}, \
-    {'Biological Process': 'The Second Biological Process', \
-   'Pros': 'Your Pros', \
-   'Cons' : 'Your Cons'}], \
-  'Best Biological Process': {'Biological Process': '<The best biological process>', 'index': '<s>'}}
+format_2 = {'Votes': [{'Biological Process': '<The First biological process>'}, {'Biological Process': '<The Second biological process>'}]}
 
+# last step prompt
+format_3 = {'Biological Process': '<The best biological process>', 'Reason': '<Your reasoning>'}
 
 propose_prompt = '''
 You are given a set of genes, and your task is to propose three high-level biological processes that may be likely to be performed by the system involving expression of these genes. Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy. For example, "cellular process" is a general biological process, and "cellular response to stimulus" is a more specific biological process. You should propose three biological processes that are as general as possible.
@@ -58,43 +53,27 @@ Here is the current biological process:
 Given the set of genes and the current biological process, propose three biological processes that are more specific than the current biological process.
 '''
 
-last_step_prompt = '''You are an efficient and insightful assistant to a molecular biologist.
-         
-Be concise; do not use unnecessary words. Be specific; avoid overly general
-statements, such as "the proteins are involved in various cellular processes."
-Be factual; do not editorialize.
-Be inclusive; be sure to include all proteins.
-Be comprehensive, but don't overgeneralize.   
-Stay on the subject; do not deviate from the goal. (Goal: Propose a brief name for the most prominent biological process performed by the system.)
-    
-Here are the interacting genes:
-{input}
+last_step_prompt = '''
+Given a set of genes and proposed biological processes describing the system, your task is to choose the most accurate biological process.
 
-Goal: Propose a brief name for the most prominent biological process performed by the system. 
+Genes: {input}
 
-Here are the steps we've discussed: 
-
+Proposed Bioligical Processes:
 {y}
 
-Based on all the steps before, write the answer to the goal: propose a brief name for the most prominent biological process performed by the system, and write your reasoning.
-
-Please answer strictly in JSON format, do not use \\n:: 
-{format_3}
+Out of the proposed biological processes, choose the most accurate biological process.
 '''
 
-format_3 = {'Reasons': 'Your Reason',\
- 'Proposed Name': 'Your Proposed Name'}
 
-
-vote_prompt = '''Given a set of genes and proposed biological processes describing the system, your task is to vote on the best biological process describing the system. Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy. For example, "cellular process" is a general biological process, and "cellular response to stimulus" is a more specific biological process. You should vote on the best biological process.
+vote_prompt = '''Given a set of genes and proposed biological processes describing the system, your task is to vote on the two best biological process describing the system. Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy. For example, "cellular process" is a general biological process, and "cellular response to stimulus" is a more specific biological process. You should vote on the best biological process.
 
 Here is the set of genes:
 Genes: {input}
 
-Here are the biological processes we're going to discuss:
+Here are the biological processes for you to vote on:
 Biological Processes: {choice}
 
-Lastly, provide pros and cons of each biological process and conclude the best biological process is 's', where 's' is the index of the choice, 0 is the first index.
+Given the set of genes and the proposed biological processes, vote on the two best biological processes.
 '''
 
 

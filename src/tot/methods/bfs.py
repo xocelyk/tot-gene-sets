@@ -4,8 +4,6 @@ from functools import partial
 from tot.models import gpt
 import json
 from graphviz import Digraph
-TOKENIZERS_PARALLELISM = False
-
 
 def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     value_prompt = task.value_prompt_wrap(x, y)
@@ -32,13 +30,13 @@ def get_values(task, x, ys, n_evaluate_sample, cache_value=True):
 def get_votes(task, x, ys, n_evaluate_sample):
     vote_prompt = task.vote_prompt_wrap(x, ys)
     vote_outputs = gpt(vote_prompt, n=n_evaluate_sample, stop=None)
-    values = task.vote_outputs_unwrap(vote_outputs, len(ys))
+    values = task.vote_outputs_unwrap(vote_outputs, ys)
     return values
 
 def get_votes_for_bionames(task, x, ys, n_evaluate_sample, step):
     system_message, user_message  = task.vote_prompt_wrap(x, ys)
     vote_outputs = gpt(system_message, user_message, n=n_evaluate_sample, stop=None)
-    values = task.vote_outputs_unwrap(vote_outputs, len(ys))
+    values = task.vote_outputs_unwrap(vote_outputs, ys)
     return values, vote_outputs
 
 def combine_vote_to_answer(task, vote_outputs, ys):
@@ -161,7 +159,7 @@ def solve(args, task, idx, to_print=True):
     ys = ['']  # current output candidates
     infos = []
     for step in range(task.steps):
-        print('-- step', step)
+        print('-- step', step, '--')
         # update memory to keep under max_mem_size
         mem = mem[-max_mem_size:]
 
@@ -261,12 +259,12 @@ def solve(args, task, idx, to_print=True):
 
     dot = trie.visualize()
     dot.render('trie_visualization_'.format(idx), format='png')
-    # for path in y_paths:
-    #     if [json.loads(y)['Biological Process'] for y in path][-1] == final_answer:
-    #         final_path = path
-    #         break
+    for path in y_paths:
+        if [json.loads(y)['Biological Process'] for y in path][-1] == final_answer:
+            final_path = path
+            break
     
-    # trie.insert(final_path, 100)
+    trie.insert(final_path, '*')
     
     return final_answer, ys, {'steps': infos}
 
