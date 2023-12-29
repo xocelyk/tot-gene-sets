@@ -6,22 +6,26 @@
 system_prompt = 'You are a helpful and knowledgable assistant to a molecular biologist. Respond to questions in JSON format, following this template: {json_format}.'
 
 # propose initial biological processes
-format_0 = {"Answer 1": {"Step": "1", "Biological Process": "<Your first proposed biological process>", "Reason": "<Why did you choose this name?>"},           "Answer 2": {"Step": "1", "Biological Process": "<Your second proposed biological process>", "Reason": "<Why did you choose this name?>"},
+format_0 = {"Answer 1": {"Step": "1", "Biological Process": "<Your first proposed biological process>", "Reason": "<Why did you choose this name?>"},
+            "Answer 2": {"Step": "1", "Biological Process": "<Your second proposed biological process>", "Reason": "<Why did you choose this name?>"},
             "Answer 3": {"Step": "1", "Biological Process": "<Your third proposed biological process>", "Reason": "<Why did you choose this name?>"}}
 
 # propose more specific biological processes
 format_1 = {"Answer 1": {"Step": "{step_num}",\
            "Previous Biological Process": "<The previous biological process>",\
            "New Biological Process": "<Your first proposed biological process, more specific than the previous",\
-            "Reason": "<Why did you choose this name?>"},\
+           "Relation": "<How does the new biological process relate to the previous biological process?",\
+            "Reason": "<Why did you choose this name? Which genes are relevant to this process?>"},\
             "Answer 2": {"Step": "{step_num}",\
            "Previous Biological Process": "<The previous biological process>",\
            "New Biological Process": "<Your second proposed biological process, more specific than the previous",\
-            "Reason": "<Why did you choose this name?>"},\
+           "Relation": "<How does the new biological process relate to the previous biological process?",\
+            "Reason": "<Why did you choose this name? Which genes are relevant to this process?>"},\
             "Answer 3": {"Step": "{step_num}",\
            "Previous Biological Process": "<The previous biological process>",\
            "New Biological Process": "<Your third proposed biological process, more specific than the previous",\
-            "Reason": "<Why did you choose this name?>"}}
+           "Relation": "<How does the new biological process relate to the previous biological process?",\
+            "Reason": "<Why did you choose this name? Which genes are relevant to this process?>"}}
 
 
 # vote prompt
@@ -31,7 +35,15 @@ format_2 = {'Votes': [{'Biological Process': '<The First biological process>'}, 
 format_3 = {'Biological Process': '<The best biological process>', 'Reason': '<Your reasoning>'}
 
 propose_prompt = '''
-You are given a set of genes, and your task is to propose three high-level biological processes that may be likely to be performed by the system involving expression of these genes. Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy. For example, "cellular process" is a general biological process, and "cellular response to stimulus" is a more specific biological process. You should propose three biological processes that are as general as possible.
+You are given a set of genes, and your task is to propose three high-level biological processes that may be likely to be performed by the system involving expression of these genes.
+
+Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy.
+Biological processes can have three relations:
+1. is a: A is a B if biological process A is a subtype of biological process B. If A is a subtype of B, then we say A is more specific than B.
+2. part of: A is part of B if the presence of biological process A implies the presence of biological process B. If A is part of B, then we say A is more specific than B.
+3. regulates: A regulates B if biological process A always regulates biological process B. If A regulates B, then we say B is more specific than A.
+
+These relationships create a hierarchical ontology. Your job is to propose three biological processes that are as general as possible.
 
 Here is the set of genes:
 Genes: {input}
@@ -40,7 +52,15 @@ Given the set of genes, propose three biological processes that may be likely to
 '''
 
 next_step_prompt = '''
-Given a set of genes and proposed biological processes describing the system, your task is to generate more specific biological processes describing the system. Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy. For example, "cellular process" is a general biological process, and "cellular response to stimulus" is a more specific biological process. You should propose three biological processes that are more specific than the proposed biological process.
+Given a set of genes and proposed biological processes describing the system, your task is to generate more specific biological processes describing the system.
+
+Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy.
+Biological processes can have three relations:
+1. is a: A is a B if biological process A is a subtype of biological process B. If A is a subtype of B, then we say A is more specific than B.
+2. part of: A is part of B if the presence of biological process A implies the presence of biological process B. If A is part of B, then we say A is more specific than B.
+3. regulates: A regulates B if biological process A always regulates biological process B. If A regulates B, then we say B is more specific than A.
+
+You should propose three biological processes that are more specific than the proposed biological process. You should describe how the proposed biological process relates to the current biological process using one of the three relations above, and then give your reasoning for why the proposed biological process describes the system.
 
 Here is the set of genes:
 Genes: {input}
@@ -50,7 +70,7 @@ Here is the current biological process:
 {y}
 ---
 
-Given the set of genes and the current biological process, propose three biological processes that are more specific than the current biological process.
+Given the set of genes and the current biological process, propose three biological processes that describe the system that are more specific than the current biological process.
 '''
 
 last_step_prompt = '''
@@ -65,7 +85,7 @@ Out of the proposed biological processes, choose the most accurate biological pr
 '''
 
 
-vote_prompt = '''Given a set of genes and proposed biological processes describing the system, your task is to vote on the two best biological process describing the system. Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy. For example, "cellular process" is a general biological process, and "cellular response to stimulus" is a more specific biological process. You should vote on the best biological process.
+vote_prompt = '''Given a set of genes and proposed biological processes describing the system, your task is to vote on the two best biological processes describing the system.
 
 Here is the set of genes:
 Genes: {input}

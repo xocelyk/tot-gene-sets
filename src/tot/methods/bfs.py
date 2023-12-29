@@ -89,46 +89,43 @@ class TrieNode:
         self.children = {}
         self.is_end = False
         self.value = None
-    
-    def insert(self, word, value):
+        self.relations = {}  # Separate dictionary for relations
+
+    def insert(self, word, value, relations):
         node = self
-        for char in word:
+        for i, char in enumerate(word):
             if char not in node.children:
                 node.children[char] = TrieNode()
+            if i < len(relations):  # Add relations between current and next character
+                node.relations[char] = relations[i]
             node = node.children[char]
         node.is_end = True
         node.value = value
 
-    def search(self, word):
-        node = self
-        for char in word:
-            if char not in node.children:
-                return None
-            node = node.children[char]
-        return node.value
-    
-    def visualize(self, graph, parent_name, char, end):
+    def visualize(self, graph, parent_name, char, end, relation=""):
         # Create a unique name for each node based on its character and parent
+        node_label = f'{char} ({self.value})' if self.value else char
         node_name = f"{parent_name}{char}_{id(self)}"
         if end:
-            graph.node(node_name, f'{char}', shape='circle')
+            graph.node(node_name, node_label, shape='circle')
         else:
-            graph.node(node_name, char)
+            graph.node(node_name, node_label)
         
         # Connect this node to its parent in the graph
         if parent_name:
-            graph.edge(parent_name, node_name)
+            graph.edge(parent_name, node_name, label=relation)
         
-        # Recursively visualize children nodes
+        # Recursively visualize children nodes with the relation for each edge
         for child_char, child_node in self.children.items():
-            child_node.visualize(graph, node_name, child_char + ' ' + '({})'.format(child_node.value), child_node.is_end)
+            child_relation = self.relations.get(child_char, "")  # Get the relation for the current edge
+            child_node.visualize(graph, node_name, child_char, child_node.is_end, child_relation)
 
 class Trie:
     def __init__(self):
         self.root = TrieNode()
     
-    def insert(self, word, value):
-        self.root.insert(word, value)
+    def insert(self, word, value, relations):
+        self.root.insert(word, value, relations)
     
     def search(self, word):
         return self.root.search(word)
@@ -138,13 +135,6 @@ class Trie:
         if self.root:
             self.root.visualize(graph, '', 'Biological Process', False)
         return graph
-
-    def print_tree(self):
-        print(self.root.value)
-        for child in self.root.children:
-            print(child.value)
-            for grandchild in child.children:
-                print(grandchild.value)
 
 
 def solve(args, task, idx, to_print=True):
@@ -156,6 +146,7 @@ def solve(args, task, idx, to_print=True):
     
     mem = []  # cache for self-reflection
     y_paths = [[]]  # current output candidate paths
+    relations = [[]]
     ys = ['']  # current output candidates
     infos = []
     for step in range(task.steps):
@@ -164,6 +155,8 @@ def solve(args, task, idx, to_print=True):
         mem = mem[-max_mem_size:]
 
         new_y_paths = []
+        if step > 0:
+            new_relations = []
         # generation
         if args.method_generate == 'sample':
             new_ys = [get_samples(task, x, y, args.n_generate_sample, prompt_sample=args.prompt_sample, stop=task.stops[step]) for y in ys]
@@ -177,6 +170,8 @@ def solve(args, task, idx, to_print=True):
                 for y in item:
                     new_ys.append(y)
                     new_y_paths.append(y_paths[i] + [y])
+                    if step > 0:
+                        new_relations.append(relations[i] + [json.loads(y)['Relation']])
                 
         elif args.method_generate == 'propose':
             new_ys = [get_proposals(task, x, y) for y in ys] 
@@ -215,15 +210,31 @@ def solve(args, task, idx, to_print=True):
         omit_y_paths = [new_y_paths[id] for id in ids if id not in select_ids]
         omit_y_paths = [[json.loads(y)['Biological Process'] for y in omit_y_path] for omit_y_path in omit_y_paths]
 
+        if step > 0:
+            select_new_relations = [new_relations[select_id] for select_id in select_ids]
+            omit_relations = [new_relations[id] for id in ids if id not in select_ids]
+            omit_relations = [relation[0] for relation in omit_relations]
+            # print('-- relations --')
+            # print(select_new_relations)
+            # print(omit_relations)
+
         print('-- paths --')
         for i in range(len(new_y_paths)):
             path = [json.loads(y)['Biological Process'] for y in new_y_paths[i]]
-            print(' -> '.join(path))
+            print(' -> '.join([el for el in path]))
             value = values[i]
-            if trie.search(path) is None:
-                trie.insert(path, value)
+            # if trie.search(path) is None:
+            if True:
+                if step > 0:
+                    trie.insert(path, value, new_relations[i])
+                else:
+                    trie.insert(path, value, [])
             else:
-                trie.insert(path, max(value, trie.search(path)))
+                if step > 0:
+                    trie.insert(path, max(value, trie.search(path)), new_relations[i])
+                else:
+                    trie.insert(path, max(value, trie.search(path)), [])
+    
 
         # criticisms = []
         # for omit_y_path in omit_y_paths:
@@ -242,11 +253,18 @@ def solve(args, task, idx, to_print=True):
             # bp_y_paths = [[json.loads(y)['Biological Process'] for y in y_path] for y_path in new_y_paths]
             print(f'-- new_ys --: {[json.loads(y)["Biological Process"] for y in sorted_new_ys]}\n-- sol values --: {sorted_values}\n-- choices --: {[json.loads(y)["Biological Process"] for y in select_new_ys]}\n')
             # print('-- y paths --: {}\n'.format([' -> '.join(path) for path in bp_y_paths]))
+            if step > 0:
+                print('-- Relations --')
+                print([json.loads(y)["Relation"] for y in select_new_ys])
         
         infos.append({'step': step, 'x': x, 'ys': ys, 'new_ys': new_ys, 'values': values, 'select_new_ys': select_new_ys})
         ys = select_new_ys
         y_paths = select_new_y_paths
-
+        if step > 0:
+            relations = select_new_relations
+        else:
+            relations = [[''] for _ in range(len(y_paths))]
+        
         dot = trie.visualize()
         dot.render('viz/trie_visualization_{}'.format(idx), format='png')
   
@@ -257,14 +275,17 @@ def solve(args, task, idx, to_print=True):
         pass
         # print('solve -- ys', ys)
 
-    dot = trie.visualize()
-    dot.render('viz/trie_visualization_'.format(idx), format='png')
-    for path in y_paths:
-        if [json.loads(y)['Biological Process'] for y in path][-1] == final_answer:
+    for i, path in enumerate(y_paths):
+        path = [json.loads(y)['Biological Process'] for y in path]
+        if path[-1].split('(')[0] == final_answer:
             final_path = path
+            final_relation = relations[i]
             break
     
-    trie.insert(final_path, '*')
+    trie.insert(final_path, '*', final_relation)
+    dot = trie.visualize()
+    dot.render('viz/trie_visualization_{}'.format(idx), format='png')
+
     
     return final_answer, ys, {'steps': infos}
 
