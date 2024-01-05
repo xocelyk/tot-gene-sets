@@ -150,7 +150,7 @@ def solve(args, task, idx, to_print=True):
     ys = ['']  # current output candidates
     infos = []
     for step in range(task.steps):
-        print('-- step', step, '--')
+        # print('-- step', step, '--')
         # update memory to keep under max_mem_size
         mem = mem[-max_mem_size:]
 
@@ -203,8 +203,8 @@ def solve(args, task, idx, to_print=True):
             select_ids = np.random.choice(ids, size=args.n_select_sample, p=ps).tolist()
         elif args.method_select == 'greedy':
             select_ids = sorted(ids, key=lambda x: values[x], reverse=True)[:args.n_select_sample]
-            print(' -- select ids --')
-            print(select_ids)
+            # print(' -- select ids --')
+            # print(select_ids)
 
         select_new_y_paths = [new_y_paths[select_id] for select_id in select_ids]
         omit_y_paths = [new_y_paths[id] for id in ids if id not in select_ids]
@@ -218,10 +218,10 @@ def solve(args, task, idx, to_print=True):
             # print(select_new_relations)
             # print(omit_relations)
 
-        print('-- paths --')
+        # print('-- paths --')
         for i in range(len(new_y_paths)):
             path = [json.loads(y)['Biological Process'] for y in new_y_paths[i]]
-            print(' -> '.join([el for el in path]))
+            # print(' -> '.join([el for el in path]))
             value = values[i]
             # if trie.search(path) is None:
             if True:
@@ -251,11 +251,11 @@ def solve(args, task, idx, to_print=True):
         if to_print: 
             sorted_new_ys, sorted_values = zip(*sorted(zip(new_ys, values), key=lambda x: x[1], reverse=True))
             # bp_y_paths = [[json.loads(y)['Biological Process'] for y in y_path] for y_path in new_y_paths]
-            print(f'-- new_ys --: {[json.loads(y)["Biological Process"] for y in sorted_new_ys]}\n-- sol values --: {sorted_values}\n-- choices --: {[json.loads(y)["Biological Process"] for y in select_new_ys]}\n')
+            # print(f'-- new_ys --: {[json.loads(y)["Biological Process"] for y in sorted_new_ys]}\n-- sol values --: {sorted_values}\n-- choices --: {[json.loads(y)["Biological Process"] for y in select_new_ys]}\n')
             # print('-- y paths --: {}\n'.format([' -> '.join(path) for path in bp_y_paths]))
-            if step > 0:
-                print('-- Relations --')
-                print([json.loads(y)["Relation"] for y in select_new_ys])
+            # if step > 0:
+            #     print('-- Relations --')
+            #     print([json.loads(y)["Relation"] for y in select_new_ys])
         
         infos.append({'step': step, 'x': x, 'ys': ys, 'new_ys': new_ys, 'values': values, 'select_new_ys': select_new_ys})
         ys = select_new_ys
@@ -282,7 +282,12 @@ def solve(args, task, idx, to_print=True):
             final_relation = relations[i]
             break
     
-    trie.insert(final_path, '*', final_relation)
+    if final_path:
+        trie.insert(final_path, '*', final_relation)
+    else:
+        print('No Final Path Found')
+        print('y paths', y_paths)
+        print('final answer', final_answer)
     dot = trie.visualize()
     dot.render('viz/trie_visualization_{}'.format(idx), format='png')
 

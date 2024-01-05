@@ -26,7 +26,7 @@ class Bio_Name(Task):
         ypath = os.path.join(DATA_PATH, 'gene_sets', 'y.txt')
         self.data = open(xpath).readlines()
         self.labels = open(ypath).readlines()
-        self.steps = 4
+        self.steps = 3
         self.stops = ['Continue: No', None] #to edit
 
     def __len__(self) -> int:
@@ -62,6 +62,11 @@ class Bio_Name(Task):
         system_message = system_prompt.format(json_format=format_5)
         omit_y_path = ' -> '.join(omit_y_path)
         user_message = criticism_prompt.format(input=x, omit_y_path=omit_y_path, format_5=json.dumps(format_5))
+        return system_message, user_message
+    
+    def similarity_prompt_wrap(self, process_1, process_2) -> str:
+        system_message = system_prompt.format(json_format=format_6)
+        user_message = similarity_prompt.format(y1=process_1, y2=process_2, format_6=json.dumps(format_6))
         return system_message, user_message
     
     @staticmethod
@@ -185,6 +190,7 @@ class Bio_Name(Task):
 #         else:
 #             print(f'-----------------compare no match: {[compare_output]}')
 #             return -1
+    
     @staticmethod
     def into_choices(answer: str, y: str, step_num:int):
         # print('Step Num:', step_num)
@@ -210,20 +216,14 @@ class Bio_Name(Task):
             
     @staticmethod
     def process_final_answers(answer: str, y: str):
-        # print('process_final_answers')
-        # print('answer',answer)
         answer = json.loads(answer)
-        reasons = answer['Reasons']
-        name = answer['Proposed Name']
-        # print('name', name)
-        # print('reasons',reasons)
-        return name, reasons
+        name = answer['Biological Process']
+        reason = answer['Reason']
+        return name, reason
 
     
     @staticmethod
     def combine_vote_to_answer(vote_output: str, ys: str):   
-        # print('vote_output',vote_output)
-        # print('ys',ys)
         vote_output = vote_output.replace('\n','')
         vote_output = json.loads(vote_output)
         
@@ -239,9 +239,14 @@ class Bio_Name(Task):
                         ys[j].update({'Pros': v['Pros']})
                         ys[j].update({'Cons': v['Cons']})
                         break
-        
-        # print('ys',ys)
+    
         return [json.dumps(y) for y in ys]
+    
+    def unwrap_similarity(self, similarity_output: list) -> str:
+        similarity_output = similarity_output[0]
+        similarity_output = similarity_output.replace('\n','')
+        similarity_output = json.loads(similarity_output)
+        return similarity_output['Similarity Score']
     
     @staticmethod
     def combine_tools_to_answer(tool_output: str, ys: str):   
