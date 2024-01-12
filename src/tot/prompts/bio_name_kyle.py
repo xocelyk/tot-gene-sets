@@ -39,10 +39,11 @@ format_6 = {'Similarity Score': '<Your similarity score>'}
 propose_prompt = '''You are given a set of genes, and your task is to propose three high-level biological processes that may be likely to be performed by the system involving expression of these genes.
 
 Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy.
-Biological processes can have three relations:
+Biological processes can have four relations:
 1. is a: A is a B if biological process A is a subtype of biological process B. If A is a subtype of B, then we say A is more specific than B.
-2. part of: A is part of B if the presence of biological process A implies the presence of biological process B. If A is part of B, then we say A is more specific than B.
-3. regulates: A regulates B if biological process A always regulates biological process B. If A regulates B, then we say B is more specific than A.
+2. has part: A has part B if the biological process A always has part B. If A exists, then B will always exist. If A has part B, then we say B is more specific than A.
+3. part of: A is part B if, whenever biological process A exists, it is as a part of biological process B. If A is part of B, then we say A is more specific than B.
+4. regulates: A regulates B if biological process A always regulates biological process B. If A regulates B, then we say B is more specific than A.
 
 These relationships create a hierarchical ontology. Your job is to propose three biological processes that are as general as possible.
 
