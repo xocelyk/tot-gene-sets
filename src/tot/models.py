@@ -4,7 +4,8 @@ import backoff
 
 completion_tokens = prompt_tokens = 0
 
-api_key = os.getenv("OPENAI_API_KEY", "")
+api_key = "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"
+# api_key = os.getenv("OPENAI_API_KEY", "")
 if api_key != "":
     openai.api_key = api_key
 else:

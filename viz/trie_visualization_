@@ -1,46 +1,22 @@
 // Trie
 digraph {
-	"Biological Process_11175325776" [label="Biological Process"]
-	"Biological Process_11175325776Gene expression (1)_11175325456" [label="Gene expression (1)" shape=circle]
-	"Biological Process_11175325776" -> "Biological Process_11175325776Gene expression (1)_11175325456"
-	"Biological Process_11175325776Gene expression (1)_11175325456mRNA processing (1)_11391303248" [label="mRNA processing (1)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456" -> "Biological Process_11175325776Gene expression (1)_11175325456mRNA processing (1)_11391303248"
-	"Biological Process_11175325776Gene expression (1)_11175325456mRNA processing (1)_11391303248mRNA splicing (0)_11391302992" [label="mRNA splicing (0)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456mRNA processing (1)_11391303248" -> "Biological Process_11175325776Gene expression (1)_11175325456mRNA processing (1)_11391303248mRNA splicing (0)_11391302992"
-	"Biological Process_11175325776Gene expression (1)_11175325456mRNA processing (1)_11391303248mRNA capping (0)_11175152400" [label="mRNA capping (0)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456mRNA processing (1)_11391303248" -> "Biological Process_11175325776Gene expression (1)_11175325456mRNA processing (1)_11391303248mRNA capping (0)_11175152400"
-	"Biological Process_11175325776Gene expression (1)_11175325456mRNA processing (1)_11391303248mRNA polyadenylation (0)_11175159376" [label="mRNA polyadenylation (0)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456mRNA processing (1)_11391303248" -> "Biological Process_11175325776Gene expression (1)_11175325456mRNA processing (1)_11391303248mRNA polyadenylation (0)_11175159376"
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328" [label="Ribosome biogenesis (1)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456" -> "Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328"
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal RNA processing (1)_11175165904" [label="Ribosomal RNA processing (1)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328" -> "Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal RNA processing (1)_11175165904"
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal RNA processing (1)_11175165904rRNA methylation (0)_11391333072" [label="rRNA methylation (0)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal RNA processing (1)_11175165904" -> "Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal RNA processing (1)_11175165904rRNA methylation (0)_11391333072"
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal RNA processing (1)_11175165904rRNA cleavage (0)_11174585680" [label="rRNA cleavage (0)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal RNA processing (1)_11175165904" -> "Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal RNA processing (1)_11175165904rRNA cleavage (0)_11174585680"
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal RNA processing (1)_11175165904rRNA base modification (0)_11175163920" [label="rRNA base modification (0)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal RNA processing (1)_11175165904" -> "Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal RNA processing (1)_11175165904rRNA base modification (0)_11175163920"
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal subunit assembly (1)_11175162832" [label="Ribosomal subunit assembly (1)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328" -> "Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal subunit assembly (1)_11175162832"
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal subunit assembly (1)_11175162832Small ribosomal subunit biogenesis (1)_11175160080" [label="Small ribosomal subunit biogenesis (1)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal subunit assembly (1)_11175162832" -> "Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal subunit assembly (1)_11175162832Small ribosomal subunit biogenesis (1)_11175160080"
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal subunit assembly (1)_11175162832Large ribosomal subunit biogenesis (0)_11175150928" [label="Large ribosomal subunit biogenesis (0)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal subunit assembly (1)_11175162832" -> "Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal subunit assembly (1)_11175162832Large ribosomal subunit biogenesis (0)_11175150928"
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal subunit assembly (1)_11175162832rRNA processing and modification (1)_11175152016" [label="rRNA processing and modification (1)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal subunit assembly (1)_11175162832" -> "Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Ribosomal subunit assembly (1)_11175162832rRNA processing and modification (1)_11175152016"
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Nucleolar processing of pre-rRNA (0)_11391327184" [label="Nucleolar processing of pre-rRNA (0)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328" -> "Biological Process_11175325776Gene expression (1)_11175325456Ribosome biogenesis (1)_11391453328Nucleolar processing of pre-rRNA (0)_11391327184"
-	"Biological Process_11175325776Gene expression (1)_11175325456RNA modification (0)_11391464080" [label="RNA modification (0)" shape=circle]
-	"Biological Process_11175325776Gene expression (1)_11175325456" -> "Biological Process_11175325776Gene expression (1)_11175325456RNA modification (0)_11391464080"
-	"Biological Process_11175325776Protein modification process (0)_11174577168" [label="Protein modification process (0)" shape=circle]
-	"Biological Process_11175325776" -> "Biological Process_11175325776Protein modification process (0)_11174577168"
-	"Biological Process_11175325776RNA processing (1)_11174589200" [label="RNA processing (1)" shape=circle]
-	"Biological Process_11175325776" -> "Biological Process_11175325776RNA processing (1)_11174589200"
-	"Biological Process_11175325776RNA processing (1)_11174589200rRNA processing and modification (0)_11391453968" [label="rRNA processing and modification (0)" shape=circle]
-	"Biological Process_11175325776RNA processing (1)_11174589200" -> "Biological Process_11175325776RNA processing (1)_11174589200rRNA processing and modification (0)_11391453968"
-	"Biological Process_11175325776RNA processing (1)_11174589200mRNA surveillance and decay (0)_11391464016" [label="mRNA surveillance and decay (0)" shape=circle]
-	"Biological Process_11175325776RNA processing (1)_11174589200" -> "Biological Process_11175325776RNA processing (1)_11174589200mRNA surveillance and decay (0)_11391464016"
-	"Biological Process_11175325776RNA processing (1)_11174589200Ribosome biogenesis (1)_11391452240" [label="Ribosome biogenesis (1)" shape=circle]
-	"Biological Process_11175325776RNA processing (1)_11174589200" -> "Biological Process_11175325776RNA processing (1)_11174589200Ribosome biogenesis (1)_11391452240"
+	"Biological Process_10976352656" [label="Biological Process"]
+	"Biological Process_10976352656Blood Coagulation (1)_10982323344" [label="Blood Coagulation (1)" shape=circle]
+	"Biological Process_10976352656" -> "Biological Process_10976352656Blood Coagulation (1)_10982323344"
+	"Biological Process_10976352656Blood Coagulation (1)_10982323344Intrinsic Pathway of Blood Coagulation (100)_10924697296" [label="Intrinsic Pathway of Blood Coagulation (100)" shape=circle]
+	"Biological Process_10976352656Blood Coagulation (1)_10982323344" -> "Biological Process_10976352656Blood Coagulation (1)_10982323344Intrinsic Pathway of Blood Coagulation (100)_10924697296"
+	"Biological Process_10976352656Blood Coagulation (1)_10982323344Platelet Activation (1)_10983121488" [label="Platelet Activation (1)" shape=circle]
+	"Biological Process_10976352656Blood Coagulation (1)_10982323344" -> "Biological Process_10976352656Blood Coagulation (1)_10982323344Platelet Activation (1)_10983121488"
+	"Biological Process_10976352656Blood Coagulation (1)_10982323344Fibrinolysis (0)_11271009424" [label="Fibrinolysis (0)" shape=circle]
+	"Biological Process_10976352656Blood Coagulation (1)_10982323344" -> "Biological Process_10976352656Blood Coagulation (1)_10982323344Fibrinolysis (0)_11271009424"
+	"Biological Process_10976352656Platelet Activation (1)_10983982864" [label="Platelet Activation (1)" shape=circle]
+	"Biological Process_10976352656" -> "Biological Process_10976352656Platelet Activation (1)_10983982864"
+	"Biological Process_10976352656Platelet Activation (1)_10983982864Platelet Aggregation (0)_10983585616" [label="Platelet Aggregation (0)" shape=circle]
+	"Biological Process_10976352656Platelet Activation (1)_10983982864" -> "Biological Process_10976352656Platelet Activation (1)_10983982864Platelet Aggregation (0)_10983585616"
+	"Biological Process_10976352656Platelet Activation (1)_10983982864Platelet Adhesion (0)_10983010128" [label="Platelet Adhesion (0)" shape=circle]
+	"Biological Process_10976352656Platelet Activation (1)_10983982864" -> "Biological Process_10976352656Platelet Activation (1)_10983982864Platelet Adhesion (0)_10983010128"
+	"Biological Process_10976352656Platelet Activation (1)_10983982864Secretion of Platelet Granules (0)_10983011088" [label="Secretion of Platelet Granules (0)" shape=circle]
+	"Biological Process_10976352656Platelet Activation (1)_10983982864" -> "Biological Process_10976352656Platelet Activation (1)_10983982864Secretion of Platelet Granules (0)_10983011088"
+	"Biological Process_10976352656Vascular Development (0)_10983126480" [label="Vascular Development (0)" shape=circle]
+	"Biological Process_10976352656" -> "Biological Process_10976352656Vascular Development (0)_10983126480"
 }

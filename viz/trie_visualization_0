@@ -1,46 +1,46 @@
 // Trie
 digraph {
-	"Biological Process_11164593616" [label="Biological Process"]
-	"Biological Process_11164593616Blood coagulation (2)_11160241488" [label="Blood coagulation (2)" shape=circle]
-	"Biological Process_11164593616" -> "Biological Process_11164593616Blood coagulation (2)_11160241488"
-	"Biological Process_11164593616Blood coagulation (2)_11160241488Intrinsic pathway of coagulation (0)_11165062672" [label="Intrinsic pathway of coagulation (0)" shape=circle]
-	"Biological Process_11164593616Blood coagulation (2)_11160241488" -> "Biological Process_11164593616Blood coagulation (2)_11160241488Intrinsic pathway of coagulation (0)_11165062672"
-	"Biological Process_11164593616Blood coagulation (2)_11160241488Intrinsic pathway of coagulation (0)_11165062672Activation of Factor XII (0)_11165020688" [label="Activation of Factor XII (0)" shape=circle]
-	"Biological Process_11164593616Blood coagulation (2)_11160241488Intrinsic pathway of coagulation (0)_11165062672" -> "Biological Process_11164593616Blood coagulation (2)_11160241488Intrinsic pathway of coagulation (0)_11165062672Activation of Factor XII (0)_11165020688"
-	"Biological Process_11164593616Blood coagulation (2)_11160241488Intrinsic pathway of coagulation (0)_11165062672Formation of the tenase complex (0)_11165014416" [label="Formation of the tenase complex (0)" shape=circle]
-	"Biological Process_11164593616Blood coagulation (2)_11160241488Intrinsic pathway of coagulation (0)_11165062672" -> "Biological Process_11164593616Blood coagulation (2)_11160241488Intrinsic pathway of coagulation (0)_11165062672Formation of the tenase complex (0)_11165014416"
-	"Biological Process_11164593616Blood coagulation (2)_11160241488Intrinsic pathway of coagulation (0)_11165062672Fibrinogen conversion to fibrin (0)_11165018576" [label="Fibrinogen conversion to fibrin (0)" shape=circle]
-	"Biological Process_11164593616Blood coagulation (2)_11160241488Intrinsic pathway of coagulation (0)_11165062672" -> "Biological Process_11164593616Blood coagulation (2)_11160241488Intrinsic pathway of coagulation (0)_11165062672Fibrinogen conversion to fibrin (0)_11165018576"
-	"Biological Process_11164593616Blood coagulation (2)_11160241488Platelet activation (0)_11165008848" [label="Platelet activation (0)" shape=circle]
-	"Biological Process_11164593616Blood coagulation (2)_11160241488" -> "Biological Process_11164593616Blood coagulation (2)_11160241488Platelet activation (0)_11165008848"
-	"Biological Process_11164593616Blood coagulation (2)_11160241488Regulation of coagulation (0)_11165009232" [label="Regulation of coagulation (0)" shape=circle]
-	"Biological Process_11164593616Blood coagulation (2)_11160241488" -> "Biological Process_11164593616Blood coagulation (2)_11160241488Regulation of coagulation (0)_11165009232"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584" [label="Cell adhesion (0)" shape=circle]
-	"Biological Process_11164593616" -> "Biological Process_11164593616Cell adhesion (0)_11165005584"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Platelet adhesion (0)_11165017680" [label="Platelet adhesion (0)" shape=circle]
-	"Biological Process_11164593616Cell adhesion (0)_11165005584" -> "Biological Process_11164593616Cell adhesion (0)_11165005584Platelet adhesion (0)_11165017680"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Extracellular matrix organization (0)_11165014480" [label="Extracellular matrix organization (0)" shape=circle]
-	"Biological Process_11164593616Cell adhesion (0)_11165005584" -> "Biological Process_11164593616Cell adhesion (0)_11165005584Extracellular matrix organization (0)_11165014480"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792" [label="Blood coagulation (2)" shape=circle]
-	"Biological Process_11164593616Cell adhesion (0)_11165005584" -> "Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Platelet activation (1)_11396686096" [label="Platelet activation (1)" shape=circle]
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792" -> "Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Platelet activation (1)_11396686096"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Platelet activation (1)_11396686096Platelet aggregation (0)_11396685072" [label="Platelet aggregation (0)" shape=circle]
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Platelet activation (1)_11396686096" -> "Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Platelet activation (1)_11396686096Platelet aggregation (0)_11396685072"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Platelet activation (1)_11396686096Blood coagulation (2)_11177452560" [label="Blood coagulation (2)" shape=circle]
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Platelet activation (1)_11396686096" -> "Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Platelet activation (1)_11396686096Blood coagulation (2)_11177452560"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Platelet activation (1)_11396686096Platelet granule release (0)_11177444944" [label="Platelet granule release (0)" shape=circle]
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Platelet activation (1)_11396686096" -> "Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Platelet activation (1)_11396686096Platelet granule release (0)_11177444944"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Fibrin clot formation (0)_11165011600" [label="Fibrin clot formation (0)" shape=circle]
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792" -> "Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Fibrin clot formation (0)_11165011600"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Regulation of coagulation (1)_11165022288" [label="Regulation of coagulation (1)" shape=circle]
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792" -> "Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Regulation of coagulation (1)_11165022288"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Regulation of coagulation (1)_11165022288Inhibition of coagulation factor activity (0)_11177458128" [label="Inhibition of coagulation factor activity (0)" shape=circle]
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Regulation of coagulation (1)_11165022288" -> "Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Regulation of coagulation (1)_11165022288Inhibition of coagulation factor activity (0)_11177458128"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Regulation of coagulation (1)_11165022288Negative regulation of fibrin clot formation (0)_11177455824" [label="Negative regulation of fibrin clot formation (0)" shape=circle]
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Regulation of coagulation (1)_11165022288" -> "Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Regulation of coagulation (1)_11165022288Negative regulation of fibrin clot formation (0)_11177455824"
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Regulation of coagulation (1)_11165022288Regulation of protease binding (0)_11177445072" [label="Regulation of protease binding (0)" shape=circle]
-	"Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Regulation of coagulation (1)_11165022288" -> "Biological Process_11164593616Cell adhesion (0)_11165005584Blood coagulation (2)_11165011792Regulation of coagulation (1)_11165022288Regulation of protease binding (0)_11177445072"
-	"Biological Process_11164593616Immune system process (0)_11165003664" [label="Immune system process (0)" shape=circle]
-	"Biological Process_11164593616" -> "Biological Process_11164593616Immune system process (0)_11165003664"
+	"Biological Process_11475741328" [label="Biological Process"]
+	"Biological Process_11475741328Apoptosis_11466927376" [label="Apoptosis (1)" shape=circle]
+	"Biological Process_11475741328" -> "Biological Process_11475741328Apoptosis_11466927376" [label=""]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632" [label="Intrinsic Apoptotic Signaling Pathway (1)" shape=circle]
+	"Biological Process_11475741328Apoptosis_11466927376" -> "Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632" [label="is a"]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Outer Membrane Permeabilization (MOMP)_10978633680" [label="Mitochondrial Outer Membrane Permeabilization (MOMP) (1)" shape=circle]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632" -> "Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Outer Membrane Permeabilization (MOMP)_10978633680" [label="is a"]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Outer Membrane Permeabilization (MOMP)_10978633680BAX-Mediated Permeabilization_11464652368" [label="BAX-Mediated Permeabilization (*)" shape=circle]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Outer Membrane Permeabilization (MOMP)_10978633680" -> "Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Outer Membrane Permeabilization (MOMP)_10978633680BAX-Mediated Permeabilization_11464652368" [label="is a"]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Outer Membrane Permeabilization (MOMP)_10978633680BAK1-Driven Pore Formation_11476561424" [label="BAK1-Driven Pore Formation (1)" shape=circle]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Outer Membrane Permeabilization (MOMP)_10978633680" -> "Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Outer Membrane Permeabilization (MOMP)_10978633680BAK1-Driven Pore Formation_11476561424" [label="is a"]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Outer Membrane Permeabilization (MOMP)_10978633680Pro-Apoptotic Factor Release_10981308880" [label="Pro-Apoptotic Factor Release" shape=circle]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Outer Membrane Permeabilization (MOMP)_10978633680" -> "Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Outer Membrane Permeabilization (MOMP)_10978633680Pro-Apoptotic Factor Release_10981308880" [label="part of"]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Caspase Activation_10981301648" [label="Caspase Activation" shape=circle]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632" -> "Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Caspase Activation_10981301648" [label="part of"]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Fission_11475665232" [label="Mitochondrial Fission" shape=circle]
+	"Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632" -> "Biological Process_11475741328Apoptosis_11466927376Intrinsic Apoptotic Signaling Pathway_11461351632Mitochondrial Fission_11475665232" [label=regulates]
+	"Biological Process_11475741328Apoptosis_11466927376Caspase Activation_11476897040" [label="Caspase Activation" shape=circle]
+	"Biological Process_11475741328Apoptosis_11466927376" -> "Biological Process_11475741328Apoptosis_11466927376Caspase Activation_11476897040" [label="part of"]
+	"Biological Process_11475741328Apoptosis_11466927376Mitochondrial Outer Membrane Permeabilization (MOMP)_11476845200" [label="Mitochondrial Outer Membrane Permeabilization (MOMP)" shape=circle]
+	"Biological Process_11475741328Apoptosis_11466927376" -> "Biological Process_11475741328Apoptosis_11466927376Mitochondrial Outer Membrane Permeabilization (MOMP)_11476845200" [label=regulates]
+	"Biological Process_11475741328Cell Signaling_10956750480" [label="Cell Signaling" shape=circle]
+	"Biological Process_11475741328" -> "Biological Process_11475741328Cell Signaling_10956750480" [label=""]
+	"Biological Process_11475741328Ion Transport_10980988304" [label="Ion Transport (1)" shape=circle]
+	"Biological Process_11475741328" -> "Biological Process_11475741328Ion Transport_10980988304" [label=""]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448" [label="Calcium Ion Transport (1)" shape=circle]
+	"Biological Process_11475741328Ion Transport_10980988304" -> "Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448" [label="is a"]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Regulation of Intracellular Calcium Levels_11460348624" [label="Regulation of Intracellular Calcium Levels" shape=circle]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448" -> "Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Regulation of Intracellular Calcium Levels_11460348624" [label="is a"]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Dependent Cell Signaling_10981307600" [label="Calcium-Dependent Cell Signaling" shape=circle]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448" -> "Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Dependent Cell Signaling_10981307600" [label=regulates]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Induced Apoptosis_10981304528" [label="Calcium-Induced Apoptosis (1)" shape=circle]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448" -> "Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Induced Apoptosis_10981304528" [label=regulates]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Induced Apoptosis_10981304528Mitochondrial Outer Membrane Permeabilization (MOMP)_11476554832" [label="Mitochondrial Outer Membrane Permeabilization (MOMP)" shape=circle]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Induced Apoptosis_10981304528" -> "Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Induced Apoptosis_10981304528Mitochondrial Outer Membrane Permeabilization (MOMP)_11476554832" [label="is a"]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Induced Apoptosis_10981304528Endoplasmic Reticulum Stress-Induced Apoptosis_11476560720" [label="Endoplasmic Reticulum Stress-Induced Apoptosis" shape=circle]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Induced Apoptosis_10981304528" -> "Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Induced Apoptosis_10981304528Endoplasmic Reticulum Stress-Induced Apoptosis_11476560720" [label=regulates]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Induced Apoptosis_10981304528Calcium-Mediated Cytoskeletal Remodeling_11464649488" [label="Calcium-Mediated Cytoskeletal Remodeling" shape=circle]
+	"Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Induced Apoptosis_10981304528" -> "Biological Process_11475741328Ion Transport_10980988304Calcium Ion Transport_10978634448Calcium-Induced Apoptosis_10981304528Calcium-Mediated Cytoskeletal Remodeling_11464649488" [label="part of"]
+	"Biological Process_11475741328Ion Transport_10980988304Potassium Ion Transport_10978628304" [label="Potassium Ion Transport" shape=circle]
+	"Biological Process_11475741328Ion Transport_10980988304" -> "Biological Process_11475741328Ion Transport_10980988304Potassium Ion Transport_10978628304" [label="is a"]
+	"Biological Process_11475741328Ion Transport_10980988304Sodium Ion Transport_10978635856" [label="Sodium Ion Transport" shape=circle]
+	"Biological Process_11475741328Ion Transport_10980988304" -> "Biological Process_11475741328Ion Transport_10980988304Sodium Ion Transport_10978635856" [label="is a"]
 }
