@@ -57,10 +57,11 @@ next_step_prompt = '''Given a set of genes and proposed biological processes des
 Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy.
 Biological processes can have three relations:
 1. is a: A is a B if biological process A is a subtype of biological process B. If A is a subtype of B, then we say A is more specific than B.
-2. part of: A is part of B if the presence of biological process A implies the presence of biological process B. If A is part of B, then we say A is more specific than B.
-3. regulates: A regulates B if biological process A always regulates biological process B. If A regulates B, then we say B is more specific than A.
+2. has part: A has part B if the biological process A always has part B. If A exists, then B will always exist. If A has part B, then we say B is more specific than A.
+3. part of: A is part B if, whenever biological process A exists, it is as a part of biological process B. If A is part of B, then we say A is more specific than B.
+4. regulates: A regulates B if biological process A always regulates biological process B. If A regulates B, then we say B is more specific than A.
 
-You should propose three biological processes that are more specific than the proposed biological process. You should describe how the proposed biological process relates to the current biological process using one of the three relations above, and then give your reasoning for why the proposed biological process describes the system.
+You should propose three biological processes that are more specific than the proposed biological process. You should describe how the proposed biological process relates to the current biological process using one of the four relations above, and then give your reasoning for why the proposed biological process describes the system.
 
 Here is the set of genes:
 Genes: {input}
@@ -92,6 +93,7 @@ Biological Processes: {choice}
 
 Given the set of genes and the proposed biological processes, vote on the two best biological processes.'''
 
+### DONT USE
 
 GO_Enrich_prompt = '''Here are the processes we've discussed: 
 {y}
@@ -128,6 +130,8 @@ Please answer strictly in JSON format:
 {format_5}'''
 
 format_5 = {'Criticism': 'Your Criticism'}
+
+### END DONT USE
 
 similarity_prompt = '''How similar are the following two biological processes? Please answer on a scale from 1 to 10, with 1 being not similar at all and 10 being very similar.
 
