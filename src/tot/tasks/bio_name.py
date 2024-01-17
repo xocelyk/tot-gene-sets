@@ -2,7 +2,7 @@ import os
 import re
 from tot.tasks.base import Task, DATA_PATH
 # from tot.prompts.bio_name import * #to edit
-from tot.prompts.bio_name_kyle import *
+from tot.prompts.bio_name_ethan import *
 from tot.models import gpt
 import json
 from tot.external_tools.external_tools import *
@@ -264,4 +264,20 @@ class Bio_Name(Task):
                         ys[j].update({'Comparison': v['Comparison']})
                         break
         return [json.dumps(y) for y in ys]
+    
+    @staticmethod
+    def vote_w_tool_prompt_wrap(x: str, ys: list, args) -> str:
+        system_message = system_prompt.format(json_format=format_2)
+        
+        proposed_terms = ''
+        for i, y in enumerate(ys, 1):
+            y = json.loads(y)
+            term = y[args.bio_type]
+            proposed_terms += f'{i}:{term}, '
+            
+        similar_terms = get_similar_term_GProfiler(x, ys, args.source, args.filter_method, args.filter_size) #source=GO:BP,filter_method=sim, sample_size=10
+        similar_terms = similar_terms.to_string()
+        user_message = vote_gprofiler_prompt.format(input=x, y=proposed_terms, n=args.filter_size, table=similar_terms, format_2=json.dumps(format_2))
+#         print('bio_name -- system_message',user_message)
+        return system_message, user_message
     

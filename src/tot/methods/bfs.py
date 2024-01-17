@@ -33,10 +33,27 @@ def get_votes(task, x, ys, n_evaluate_sample):
     values = task.vote_outputs_unwrap(vote_outputs, ys)
     return values
 
-def get_votes_for_bionames(task, x, ys, n_evaluate_sample, step):
-    system_message, user_message  = task.vote_prompt_wrap(x, ys)
-    vote_outputs = gpt(system_message, user_message, n=n_evaluate_sample, stop=None)
+def get_votes_for_bionames(task, x, ys, n_evaluate_sample, step, voting_setting, args):
+    if voting_setting == 'tools':
+        system_message, user_message  = task.vote_w_tool_prompt_wrap(x, ys, args)
+    else:
+        system_message, user_message  = task.vote_prompt_wrap(x, ys)
+    vote_outputs = gpt(system_message, user_message, n=n_evaluate_sample, stop=None)        
     values = task.vote_outputs_unwrap(vote_outputs, ys)
+    return values, vote_outputs
+
+def get_multivotes_for_bionames(task, x, ys, n_evaluate_sample, step, args):
+    system_message1, user_message1  = task.vote_w_tool_prompt_wrap(x, ys, args)
+    vote_outputs1 = gpt(system_message1, user_message1, n=n_evaluate_sample, stop=None)        
+    values1 = task.vote_outputs_unwrap(vote_outputs1, ys)
+    
+    system_message2, user_message2  = task.vote_prompt_wrap(x, ys)
+    vote_outputs2 = gpt(system_message2, user_message2, n=n_evaluate_sample, stop=None)        
+    values2 = task.vote_outputs_unwrap(vote_outputs2, ys)
+ 
+    values = values1 + values2
+    vote_outputs = vote_outputs1 + vote_outputs2
+    print('bfs--get_multivotes_for_bionames--values', values)
     return values, vote_outputs
 
 def combine_vote_to_answer(task, vote_outputs, ys):
@@ -188,7 +205,10 @@ def solve(args, task, idx, to_print=True):
         elif args.method_evaluate == 'value':
             values = get_values(task, x, new_ys, args.n_evaluate_sample)
         elif args.method_evaluate == 'votes_for_bionames':
-            values, vote_outputs = get_votes_for_bionames(task, x, new_ys, args.n_evaluate_sample, step)
+            values, vote_outputs = get_votes_for_bionames(task, x, new_ys, args.n_evaluate_sample, step, None, args)
+        elif args.method_evaluate == 'multi_voters':
+            values, vote_outputs = get_multivotes_for_bionames(task, x, new_ys, args.n_evaluate_sample, step, args)
+
             # print(' -- vote outputs --')
             # print(vote_outputs)
             # print(' -- values --')
@@ -292,7 +312,7 @@ def solve(args, task, idx, to_print=True):
     dot.render('viz/trie_visualization_{}'.format(idx), format='png')
 
     
-    return final_answer, ys, {'steps': infos}
+    return final_answer, ys, {'steps': infos}, trie
 
 def naive_solve(args, task, idx, to_print=True):
     global gpt
