@@ -280,4 +280,26 @@ class Bio_Name(Task):
         user_message = vote_gprofiler_prompt.format(input=x, y=proposed_terms, n=args.filter_size, table=similar_terms, format_2=json.dumps(format_2))
 #         print('bio_name -- system_message',user_message)
         return system_message, user_message
+
+    @staticmethod
+    def get_tool_analysis(x: str, ys: list, return_type: type, args):
+        similar_terms = get_similar_term_GProfiler(x, ys, args.source, args.filter_method, args.filter_size)
+        similar_terms = similar_terms.to_string()
+        if return_type == dict:
+            return {'GProfiler':similar_terms}
+        else:
+            return similar_terms
     
+    @staticmethod
+    def to_MedQAformat(x: str, ys: list, label:str) -> dict:
+        data_dicts = [json.loads(item) for item in ys]
+
+        # Creating the final structure
+        converted_dict = {
+            'question': 'Here is the set of genes: ' + x + '. What are the two most prominent biological processes performed by the system?.',
+            'answer': label,
+            'options': {chr(65+i): item['Biological Process'] for i, item in enumerate(data_dicts)},
+            'meta_info': 'step1',
+            'answer_idx': ''
+        }
+        return converted_dict

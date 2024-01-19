@@ -4,6 +4,14 @@ from functools import partial
 from tot.models import gpt
 import json
 from graphviz import Digraph
+from MedAgents.data_utils import MyDataset
+from MedAgents.api_utils import api_handler
+from string import punctuation
+import argparse
+import tqdm
+import json
+from MedAgents.utils import *
+
 
 def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     value_prompt = task.value_prompt_wrap(x, y)
@@ -42,7 +50,7 @@ def get_votes_for_bionames(task, x, ys, n_evaluate_sample, step, voting_setting,
     values = task.vote_outputs_unwrap(vote_outputs, ys)
     return values, vote_outputs
 
-def get_multivotes_for_bionames(task, x, ys, n_evaluate_sample, step, args):
+def get_multivotes_for_bionames(task, x, ys, n_evaluate_sample, args):
     system_message1, user_message1  = task.vote_w_tool_prompt_wrap(x, ys, args)
     vote_outputs1 = gpt(system_message1, user_message1, n=n_evaluate_sample, stop=None)        
     values1 = task.vote_outputs_unwrap(vote_outputs1, ys)
@@ -55,6 +63,29 @@ def get_multivotes_for_bionames(task, x, ys, n_evaluate_sample, step, args):
     vote_outputs = vote_outputs1 + vote_outputs2
     print('bfs--get_multivotes_for_bionames--values', values)
     return values, vote_outputs
+
+def run_medagents(task, x, ys, label, args, tools):
+    handler = api_handler(args.model_name)
+    raw_sample = task.to_MedQAformat(x, ys, label)
+    question = raw_sample['question'] if raw_sample['question'][-1] in punctuation else raw_sample['question'] + '?'
+    options = raw_sample['options']
+    gold_answer = raw_sample['answer_idx']
+    #0, 0 -->qid, realqid --> redundant parameter-- to remove
+    data_info = fully_decode(question, options, gold_answer, handler, None, args) 
+    values = list([0]*len(ys))
+    for v in data_info['pred_answer']:
+        values[v] = 1     
+    return values, data_info
+    
+def get_medagents_votes(task, x, ys, label, args, use_tool=False):
+    if use_tool:
+        tool_analyses = []
+        tool_anal = task.get_tool_analysis(x, ys, dict, args)
+        tool_analyses.append(tool_anal)
+    else:
+        tool_analyses = None
+    values, data_info = run_medagents(task, x, ys, label, args, tool_analyses)
+    return values, data_info
 
 def combine_vote_to_answer(task, vote_outputs, ys):
     new_ys = task.combine_vote_to_answer(vote_outputs[0], ys)
@@ -157,7 +188,10 @@ class Trie:
 def solve(args, task, idx, to_print=True):
     global gpt
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
+    args.model_name = args.backend
+    
     x = task.get_input(idx)  # input
+    label = task.get_label(idx)
     max_mem_size = 3
     trie = Trie()
     
@@ -207,7 +241,21 @@ def solve(args, task, idx, to_print=True):
         elif args.method_evaluate == 'votes_for_bionames':
             values, vote_outputs = get_votes_for_bionames(task, x, new_ys, args.n_evaluate_sample, step, None, args)
         elif args.method_evaluate == 'multi_voters':
-            values, vote_outputs = get_multivotes_for_bionames(task, x, new_ys, args.n_evaluate_sample, step, args)
+            values, vote_outputs = get_multivotes_for_bionames(task, x, new_ys, args.n_evaluate_sample, args)
+        elif args.method_evaluate == 'medagents':
+            args.n_evaluate_sample = args.ans_num
+            args.n_select_sample = args.ans_num
+            values, data_info = get_medagents_votes(task, x, new_ys, label, args, False)
+            vote_outputs = data_info['raw_output']
+            print('values', 'vote_outputs')
+            print(values, vote_outputs)
+        elif args.method_evaluate == 'medagents_w_tools':
+            args.n_evaluate_sample = args.ans_num
+            args.n_select_sample = args.ans_num
+            values, data_info = get_medagents_votes(task, x, new_ys, label, args, True)
+            vote_outputs = data_info['raw_output']
+            print('values', 'vote_outputs')
+            print(values, vote_outputs)
 
             # print(' -- vote outputs --')
             # print(vote_outputs)
@@ -223,8 +271,6 @@ def solve(args, task, idx, to_print=True):
             select_ids = np.random.choice(ids, size=args.n_select_sample, p=ps).tolist()
         elif args.method_select == 'greedy':
             select_ids = sorted(ids, key=lambda x: values[x], reverse=True)[:args.n_select_sample]
-            # print(' -- select ids --')
-            # print(select_ids)
 
         select_new_y_paths = [new_y_paths[select_id] for select_id in select_ids]
         omit_y_paths = [new_y_paths[id] for id in ids if id not in select_ids]
