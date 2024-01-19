@@ -44,7 +44,9 @@ def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
         question_analyses = cleansing_analysis(tmp_question_analysis, question_domains, 'question')
 
         if tool_analyses != None:
-            question_analyses = {**question_analyses, **tool_analyses}
+            print('get tool_analyses')
+            for anal in tool_analyses:
+                question_analyses = {**question_analyses, **anal}
             
         print('question_analyses',question_analyses)
 

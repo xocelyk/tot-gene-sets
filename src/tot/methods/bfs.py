@@ -71,7 +71,7 @@ def run_medagents(task, x, ys, label, args, tools):
     options = raw_sample['options']
     gold_answer = raw_sample['answer_idx']
     #0, 0 -->qid, realqid --> redundant parameter-- to remove
-    data_info = fully_decode(question, options, gold_answer, handler, None, args) 
+    data_info = fully_decode(question, options, gold_answer, handler, tools, args) 
     values = list([0]*len(ys))
     for v in data_info['pred_answer']:
         values[v] = 1     
@@ -79,6 +79,7 @@ def run_medagents(task, x, ys, label, args, tools):
     
 def get_medagents_votes(task, x, ys, label, args, use_tool=False):
     if use_tool:
+        print('use_tool')
         tool_analyses = []
         tool_anal = task.get_tool_analysis(x, ys, dict, args)
         tool_analyses.append(tool_anal)

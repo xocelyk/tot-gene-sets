@@ -36,7 +36,7 @@ format_3 = {'Biological Process': '<The best biological process>', 'Reason': '<Y
 
 format_6 = {'Similarity Score': '<Your similarity score>'}
 
-propose_prompt = '''You are given a set of genes, and your task is to propose three high-level biological processes that may be likely to be performed by the system involving expression of these genes.
+propose_prompt = '''You are given a set of genes, and your task is to propose a least three high-level biological processes that may be likely to be performed by the system involving expression of these genes.
 
 Biological processes are organized in a hierarchical ontology, and the most general biological processes are at the top of the hierarchy.
 Biological processes can have four relations:
@@ -45,12 +45,12 @@ Biological processes can have four relations:
 3. part of: A is part B if, whenever biological process A exists, it is as a part of biological process B. If A is part of B, then we say A is more specific than B.
 4. regulates: A regulates B if biological process A always regulates biological process B. If A regulates B, then we say B is more specific than A.
 
-These relationships create a hierarchical ontology. Your job is to propose three biological processes that are as general as possible.
+These relationships create a hierarchical ontology. Your job is to propose at least three biological processes that are as general as possible.
 
 Here is the set of genes:
 Genes: {input}
 
-Given the set of genes, propose three biological processes that may be likely to be performed by the system involving expression of these genes.'''
+Given the set of genes, propose at least three biological processes that may be likely to be performed by the system involving expression of these genes.'''
 
 next_step_prompt = '''Given a set of genes and proposed biological processes describing the system, your task is to generate more specific biological processes describing the system.
 
@@ -61,7 +61,7 @@ Biological processes can have three relations:
 3. part of: A is part B if, whenever biological process A exists, it is as a part of biological process B. If A is part of B, then we say A is more specific than B.
 4. regulates: A regulates B if biological process A always regulates biological process B. If A regulates B, then we say B is more specific than A.
 
-You should propose three biological processes that are more specific than the proposed biological process. You should describe how the proposed biological process relates to the current biological process using one of the four relations above, and then give your reasoning for why the proposed biological process describes the system.
+You should propose at least three biological processes that are more specific than the proposed biological process. You should describe how the proposed biological process relates to the current biological process using one of the four relations above, and then give your reasoning for why the proposed biological process describes the system.
 
 Here is the set of genes:
 Genes: {input}
@@ -71,7 +71,7 @@ Here is the current biological process:
 {y}
 ---
 
-Given the set of genes and the current biological process, propose three biological processes that describe the system that are more specific than the current biological process.'''
+Given the set of genes and the current biological process, propose at least three biological processes that describe the system that are more specific than the current biological process.'''
 
 last_step_prompt = '''Given a set of genes and proposed biological processes describing the system, your task is to choose the most accurate biological process.
 
