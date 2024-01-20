@@ -19,13 +19,13 @@ def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
     else:
         # get question domains
         question_classifier, prompt_get_question_domain = get_question_domains_prompt(question)
-        print('question_classifier', question_classifier)
+#         print('question_classifier', question_classifier)
         raw_question_domain = handler.get_output_multiagent(user_input=prompt_get_question_domain, temperature=0, max_tokens=50, system_role=question_classifier)
-        print('raw_question_domain',raw_question_domain)
+#         print('raw_question_domain',raw_question_domain)
         if raw_question_domain == "ERROR.":
             raw_question_domain  = "Medical Field: " + " | ".join(["General Medicine" for _ in range(NUM_QD)])
         question_domains = raw_question_domain.split(":")[-1].strip().split(" | ")
-        print('question_domains', question_domains)
+#         print('question_domains', question_domains)
 
         # get option domains
         options_classifier, prompt_get_options_domain = get_options_domains_prompt(question, options)
@@ -33,7 +33,7 @@ def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
         if raw_option_domain == "ERROR.":
             raw_option_domain  = "Medical Field: " + " | ".join(["General Medicine" for _ in range(NUM_OD)])
         options_domains = raw_option_domain.split(":")[-1].strip().split(" | ")
-        print('options_domains',options_domains)
+#         print('options_domains',options_domains)
     
         # get question analysis
         tmp_question_analysis = []
@@ -44,11 +44,11 @@ def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
         question_analyses = cleansing_analysis(tmp_question_analysis, question_domains, 'question')
 
         if tool_analyses != None:
-            print('get tool_analyses')
+#             print('get tool_analyses')
             for anal in tool_analyses:
                 question_analyses = {**question_analyses, **anal}
             
-        print('question_analyses',question_analyses)
+#         print('question_analyses',question_analyses)
 
         # get option analysis
         tmp_option_analysis = []
@@ -65,14 +65,14 @@ def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
         else:
             # get synthesized report
             q_analyses_text = transform_dict2text(question_analyses, "question", question)
-            print('q_analyses_text',q_analyses_text)
+#             print('q_analyses_text',q_analyses_text)
             o_analyses_text = transform_dict2text(option_analyses, "options", options)
             synthesizer, prompt_get_synthesized_report = get_synthesized_report_prompt(q_analyses_text, o_analyses_text)
-            print('o_analyses_text',o_analyses_text)
+#             print('o_analyses_text',o_analyses_text)
 #             synthesizer, prompt_get_synthesized_report = get_synthesized_report_prompt(q_analyses_text, '')
             raw_synthesized_report = handler.get_output_multiagent(user_input=prompt_get_synthesized_report, temperature=0, max_tokens=2500, system_role=synthesizer)
             syn_report = cleansing_syn_report(question, options, raw_synthesized_report)
-            print('syn_report',syn_report)
+#             print('syn_report',syn_report)
 
             if args.method == "syn_only":
                 # final answer derivation
@@ -116,9 +116,9 @@ def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
                 
                 # final answer derivation
                 answer_prompt = get_final_answer_prompt_wsyn(syn_report, args.ans_num)
-                print('answer_prompt',answer_prompt)
+#                 print('answer_prompt',answer_prompt)
                 output = handler.get_output_multiagent(user_input=answer_prompt, temperature=0, max_tokens=2500, system_role="")
-                print('output',output)
+#                 print('output',output)
                 ans, output = cleansing_final_output(output, args.ans_num, args.numerical)
                         
 
@@ -138,8 +138,8 @@ def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
         'syn_repo_history': syn_repo_history,
         'raw_output': output
     }
-    print('data_info',data_info)
-    print('pred_answer',data_info['pred_answer'])
+#     print('data_info',data_info)
+#     print('pred_answer',data_info['pred_answer'])
     
     return data_info
 

@@ -61,7 +61,7 @@ def get_multivotes_for_bionames(task, x, ys, n_evaluate_sample, args):
  
     values = values1 + values2
     vote_outputs = vote_outputs1 + vote_outputs2
-    print('bfs--get_multivotes_for_bionames--values', values)
+#     print('bfs--get_multivotes_for_bionames--values', values)
     return values, vote_outputs
 
 def run_medagents(task, x, ys, label, args, tools):
@@ -79,7 +79,6 @@ def run_medagents(task, x, ys, label, args, tools):
     
 def get_medagents_votes(task, x, ys, label, args, use_tool=False):
     if use_tool:
-        print('use_tool')
         tool_analyses = []
         tool_anal = task.get_tool_analysis(x, ys, dict, args)
         tool_analyses.append(tool_anal)
@@ -248,15 +247,15 @@ def solve(args, task, idx, to_print=True):
             args.n_select_sample = args.ans_num
             values, data_info = get_medagents_votes(task, x, new_ys, label, args, False)
             vote_outputs = data_info['raw_output']
-            print('values', 'vote_outputs')
+#             print('values', 'vote_outputs')
             print(values, vote_outputs)
         elif args.method_evaluate == 'medagents_w_tools':
             args.n_evaluate_sample = args.ans_num
             args.n_select_sample = args.ans_num
             values, data_info = get_medagents_votes(task, x, new_ys, label, args, True)
             vote_outputs = data_info['raw_output']
-            print('values', 'vote_outputs')
-            print(values, vote_outputs)
+#             print('values', 'vote_outputs')
+#             print(values, vote_outputs)
 
             # print(' -- vote outputs --')
             # print(vote_outputs)
