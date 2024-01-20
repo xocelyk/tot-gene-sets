@@ -4,49 +4,49 @@ NUM_OD = 2
 
 # question domains
 def get_question_domains_prompt(question):
-    question_domain_format = "Medical Field: " + " | ".join(["Field" + str(i) for i in range(NUM_QD)])
-    question_classifier = "You are a medical expert who specializes in categorizing a specific medical scenario into specific areas of medicine."
-    prompt_get_question_domain = f"You need to complete the following steps:" \
-            f"1. Carefully read the medical scenario presented in the question: '''{question}'''. \n" \
-            f"2. Based on the medical scenario in it, classify the question into five different subfields of medicine. \n" \
-            f"3. You should output in exactly the same format as '''{question_domain_format}'''."
+    question_domain_format = "Biology Field: " + " | ".join(["Field" + str(i) for i in range(NUM_QD)])
+    question_classifier = "You are a biology expert who specializes in categorizing a specific biology question into specific areas of biology (e.g., Molecular Biology, Biochemistry, Pathology, Microbiology). "
+    prompt_get_question_domain = f"You need to complete the following steps: " \
+            f"1. Carefully read the question: '''{question}'''. \n" \
+            f"2. Based on the question, classify the question into five different subfields of biology. \n" \
+            f"3. You should output in exactly the same format as '''{question_domain_format}'''. "
     return question_classifier, prompt_get_question_domain
 
 
 
 def get_question_analysis_prompt(question, question_domain):
-    question_analyzer = f"You are a medical expert in the domain of {question_domain}. " \
-        f"From your area of specialization, you will scrutinize and diagnose the symptoms presented by patients in specific medical scenarios."
-    prompt_get_question_analysis = f"Please meticulously examine the medical scenario outlined in this question: '''{question}'''." \
-                        f"Drawing upon your medical expertise, interpret the condition being depicted. " \
-                        f"Subsequently, identify and highlight the aspects of the issue that you find most alarming or noteworthy."
+    question_analyzer = f"You are a biology expert in the domain of {question_domain}. " \
+        f"From your area of specialization, you will scrutinize the genes presented in the question. "
+    prompt_get_question_analysis = f"Please meticulously examine the genes outlined in this question: '''{question}'''."  \
+                        f"Drawing upon your biology expertise, interpret the genes being depicted. " \
+                        f"Subsequently, identify and highlight the concept that you find most noteworthy. "
 
     return question_analyzer, prompt_get_question_analysis
 
 def get_question_analysis_prompt2(question, question_domain):
-    question_analyzer = f"You are a medical expert in the domain of {question_domain}. " \
-        f"From your area of specialization, you will scrutinize and diagnose the symptoms presented by patients in specific medical scenarios."
-    prompt_get_question_analysis = f"Please meticulously examine the question in this question: '''{question}'''." \
-                            f"Drawing upon your medical expertise, interpret the question. " \
-                        f"Subsequently, to the best of your ability, please provide your answer to the question."
+    question_analyzer = f"You are a biology expert in the domain of {question_domain}. " \
+        f"From your area of specialization, you will scrutinize the genes presented in the question. "
+    prompt_get_question_analysis = f"Please meticulously examine the genes outlined in this question:'''{question}'''. " \
+                            f"Drawing upon your biology expertise, interpret the genes being depicted. " \
+                        f"Subsequently, to the best of your ability, please provide your answer to the question. "
 
     return question_analyzer, prompt_get_question_analysis
 
 def get_options_domains_prompt(question, options):
-    options_domain_format =  "Medical Field: " + " | ".join(["Field" + str(i) for i in range(NUM_OD)])
-    options_classifier = f"As a medical expert, you possess the ability to discern the two most relevant fields of expertise needed to address a multiple-choice question encapsulating a specific medical context."
+    options_domain_format =  "Biology Field: " + " | ".join(["Field" + str(i) for i in range(NUM_OD)])
+    options_classifier = f"As a biology expert, you possess the ability to discern the two most relevant fields of expertise needed to address a multiple-choice question encapsulating a specific biology context. "
     prompt_get_options_domain = f"You need to complete the following steps:" \
-                f"1. Carefully read the medical scenario presented in the question: '''{question}'''." \
-                f"2. The available options are: '''{options}'''. Strive to understand the fundamental connections between the question and the options." \
-                f"3. Your core aim should be to categorize the options into two distinct subfields of medicine. " \
+                f"1. Carefully read the question: '''{question}'''. " \
+                f"2. The available options are: '''{options}'''. Strive to understand the fundamental connections between the question and the options. " \
+                f"3. Your core aim should be to categorize the options into two distinct subfields of biology. " \
                 f"You should output in exactly the same format as '''{options_domain_format}'''"
     return options_classifier, prompt_get_options_domain
 
 
 def get_options_analysis_prompt(question, options, op_domain, question_analysis):
-    option_analyzer = f"You are a medical expert specialized in the {op_domain} domain. " \
+    option_analyzer = f"You are a biology expert specialized in the {op_domain} domain. " \
                 f"You are adept at comprehending the nexus between questions and choices in multiple-choice exams and determining their validity. " \
-                f"Your task, in particular, is to analyze individual options with your expert medical knowledge and evaluate their relevancy and correctness."
+                f"Your task, in particular, is to analyze individual options with your expert biology knowledge and evaluate their relevancy and correctness."
 
     prompt_get_options_analyses = f"Regarding the question: '''{question}''', we procured the analysis of five experts from diverse domains. \n"
     for _domain, _analysis in question_analysis.items():
@@ -63,12 +63,12 @@ def get_final_answer_prompt_analonly(question, options, question_analyses, optio
     prompt = f"Question: {question} \nOptions: {options} \n" \
         f"Answer: Let's work this out in a step by step way to be sure we have the right answer. \n" \
         f"Step 1: Decode the question properly. We have a team of experts who have done a detailed analysis of this question. " \
-        f"The team includes five experts from different medical domains related to the problem. \n"
+        f"The team includes five experts from different biology domains related to the problem. \n"
     
     for _domain, _analysis in question_analyses.items():
         prompt += f"Insight from an expert in {_domain} suggests, {_analysis} \n"
     
-    prompt += f"Step 2: Evaluate each presented option individually, based on both the specifics of the patient's scenario as well as your medical knowledge. " \
+    prompt += f"Step 2: Evaluate each presented option individually, based on your knowledge in biology. " \
             f"Pay close attention to discerning the disparities among the different options. " \
             f"A handful of these options might seem right on the first glance but could potentially be misleading in reality. " \
             f"We have detailed analyses from experts across two domains. \n"
@@ -117,11 +117,11 @@ def get_cot_prompt(question, options):
 
 
 def get_synthesized_report_prompt(question_analyses, option_analyses):
-    synthesizer = "You are a medical decision maker who excels at summarizing and synthesizing based on multiple experts from various domain experts."
+    synthesizer = "You are a decision maker in biology who excels at summarizing and synthesizing based on multiple experts from various domain experts."
 
     syn_report_format = f"Key Knowledge: [extracted key knowledge] \n" \
                 f"Total Analysis: [synthesized analysis] \n"
-    prompt = f"Here are some reports from different medical domain experts.\n "
+    prompt = f"Here are some reports from different biology domain experts.\n "
     prompt += f"You need to complete the following steps:" \
                 f"1. Take careful and comprehensive consideration of the following reports." \
                 f"2. Extract key knowledge from the following reports. " \
@@ -135,16 +135,16 @@ def get_synthesized_report_prompt(question_analyses, option_analyses):
 
 
 def get_consensus_prompt(domain, syn_report):
-    voter = f"You are a medical expert specialized in the {domain} domain."
-    cons_prompt = f"Here is a medical report: {syn_report} \n"\
-        f"As a medical expert specialized in {domain}, please carefully read the report and decide whether your opinions are consistent with this report." \
+    voter = f"You are a biology expert specialized in the {domain} domain."
+    cons_prompt = f"Here is a biology report: {syn_report} \n"\
+        f"As a biology expert specialized in {domain}, please carefully read the report and decide whether your opinions are consistent with this report." \
         f"Please respond only with: [YES or NO]."
     return voter, cons_prompt
 
 
 def get_consensus_opinion_prompt(domain, syn_report):
-    opinion_prompt = f"Here is a medical report: {syn_report} \n"\
-        f"As a medical expert specialized in {domain}, please make full use of your expertise to propose revisions to this report." \
+    opinion_prompt = f"Here is a biology report: {syn_report} \n"\
+        f"As a biology expert specialized in {domain}, please make full use of your expertise to propose revisions to this report." \
         f"You should output in exactly the same format as '''Revisions: [proposed revision advice] '''"
     return opinion_prompt
 
