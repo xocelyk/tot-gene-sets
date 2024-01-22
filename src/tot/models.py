@@ -4,7 +4,6 @@ import backoff
 
 completion_tokens = prompt_tokens = 0
 
-api_key = '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'
 
 api_key = os.getenv("OPENAI_API_KEY", "")
 if api_key != "":
