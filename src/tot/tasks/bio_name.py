@@ -17,16 +17,16 @@ class Bio_Name(Task):
     Input Example: 
     Output Example: 
     """
-    def __init__(self, file='toy_sample.txt'):
+    def __init__(self):
         """
         file: a text file, each line is some sentences
         """
         super().__init__()
-        xpath = os.path.join(DATA_PATH, 'gene_sets', 'x.txt')
-        ypath = os.path.join(DATA_PATH, 'gene_sets', 'y.txt')
-        self.data = open(xpath).readlines()
-        self.labels = open(ypath).readlines()
-        self.steps = 3
+        xpath = os.path.join(DATA_PATH, 'gene_sets', 'x_eval.txt')
+        ypath = os.path.join(DATA_PATH, 'gene_sets', 'y_eval.txt')
+        self.data = [pt.strip() for pt in open(xpath).readlines()]
+        self.labels = [label.strip() for label in open(ypath).readlines()]
+        self.steps = 5
         self.stops = ['Continue: No', None] #to edit
 
     def __len__(self) -> int:

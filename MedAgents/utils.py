@@ -1,7 +1,5 @@
-from prompt_generator import *
-from data_utils import *
-
-
+from .prompt_generator import *
+from .data_utils import *
 
 def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
 

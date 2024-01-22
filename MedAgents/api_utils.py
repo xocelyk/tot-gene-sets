@@ -104,6 +104,8 @@ class api_handler:
             self.engine = 'gpt-4'
         elif self.model == 'gpt-3.5-turbo-1106':
             self.engine = 'gpt-3.5-turbo-1106'
+        elif self.model == 'gpt-4-1106-preview':
+            self.engine = 'gpt-4-1106-preview'
         else:
             raise NotImplementedError
 

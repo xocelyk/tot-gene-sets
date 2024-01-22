@@ -341,6 +341,7 @@ def solve(args, task, idx, to_print=True):
         pass
         # print('solve -- ys', ys)
 
+    final_path = None
     for i, path in enumerate(y_paths):
         path = [json.loads(y)['Biological Process'] for y in path]
         if path[-1].split('(')[0] == final_answer:
