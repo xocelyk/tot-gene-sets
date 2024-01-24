@@ -68,7 +68,7 @@ def run_medagents(task, x, ys, label, args, tools):
     handler = api_handler(args.model_name)
     raw_sample = task.to_MedQAformat(x, ys, label)
     question = raw_sample['question'] if raw_sample['question'][-1] in punctuation else raw_sample['question'] + '?'
-    options = raw_sample['options']
+    options = raw_sample['options'] 
     gold_answer = raw_sample['answer_idx']
     #0, 0 -->qid, realqid --> redundant parameter-- to remove
     data_info = fully_decode(question, options, gold_answer, handler, tools, args) 
@@ -108,6 +108,8 @@ def get_samples(task, x, y, n_generate_sample, prompt_sample, stop):
 
 def get_samples_for_bionames(task, x, y, n_generate_sample, prompt_sample, step):
     system_message, user_message = task.propose_prompt_wrap(x, y, step)
+    print('system_message', 'user_message')
+    print(system_message, user_message)
     samples = gpt(system_message, user_message, n=1)
     samples = task.into_choices(samples, y, step)
     return samples
@@ -201,6 +203,8 @@ def solve(args, task, idx, to_print=True):
     ys = ['']  # current output candidates
     infos = []
     for step in range(task.steps):
+        print(f'running {step+1}/{task.steps} step')
+        start = time.time()
         # print('-- step', step, '--')
         # update memory to keep under max_mem_size
         mem = mem[-max_mem_size:]
@@ -333,7 +337,9 @@ def solve(args, task, idx, to_print=True):
         
         dot = trie.visualize()
         dot.render('viz/trie_visualization_{}'.format(idx), format='png')
-  
+        print('Time taken:', time.time() - start)
+        
+        
     if args.task == 'bio_name':
         final_answer, new_ys = get_final_answer_for_bionames(task, x, ys[0], args.n_generate_sample, prompt_sample=args.prompt_sample)
         infos.append({'step': step+1, 'x': x, 'ys': ys, 'new_ys': new_ys, 'values': None, 'select_new_ys': None})

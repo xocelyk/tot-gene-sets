@@ -1,5 +1,6 @@
 // Trie
 digraph {
+<<<<<<< HEAD
 	"Biological Process_11894130640" [label="Biological Process"]
 	"Biological Process_11894130640Lipid metabolic process_11892994768" [label="Lipid metabolic process (1)" shape=circle]
 	"Biological Process_11894130640" -> "Biological Process_11894130640Lipid metabolic process_11892994768" [label=""]
@@ -55,4 +56,25 @@ digraph {
 	"Biological Process_11894130640Membrane organization_10997393168" -> "Biological Process_11894130640Membrane organization_10997393168Lipid transport_6436245072" [label="has part"]
 	"Biological Process_11894130640Membrane organization_10997393168Annexin-mediated membrane organization_11005839184" [label="Annexin-mediated membrane organization" shape=circle]
 	"Biological Process_11894130640Membrane organization_10997393168" -> "Biological Process_11894130640Membrane organization_10997393168Annexin-mediated membrane organization_11005839184" [label="is a"]
+=======
+	"Biological Process_139778716364752" [label="Biological Process"]
+	"Biological Process_139778716364752Lipid metabolic process_139778732784272" [label="Lipid metabolic process (1)" shape=circle]
+	"Biological Process_139778716364752" -> "Biological Process_139778716364752Lipid metabolic process_139778732784272" [label=""]
+	"Biological Process_139778716364752Lipid metabolic process_139778732784272Lipid transport_139778741590352" [label="Lipid transport (1)" shape=circle]
+	"Biological Process_139778716364752Lipid metabolic process_139778732784272" -> "Biological Process_139778716364752Lipid metabolic process_139778732784272Lipid transport_139778741590352" [label="is a"]
+	"Biological Process_139778716364752Lipid metabolic process_139778732784272Lipid catabolic process_139778739389904" [label="Lipid catabolic process" shape=circle]
+	"Biological Process_139778716364752Lipid metabolic process_139778732784272" -> "Biological Process_139778716364752Lipid metabolic process_139778732784272Lipid catabolic process_139778739389904" [label="is a"]
+	"Biological Process_139778716364752Lipid metabolic process_139778732784272Phospholipid binding_139778755013264" [label="Phospholipid binding" shape=circle]
+	"Biological Process_139778716364752Lipid metabolic process_139778732784272" -> "Biological Process_139778716364752Lipid metabolic process_139778732784272Phospholipid binding_139778755013264" [label="part of"]
+	"Biological Process_139778716364752Membrane organization_139777840980176" [label="Membrane organization" shape=circle]
+	"Biological Process_139778716364752" -> "Biological Process_139778716364752Membrane organization_139777840980176" [label=""]
+	"Biological Process_139778716364752Endocytosis_139778716157712" [label="Endocytosis (1)" shape=circle]
+	"Biological Process_139778716364752" -> "Biological Process_139778716364752Endocytosis_139778716157712" [label=""]
+	"Biological Process_139778716364752Endocytosis_139778716157712Receptor-mediated endocytosis_139778728293712" [label="Receptor-mediated endocytosis (1)" shape=circle]
+	"Biological Process_139778716364752Endocytosis_139778716157712" -> "Biological Process_139778716364752Endocytosis_139778716157712Receptor-mediated endocytosis_139778728293712" [label="is a"]
+	"Biological Process_139778716364752Endocytosis_139778716157712Clathrin-mediated endocytosis_139778729852240" [label="Clathrin-mediated endocytosis" shape=circle]
+	"Biological Process_139778716364752Endocytosis_139778716157712" -> "Biological Process_139778716364752Endocytosis_139778716157712Clathrin-mediated endocytosis_139778729852240" [label="is a"]
+	"Biological Process_139778716364752Endocytosis_139778716157712Lipid particle organization_139778767194512" [label="Lipid particle organization" shape=circle]
+	"Biological Process_139778716364752Endocytosis_139778716157712" -> "Biological Process_139778716364752Endocytosis_139778716157712Lipid particle organization_139778767194512" [label="part of"]
+>>>>>>> dfc03c2f260f82ff209db2eae73c499ccc3e111c
 }

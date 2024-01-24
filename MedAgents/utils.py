@@ -21,7 +21,7 @@ def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
         raw_question_domain = handler.get_output_multiagent(user_input=prompt_get_question_domain, temperature=0, max_tokens=50, system_role=question_classifier)
 #         print('raw_question_domain',raw_question_domain)
         if raw_question_domain == "ERROR.":
-            raw_question_domain  = "Medical Field: " + " | ".join(["General Medicine" for _ in range(NUM_QD)])
+            raw_question_domain  = "Biology Field: " + " | ".join(["General Biology" for _ in range(NUM_QD)])
         question_domains = raw_question_domain.split(":")[-1].strip().split(" | ")
 #         print('question_domains', question_domains)
 
@@ -29,7 +29,7 @@ def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
         options_classifier, prompt_get_options_domain = get_options_domains_prompt(question, options)
         raw_option_domain = handler.get_output_multiagent(user_input=prompt_get_options_domain, temperature=0, max_tokens=50, system_role=options_classifier)
         if raw_option_domain == "ERROR.":
-            raw_option_domain  = "Medical Field: " + " | ".join(["General Medicine" for _ in range(NUM_OD)])
+            raw_option_domain  = "Biology Field: " + " | ".join(["General Biology" for _ in range(NUM_OD)])
         options_domains = raw_option_domain.split(":")[-1].strip().split(" | ")
 #         print('options_domains',options_domains)
     
@@ -44,6 +44,8 @@ def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
         if tool_analyses != None:
 #             print('get tool_analyses')
             for anal in tool_analyses:
+#                 print('anal', anal)
+#                 print('question_analyses',question_analyses)
                 question_analyses = {**question_analyses, **anal}
             
 #         print('question_analyses',question_analyses)
@@ -79,11 +81,9 @@ def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
                 ans, output = cleansing_final_output(output, args.ans_num, args.numerical)
             elif args.method == "syn_verif":
                 all_domains = question_domains + options_domains
-
-
+                
                 syn_repo_history = [syn_report]
 
-            
                 hasno_flag = True   # default value: in order to get into the while loop
                 num_try = 0
 
