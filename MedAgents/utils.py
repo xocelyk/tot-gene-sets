@@ -1,7 +1,5 @@
-from prompt_generator import *
-from data_utils import *
-
-
+from .prompt_generator import *
+from .data_utils import *
 
 def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
 
@@ -46,6 +44,8 @@ def fully_decode(question, options, gold_answer, handler, tool_analyses, args):
         if tool_analyses != None:
 #             print('get tool_analyses')
             for anal in tool_analyses:
+#                 print('anal', anal)
+#                 print('question_analyses',question_analyses)
                 question_analyses = {**question_analyses, **anal}
             
 #         print('question_analyses',question_analyses)

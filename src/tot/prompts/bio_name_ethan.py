@@ -6,12 +6,12 @@
 system_prompt = 'You are a helpful and knowledgable assistant to a molecular biologist. Respond to questions in JSON format, following this template: {json_format}.'
 
 # propose initial biological processes
-format_0 = {"Answer 1": {"Step": "1", "Biological Process": "<Your first proposed biological process>", "Reason": "<Why did you choose this name?>"},
+format_0 = '''{"Answer 1": {"Step": "1", "Biological Process": "<Your first proposed biological process>", "Reason": "<Why did you choose this name?>"},
             "Answer 2": {"Step": "1", "Biological Process": "<Your second proposed biological process>", "Reason": "<Why did you choose this name?>"},
-            "Answer 3": {"Step": "1", "Biological Process": "<Your third proposed biological process>", "Reason": "<Why did you choose this name?>"},...}
+            "Answer 3": {"Step": "1", "Biological Process": "<Your third proposed biological process>", "Reason": "<Why did you choose this name?>"},...}'''
 
 # propose more specific biological processes
-format_1 = {"Answer 1": {"Step": "{step_num}",\
+format_1 = '''{"Answer 1": {"Step": "{step_num}",\
            "Previous Biological Process": "<The previous biological process>",\
            "New Biological Process": "<Your first proposed biological process, more specific than the previous",\
            "Relation": "<How does the new biological process relate to the previous biological process?",\
@@ -25,7 +25,7 @@ format_1 = {"Answer 1": {"Step": "{step_num}",\
            "Previous Biological Process": "<The previous biological process>",\
            "New Biological Process": "<Your third proposed biological process, more specific than the previous",\
            "Relation": "<How does the new biological process relate to the previous biological process?",\
-            "Reason": "<Why did you choose this name? Which genes are relevant to this process?>"},...}
+            "Reason": "<Why did you choose this name? Which genes are relevant to this process?>"},...}'''
 
 
 # vote prompt

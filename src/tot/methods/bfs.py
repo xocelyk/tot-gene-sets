@@ -203,6 +203,8 @@ def solve(args, task, idx, to_print=True):
     ys = ['']  # current output candidates
     infos = []
     for step in range(task.steps):
+        print(f'running {step+1}/{task.steps} step')
+        start = time.time()
         # print('-- step', step, '--')
         # update memory to keep under max_mem_size
         mem = mem[-max_mem_size:]
@@ -335,7 +337,9 @@ def solve(args, task, idx, to_print=True):
         
         dot = trie.visualize()
         dot.render('viz/trie_visualization_{}'.format(idx), format='png')
-  
+        print('Time taken:', time.time() - start)
+        
+        
     if args.task == 'bio_name':
         final_answer, new_ys = get_final_answer_for_bionames(task, x, ys[0], args.n_generate_sample, prompt_sample=args.prompt_sample)
         infos.append({'step': step+1, 'x': x, 'ys': ys, 'new_ys': new_ys, 'values': None, 'select_new_ys': None})
