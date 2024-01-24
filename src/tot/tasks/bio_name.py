@@ -282,23 +282,24 @@ class Bio_Name(Task):
         return system_message, user_message
 
     @staticmethod
-    def get_tool_analysis(x: str, ys: list, return_type: type, args):
+    def get_tool_analyses(x: str, ys: list, return_type: type, args):
         similar_terms = get_similar_term_GProfiler(x, ys, args.source, args.filter_method, args.filter_size)
         similar_terms = similar_terms.to_string()
         if return_type == dict:
-            return {'GProfiler':similar_terms}
+            return [{'GProfiler':similar_terms}]
         else:
             return similar_terms
     
     @staticmethod
     def to_MedQAformat(x: str, ys: list, label:str) -> dict:
         data_dicts = [json.loads(item) for item in ys]
-
+        options = {chr(65+i): item['Biological Process'] for i, item in enumerate(data_dicts)}
+#         options.update({chr(65+len(data_dicts)):"None of Above (there's a better answer)"})
         # Creating the final structure
         converted_dict = {
             'question': 'Here is the set of genes: ' + x + '. What are the two most prominent biological processes performed by the system?.',
             'answer': label,
-            'options': {chr(65+i): item['Biological Process'] for i, item in enumerate(data_dicts)},
+            'options': ,
             'meta_info': 'step1',
             'answer_idx': ''
         }

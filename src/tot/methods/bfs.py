@@ -68,7 +68,7 @@ def run_medagents(task, x, ys, label, args, tools):
     handler = api_handler(args.model_name)
     raw_sample = task.to_MedQAformat(x, ys, label)
     question = raw_sample['question'] if raw_sample['question'][-1] in punctuation else raw_sample['question'] + '?'
-    options = raw_sample['options']
+    options = raw_sample['options'] 
     gold_answer = raw_sample['answer_idx']
     #0, 0 -->qid, realqid --> redundant parameter-- to remove
     data_info = fully_decode(question, options, gold_answer, handler, tools, args) 
@@ -108,6 +108,8 @@ def get_samples(task, x, y, n_generate_sample, prompt_sample, stop):
 
 def get_samples_for_bionames(task, x, y, n_generate_sample, prompt_sample, step):
     system_message, user_message = task.propose_prompt_wrap(x, y, step)
+    print('system_message', 'user_message')
+    print(system_message, user_message)
     samples = gpt(system_message, user_message, n=1)
     samples = task.into_choices(samples, y, step)
     return samples

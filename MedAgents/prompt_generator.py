@@ -88,7 +88,9 @@ def get_final_answer_prompt_wsyn(syn_report, ans_num):
     num_to_word = {
     1: 'one',
     2: 'two',
-    3: 'three'}
+    3: 'three',
+    4: 'four',
+    5: 'five'}
     ans_num = num_to_word[ans_num]
     prompt = f"Here is a synthesized report: {syn_report} \n" \
         f"Based on the above report, select '{ans_num}' choices to answer the question. \n" \
