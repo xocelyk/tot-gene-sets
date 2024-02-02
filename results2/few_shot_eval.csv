@@ -1,0 +1,101 @@
+index,x,y_pred,y_true,similarity_score,similarity_percentile
+0,LDLRAP1 SCP2D1 ANXA2 SCP2,lipid transport,positive regulation of intracellular cholesterol transport,0.5000782,0.964057638775176
+1,NOD1 HLA-DRA CLEC4A HLA-DRB1 CCL21 NOD2 CCL19 SLC11A1 HLA-DRB3 CCR7 CD68 FCGR2B THBS1 FGL2 CD74,immune response,dendritic cell antigen processing and presentation,0.34707442,0.8224987719010971
+2,OGG1 ERCC5 XPA ERCC4 NTHL1,DNA repair,"nucleotide-excision repair, DNA incision",0.68892,0.9978712952349763
+3,SLC7A11 SLC25A39 SLC26A6 ABCB9 SLC15A4 ABCC5 CDH17 SLC15A3 ABCC4 SLC13A3 GJA1 SLC15A1 SLC15A2 ABCC1 CA2,transport,oligopeptide transmembrane transport,0.5318936,0.978876698870149
+4,OPN3 CDH3 ATP7A APPL1 ASIP RAB38 ZEB2 TYRP1 GIPC1,pigmentation,positive regulation of melanin biosynthetic process,0.419992,0.9726543310954642
+5,ZMPSTE24 NIBAN2 PIK3CA,protein processing,hypomethylation of CpG island,0.293127,0.46888816112657605
+6,TEK ANGPT1 SVEP1 ANGPT2,angiogenesis,Tie signaling pathway,0.46320915,0.9685606680858032
+7,PRDM9 PRDM7 RAD51AP1 UBE2B,meiotic recombination,positive regulation of reciprocal meiotic recombination,0.6905608,0.9972163091534305
+8,MDFIC RSF1 DHX9,regulation of DNA-templated transcription,positive regulation of viral transcription,0.45685083,0.9656132307188472
+9,WDR4 METTL1 BUD23 RNMT TRMT112 RAMAC,tRNA wobble base modification,RNA (guanine-N7)-methylation,0.39987808,0.9420337317831996
+10,DHX58 C1QBP RIOK3 TKFC,innate immune response,negative regulation of MDA-5 signaling pathway,0.2788811,0.6017684624201736
+11,CEP250 GSK3B UBXN2B CEP72 PARD6A NUP62 MARK4 APC BICD1 NSFL1C,regulation of microtubule cytoskeleton organization,regulation of protein localization to centrosome,0.48320496,0.9675781889634846
+12,PLA2G3 IL1B AVP PTGS2 AVPR1A CD74 ANXA1,inflammatory response,positive regulation of prostaglandin biosynthetic process,0.1587772,0.0713116096282954
+13,ZFPM1 TGFBR2 HEY2 TBX20 BMPR2 BMPR1A,heart development,tricuspid valve development,0.66272706,0.9870640248894711
+14,DLX1 SIX3 ASCL1 BCHE DLX2 TAFA3 TAFA1 NOTCH3,neurogenesis,neuroblast differentiation,0.84613276,0.9998362534796136
+15,KLF4 CXCL12 CCL21 CCL25 CCL28,chemokine-mediated signaling pathway,negative regulation of leukocyte adhesion to vascular endothelial cell,0.20412894,0.15408547568364173
+16,PGLYRP3 PGLYRP1 PGLYRP2,antimicrobial peptide activity,negative regulation of natural killer cell differentiation involved in immune response,0.23837774,0.306533486163419
+17,TGFBR1 TGFBR2 ACVR1 ENG TGFB2,TGF-beta receptor signaling pathway,positive regulation of epithelial to mesenchymal transition involved in endocardial cushion formation,0.29816964,0.6318159489110856
+18,FOXC2 CXCR4 XBP1 SMOC2,regulation of angiogenesis,positive regulation of vascular wound healing,0.6058408,0.9967250695922711
+19,HP MT3 SNCA,response to metal ions,regulation of hydrogen peroxide catabolic process,0.38423443,0.834288521368921
+20,CRKL EDNRA EDN1 PTK2B BCAR3 EDNRB BCAR1 CDC42 GNA11 SIX1,regulation of actin cytoskeleton organization,endothelin receptor signaling pathway,0.27587903,0.6062714917308007
+21,IL23A IL15 TYK2 IL12B FCGR3A PTPN22 EMP2 HLA-E IL18 LEP STAT5B SLAMF1 ELF4 JAK2 IL23R,immune response,natural killer cell proliferation,0.2052322,0.2629769117406255
+22,WNT5A RYK FZD3,non-canonical Wnt signaling pathway,dopaminergic neuron axon guidance,0.35743618,0.8879155067954806
+23,NR1H4 SIRT1 TRPM4 NCOA1 NCOA2 GHRL PPARG SORL1,regulation of lipid metabolism,positive regulation of adipose tissue development,0.43526527,0.9524316358277387
+24,NGEF EFNA1 PTEN DTNBP1 DNM3 NLGN1,synaptic signaling,negative regulation of dendritic spine morphogenesis,0.41587025,0.8698215162927788
+25,PGR ESR1 WNT4 AR CSMD1 VDR MED1,hormone-mediated signaling,mammary gland branching involved in pregnancy,0.29023483,0.44408056328803014
+26,BMP4 ADIPOQ HNF1B STAT1 OSR1,transcription regulation,negative regulation of kidney development,0.20273653,0.144915670542001
+27,CAD UCK1 UCK2 CDA UMPS CMPK1 UPP1 UPP2 UCKL1 DHODH,pyrimidine nucleotide biosynthesis,UMP biosynthetic process,0.75655174,0.9987719010971017
+28,SPART WNT3A WNT3,Wnt signaling pathway,regulation of collateral sprouting in absence of injury,0.29641816,0.6522842639593909
+29,SULT1E1 DIO2 MME HSD17B11 IDE ECE1 ACE HSD17B6 DIO3 SPP1 SRD5A1 CYP19A1,steroid hormone biosynthesis,hormone catabolic process,0.456352,0.9853446864254135
+30,OPRK1 SGIP1 GHSR AGRP NR4A3 GHRL RXFP4 NPY INSL5 MC1R CFAP20,regulation of appetite,positive regulation of feeding behavior,0.63042307,0.9983625347961356
+31,HEG1 PTGS2 RGCC WNT11 ROCK2 AIF1,angiogenesis,regulation of fibroblast growth factor production,0.30236185,0.5797445554281971
+32,SLC44A4 SLC19A2 SLC25A19 SLC19A3,transmembrane transport,thiamine transmembrane transport,0.61285543,0.9863271655477321
+33,SLC7A5 LLGL2 SLC3A2 SLC25A44 SLC6A14 SLC6A15 SLC38A7 SLC43A1 SLC7A8 SLC38A9 SLC6A20 SLC43A2 SLC6A17,amino acid transport,branched-chain amino acid transport,0.73575664,0.9980350417553627
+34,NHEJ1 TFIP11 TMSB4X XRCC1 GCLM ANTKMT ATPSCKMT XRCC4 AIMP2 RIPK3 MID1IP1 RGN,DNA repair,regulation of ligase activity,0.37089744,0.8179957425904699
+35,AGER TNF FGG FGB BMP7 GCNT2 IL1B LCK CD44 FGA THY1 FLOT1 SKAP1 CEACAM6 IL10,inflammatory response,positive regulation of heterotypic cell-cell adhesion,0.28057826,0.48952022269526774
+36,CIAO3 AQP11 GSTP1 SOD2 ADNP ALAS2 CAV1 HIF1A EGLN1 WNT7B,response to hypoxia,gas homeostasis,0.61695325,0.9772392336662846
+37,RFLNB RFLNA ZNF664-RFLNA PTHLH,skeletal system development,negative regulation of chondrocyte development,0.46330956,0.9132143441951859
+38,FCGR2B PLA2G5 CCR2,immune response regulation,immune complex clearance by monocytes and macrophages,0.40093964,0.8607335844113313
+39,STPG4 USP7 APOBEC1 OTUD4 USP9X HNRNPAB TRIM28 GATA3 DPPA3 A1CF TOX,regulation of gene expression,regulation of DNA demethylation,0.43523097,0.9553790731946946
+40,MISP PAFAH1B1 PKHD1 DLG1 FHOD1 MAD2L1 PARD3B CEP83 PARD3 EZR,cell division and polarity establishment,establishment of centrosome localization,0.62366736,0.9939413787457017
+41,MTRFR TRIP4 ZNF598 RACK1 ASCC2 MTRES1 ASCC3 NEMF LTN1,protein quality control for misfolded or incompletely synthesized proteins,rescue of stalled ribosome,0.57996315,0.9972981824136237
+42,CLEC12B KLRC1 KIR2DL1,regulation of immune response,natural killer cell inhibitory signaling pathway,0.40379784,0.8979040445390536
+43,GAR1 NHP2 NAF1,ribonucleoprotein complex biogenesis,snoRNA guided rRNA pseudouridine synthesis,0.5705937,0.9908301948583592
+44,EPB41L5 EPHA2 AXIN1 NODAL,cell-cell adhesion,axial mesoderm morphogenesis,0.34227413,0.8572130342230228
+45,RPS6KA1 DDR2 PDGFRB CYGB ACTA2 LEP GCLC,response to growth factor,regulation of hepatic stellate cell activation,0.30748263,0.5860487964630752
+46,COL2A1 BMP5 LHX1 SSBP3 PFAS DDX10 SOX9,chondrocyte differentiation,anterior head development,0.5635544,0.9676600622236777
+47,SIAH3 BAG3 BAG4 LRRK2 LMAN1 C11orf65,protein folding and quality control,negative regulation of protein targeting to mitochondrion,0.229714,0.2926969051907647
+48,ATP6AP1 CCDC115 ATP6V0A2 ATP6V1G1 TMEM199 ATP6V0D1 NOX1 FOXO1 ATG7 FAS CAV1 ATP6V1A,regulation of autophagy and cellular response to stress,cellular response to increased oxygen levels,0.5538864,0.9873915179302439
+49,BMP4 TMEM100 ACVRL1 CTNNB1 GDF2 BTG1 NOTCH1 BMP6 ATOH8 VEZF1 ETV2,blood vessel development,positive regulation of endothelial cell differentiation,0.49543297,0.9402325200589488
+50,TH TNF RELA B2M BAD NTRK1 CHRNA2 NFKB1,apoptotic signaling pathway,cellular response to nicotine,0.30814552,0.5559194367119699
+51,LOC102724560 MMUT MTHFR DPEP1 MTHFD1 MTRR CBS MPST CPS1 TST BLMH BHMT CTH NOX4,homocysteine metabolic process,homocysteine metabolic process,1.0000002,0.9999181267398067
+52,LRP2 GJC2 EMX1 LYN PTPRZ1 CDH2 SIRT2,central nervous system development,oligodendrocyte progenitor proliferation,0.37051794,0.809890289831341
+53,FNTA AIPL1 CHURC1-FNTB FNTB,protein farnesylation,protein farnesylation,0.9999999,0.9999181267398067
+54,TMEM38B SELENON CASQ2 P2RY6 CACNA1S CHEK1 SLC8A1 P2RY1 GSTM2 RYR3 RYR1 RYR2 TMEM38A TRPM2,regulation of intracellular calcium ion concentration,cellular response to purine-containing compound,0.29730022,0.742017357131161
+55,SPDEF IL13 HOXA5 ADAMTSL2 WNT7B AGR2,regulation of goblet cell differentiation,lobar bronchus development,0.37743196,0.8203700671360734
+56,HS3ST5 TPST1 CHST4 CHST5 NDST1 HS3ST3B1 TPST2 UST,sulfation biosynthetic process,protein sulfation,0.82146037,0.9997543802194203
+57,ROM1 PRPH2 AHI1 CRB1 NPHP4 BBS4 RP1 PCARE IFT20 CNGB1 CDHR1 MFSD2A IFT140 TOPORS,photoreceptor cell maintenance,photoreceptor cell outer segment organization,0.68876815,0.9986081545767153
+58,TMEM30A ATP8A2 FASLG ABCB4 PRKCD ATP8A1,phospholipid translocation,regulation of phospholipid translocation,0.8089608,0.9993450139184542
+59,KMT5A BRCA1 BEND3 TTLL12 KMT5B KMT5C ARID4B NSD2 ARID4A PWP1,chromatin modification,histone H4-K20 methylation,0.46627736,0.9639757655149828
+60,LRPPRC SUPV3L1 SLIRP PNPT1 PDE12 GRSF1,mitochondrial RNA processing,mitochondrial RNA catabolic process,0.7538444,0.9990993941378745
+61,KATNB1 STMN2 TRPV4 SPAST,microtubule cytoskeleton organization,positive regulation of microtubule depolymerization,0.4370859,0.89323726870804
+62,HDAC8 NAA50 WAPL RAD21 SMC3 STAG3 STAG2 MAU2 RB1 STAG1 NIPBL SMC1A DDX11 CDCA5,cohesin loading,establishment of sister chromatid cohesion,0.67735535,0.9996725069592272
+63,SPART FGF13 ULK1 FSTL4 PTPRS IFRD1 SPP1 EPHA7 ULK2 DCC,neuron projection development,negative regulation of collateral sprouting,0.34779695,0.6155231701326347
+64,SLC26A2 SLC35B2 SLC26A1 SLC35B3 PAPSS2 PAPSS1,sulfate transport,purine ribonucleoside bisphosphate biosynthetic process,0.20599173,0.18396921565416735
+65,XRCC4 SLF2 SLF1 IFFO1 PARP3,DNA repair,protein localization to site of double-strand break,0.45905396,0.9545603405927624
+66,TNF FCGR1A CNR1 CD81 KARS1 BTK C3 PARK7 HLA-E CCR7 ZP3 CD28 LTA,immune response,positive regulation of inflammatory response to antigenic stimulus,0.63642484,0.9958244637301458
+67,WNT3A DKK1 WNT5A MESP1 WNT11,Wnt signaling pathway,regulation of heart induction by canonical Wnt signaling pathway,0.5724262,0.996315703291305
+68,DOCK7 FGF13 RAB10,neuronal development,establishment of neuroblast polarity,0.616004,0.9757655149828066
+69,OXTR SERPINE2 DDO P2RX1 TACR1 TAC1 SLC6A4 AVPR1A KLK14 SEMG1 ACVR2A OXT EDDM3A,regulation of neurotransmitter levels,insemination,0.2073908,0.22515146553135745
+70,CACNB3 FLNA NOS1AP RNF207 CAV1 KCNE3 CACNA2D1,regulation of cardiac conduction,regulation of membrane repolarization during action potential,0.577634,0.9958244637301458
+71,TBC1D32 MFSD2A IHH PAX2 MED1,embryonic organ development,retinal pigment epithelium development,0.614447,0.9737186834779761
+72,NRAP NEBL NEB,muscle contraction,cardiac muscle thin filament assembly,0.52379614,0.9888652366137219
+73,CYP11A1 CYP11B1 BMP5 DKK3 CACNA1H WNT4 DGKQ HSD11B2 CYP11B2 REST BMP2 H6PD,steroid biosynthesis,cortisol metabolic process,0.42697534,0.9620926805305388
+74,EDNRA EDN1 CDC42,regulation of blood vessel size,endothelin receptor signaling pathway involved in heart process,0.3357745,0.8497625675454397
+75,NRXN2 NRXN1 STRA6 CNTNAP2 HTT,synaptic signaling,vocal learning,0.36231643,0.7170460127722286
+76,IFNG ISCU HAMP ATP7A,cellular iron ion homeostasis,regulation of iron ion transmembrane transport,0.77868104,0.9995087604388406
+77,HAL UROC1 AMDHD1 FTCD,histidine catabolic process,histidine catabolic process to glutamate and formamide,0.8730402,0.9998362534796136
+78,BMP4 SPI1 FOXC2 EPHA2 WNT4 ACTA2 CD34 GPR4 NOTCH1 OSR1 PDGFB,angiogenesis,pericyte cell differentiation,0.55837905,0.9928770263631898
+79,MUTYH OGG1 NEIL3 MPG,base-excision repair,depurination,0.52067214,0.9940232520058949
+80,ADRA2A ADRA2B CRH ADRA2C GABBR1,regulation of neurotransmitter levels,negative regulation of epinephrine secretion,0.2566,0.4478467332569183
+81,PHLDB2 PTEN FERMT2 CLASP1 FERMT1 CLASP2 MTOR RREB1,cell migration,"regulation of wound healing, spreading of epidermal cells",0.4977223,0.9635663992140167
+82,IL27RA TBX21 RC3H2 SMAD7 IL2 RC3H1 ZC3H12A TNFSF18 ZBTB7B LOXL3 FOXP3 IL4,regulation of immune response,negative regulation of T-helper 17 type immune response,0.33055258,0.7577370230882594
+83,ASL CPS1 NAGS CEBPA SLC25A2 ARG2 ASS1 ARG1 SLC25A15 OTC,urea cycle,urea cycle,1.0000002,0.9999181267398067
+84,NAGK CHIT1 CTBS OVGP1 GNPDA1 NPL GNPDA2 RENBP CHI3L1 CHIA CHI3L2 MGAT1 ALDH1A1 AMDHD2,carbohydrate metabolic process,amino sugar catabolic process,0.45233658,0.9511216636646471
+85,CPLANE2 TGFBR2 ACVR1 TGFB2 GATA5,embryonic organ development,endocardial cushion fusion,0.35804927,0.7418536106107745
+86,PPP1R3D PHKG2 PPP1CA INS PPP1R3B,glycogen metabolism,regulation of glycogen catabolic process,0.6701171,0.9971344358932372
+87,SLC19A2 SLC25A19 SLC44A4 SLC19A3 SLC35F3,transmembrane transport,thiamine transport,0.59868324,0.9832159816603897
+88,CARD16 CST7 NOL3 XIAP CARD8 CAST CARD18 BCL2L12,regulation of apoptosis,inhibition of cysteine-type endopeptidase activity,0.21736112,0.21557229408875062
+89,PON3 AATF ACP5,response to oxidative stress,negative regulation of superoxide anion generation,0.35945708,0.7357949893564761
+90,FZD4 LRP5 FER NTN4 NDP,Wnt signaling pathway,extracellular matrix-cell signaling,0.54461086,0.9945144915670542
+91,OXCT1 OXCT2 ACAT1,ketone body metabolism,ketone body catabolic process,0.82608527,0.9995906336990339
+92,HORMAD1 RAD1 TRIP13,meiotic cell cycle,meiotic recombination checkpoint signaling,0.62440276,0.9937776322253152
+93,VSIG4 CFH CR1 SUSD4,"complement activation, classical pathway","regulation of complement activation, alternative pathway",0.6484287,0.9991812673980678
+94,KYNU KMO HAAO,tryptophan catabolic process to kynurenine,anthranilate metabolic process,0.5662151,0.9990175208776814
+95,PCDH8 MDGA1 LRFN3 MAPK14,nervous system development,regulation of synaptic membrane adhesion,0.29744348,0.6269854265596856
+96,NPY OPRM1 GHSR GHRL,regulation of appetite,positive regulation of appetite,0.80207753,0.9995906336990339
+97,BMP4 TGFB1 MYCN TRUB1,embryonic development,positive regulation of miRNA maturation,0.17368023,0.19469461273947927
+98,TIMP4 TIMP3 TIMP2 TIMP1 ROCK1 PTPN3 LRIG2 IL10,regulation of extracellular matrix organization,negative regulation of membrane protein ectodomain proteolysis,0.32081592,0.6814311445881776
+99,KIT KITLG ZEB2,regulation of cell differentiation,melanocyte migration,0.395521,0.8385459308989685
