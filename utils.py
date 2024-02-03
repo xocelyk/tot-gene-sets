@@ -3,8 +3,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import torch
 import argparse
-from tot.methods.bfs import solve
-from tot.tasks.bio_name import Bio_Name
+from src.tot.methods.bfs import solve
+from src.tot.tasks.bio_name import Bio_Name
 import json
 import pickle
 
@@ -151,14 +151,30 @@ def get_zero_shot_prompt(test_gene_set):
     messages.append({'role': 'user', 'content': 'Give a brief name for the most prominent biological process performed by the following set of genes. Respond in the format "Process: <name>".\nGenes: {}'.format(test_gene_set)})
     return messages
 
+def get_zero_shot_prompt_alt(test_gene_set):
+    test_gene_set = test_gene_set.split(' ')
+    test_gene_set = [i.strip() for i in test_gene_set]
+    test_gene_set = ', '.join(test_gene_set)
+    test_gene_set += '.'
+    messages = []
+    messages.append({'role': 'system', 'content': 'You are a helpful and knowledgable assistant to a molecular biologist.'})
+    messages.append({'role': 'user', 'content': 'Give a brief name for the most prominent biological process performed by the following set of interacting proteins. Respond in the format "Process: <name>".\nProteins: {}'.format(test_gene_set)})
+    return messages
+
 def parse_zero_shot_response(response):
     return response[0].split(': ')[1].strip()
 
-def best_of_6_prompt(test_gene_set):
+def best_of_9_prompt(test_gene_set):
     messages = []
     messages.append({'role': 'system', 'content': 'You are a helpful and knowledgable assistant to a molecular biologist.'})
-    messages.append({'role': 'user', 'content': 'Give 6 unique names for the prominent biological processes performed by the following set of genes. Respond with a semicolon-sepated list in the format "Name1; Name2; Name3; Name4; Name5; Name6".\nGenes: {}'.format(test_gene_set)})
+    messages.append({'role': 'user', 'content': 'Give 6 unique names for the prominent biological processes performed by the following set of genes. Respond with a semicolon-sepated list in the format "Name1; Name2; Name3; Name4; Name5; Name6; Name7; Name8; Name9".\nGenes: {}'.format(test_gene_set)})
     return messages
 
-def parse_best_of_6_response(response):
+def best_of_27_prompt(test_gene_set):
+    messages = []
+    messages.append({'role': 'system', 'content': 'You are a helpful and knowledgable assistant to a molecular biologist.'})
+    messages.append({'role': 'user', 'content': 'Give 18 unique names for the prominent biological processes performed by the following set of genes. Respond with a semicolon-sepated list in the format "Name1; Name2; Name3; Name4; Name5; Name6; Name7; Name8; Name9; Name10; Name11; Name12; Name13; Name14; Name15; Name16; Name17; Name18; Name19; Name20; Name21; Name22; Name23; Name24; Name25; Name26; Name27".\nGenes: {}'.format(test_gene_set)});
+    return messages
+    
+def parse_best_of_n_response(response):
     return response[0].split('; ')
