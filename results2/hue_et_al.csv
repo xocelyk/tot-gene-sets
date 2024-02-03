@@ -1,0 +1,101 @@
+index,x,y_pred,y_true,similarity_score,similarity_percentile
+0,"['LDLRAP1', 'SCP2D1', 'ANXA2', 'SCP2']",Lipid Homeostasis and Membrane Trafficking,positive regulation of intracellular cholesterol transport,0.3832982,0.8499263140658261
+1,"['NOD1', 'HLA-DRA', 'CLEC4A', 'HLA-DRB1', 'CCL21', 'NOD2', 'CCL19', 'SLC11A1', 'HLA-DRB3', 'CCR7', 'CD68', 'FCGR2B', 'THBS1', 'FGL2', 'CD74']",Antigen Processing and Presentation Pathway,dendritic cell antigen processing and presentation,0.84383124,0.9995087604388406
+2,"['OGG1', 'ERCC5', 'XPA', 'ERCC4', 'NTHL1']",Nucleotide Excision Repair (NER),"nucleotide-excision repair, DNA incision",0.78436863,0.9997543802194203
+3,"['SLC7A11', 'SLC25A39', 'SLC26A6', 'ABCB9', 'SLC15A4', 'ABCC5', 'CDH17', 'SLC15A3', 'ABCC4', 'SLC13A3', 'GJA1', 'SLC15A1', 'SLC15A2', 'ABCC1', 'CA2']",Transmembrane Transport Systems,oligopeptide transmembrane transport,0.6138634,0.9965613230718847
+4,"['OPN3', 'CDH3', 'ATP7A', 'APPL1', 'ASIP', 'RAB38', 'ZEB2', 'TYRP1', 'GIPC1']",Melanogenic Regulatory Pathway,positive regulation of melanin biosynthetic process,0.50948465,0.991485180939905
+5,"['ZMPSTE24', 'NIBAN2', 'PIK3CA']",Proteolysis Regulation in PI3K Signaling,hypomethylation of CpG island,0.37946278,0.8875061404945145
+6,"['TEK', 'ANGPT1', 'SVEP1', 'ANGPT2']",Angiogenesis Regulation,Tie signaling pathway,0.506561,0.9821516292778778
+7,"['PRDM9', 'PRDM7', 'RAD51AP1', 'UBE2B']",Meiotic Recombination Regulation,positive regulation of reciprocal meiotic recombination,0.7012878,0.9984444080563288
+8,"['MDFIC', 'RSF1', 'DHX9']",Chromatin Remodeling and RNA Processing,positive regulation of viral transcription,0.2641021,0.2767316194530866
+9,"['WDR4', 'METTL1', 'BUD23', 'RNMT', 'TRMT112', 'RAMAC']",tRNA and mRNA Modification and Maturation,RNA (guanine-N7)-methylation,0.43270957,0.9239397412804978
+10,"['DHX58', 'C1QBP', 'RIOK3', 'TKFC']",Viral Response and Innate Immunity Modulation,negative regulation of MDA-5 signaling pathway,0.40891865,0.9192729654494842
+11,"['CEP250', 'GSK3B', 'UBXN2B', 'CEP72', 'PARD6A', 'NUP62', 'MARK4', 'APC', 'BICD1', 'NSFL1C']",Regulation of Microtubule Dynamics and Mitotic Spindle Assembly,regulation of protein localization to centrosome,0.51971996,0.9823972490584575
+12,"['PLA2G3', 'IL1B', 'AVP', 'PTGS2', 'AVPR1A', 'CD74', 'ANXA1']",Inflammatory Response Modulation,positive regulation of prostaglandin biosynthetic process,0.14281067,0.02014082200753234
+13,"['ZFPM1', 'TGFBR2', 'HEY2', 'TBX20', 'BMPR2', 'BMPR1A']",Cardiac Development and Homeostasis Regulation,tricuspid valve development,0.54749674,0.9817422629769117
+14,"['DLX1', 'SIX3', 'ASCL1', 'BCHE', 'DLX2', 'TAFA3', 'TAFA1', 'NOTCH3']",Neurogenesis and Neural Differentiation,neuroblast differentiation,0.86275506,0.9996725069592272
+15,"['KLF4', 'CXCL12', 'CCL21', 'CCL25', 'CCL28']",Chemotactic Immune Regulation,negative regulation of leukocyte adhesion to vascular endothelial cell,0.3584633,0.6251023415752415
+16,"['PGLYRP3', 'PGLYRP1', 'PGLYRP2']",Peptidoglycan Recognition and Antimicrobial Activity,negative regulation of natural killer cell differentiation involved in immune response,0.23808803,0.2350581300147372
+17,"['TGFBR1', 'TGFBR2', 'ACVR1', 'ENG', 'TGFB2']",TGF-β Signaling Pathway Modulation,positive regulation of epithelial to mesenchymal transition involved in endocardial cushion formation,0.25754666,0.5178483707221222
+18,"['FOXC2', 'CXCR4', 'XBP1', 'SMOC2']",Angiogenesis and Vasculogenesis Regulation,positive regulation of vascular wound healing,0.55782354,0.9923039135418372
+19,"['HP', 'MT3', 'SNCA']",Neuroprotective Metal Ion Regulation,regulation of hydrogen peroxide catabolic process,0.4750675,0.9510397904044539
+20,"['CRKL', 'EDNRA', 'EDN1', 'PTK2B', 'BCAR3', 'EDNRB', 'BCAR1', 'CDC42', 'GNA11', 'SIX1']",Endothelin Signaling Modulation and Actin Cytoskeleton Regulation,endothelin receptor signaling pathway,0.80791986,0.9999181267398067
+21,"['IL23A', 'IL15', 'TYK2', 'IL12B', 'FCGR3A', 'PTPN22', 'EMP2', 'HLA-E', 'IL18', 'LEP', 'STAT5B', 'SLAMF1', 'ELF4', 'JAK2', 'IL23R']",Cytokine Mediated Immune Regulation,natural killer cell proliferation,0.3584119,0.7741116751269036
+22,"['WNT5A', 'RYK', 'FZD3']",Non-canonical Wnt Signaling,dopaminergic neuron axon guidance,0.3496067,0.8463238906173244
+23,"['NR1H4', 'SIRT1', 'TRPM4', 'NCOA1', 'NCOA2', 'GHRL', 'PPARG', 'SORL1']",Regulation of Lipid Metabolism and Energy Homeostasis,positive regulation of adipose tissue development,0.4904791,0.9764205010643524
+24,"['NGEF', 'EFNA1', 'PTEN', 'DTNBP1', 'DNM3', 'NLGN1']",Signal Transduction and Synaptic Modulation,negative regulation of dendritic spine morphogenesis,0.3796913,0.7662518421483544
+25,"['PGR', 'ESR1', 'WNT4', 'AR', 'CSMD1', 'VDR', 'MED1']",Hormonal Signal Integration and Response Modulation,mammary gland branching involved in pregnancy,0.3111902,0.5058130014737187
+26,"['BMP4', 'ADIPOQ', 'HNF1B', 'STAT1', 'OSR1']",Developmental Signaling and Metabolic Regulation,negative regulation of kidney development,0.36234084,0.5657442279351563
+27,"['CAD', 'UCK1', 'UCK2', 'CDA', 'UMPS', 'CMPK1', 'UPP1', 'UPP2', 'UCKL1', 'DHODH']",Pyrimidine Biosynthesis and Metabolism,UMP biosynthetic process,0.616506,0.9954150974291797
+28,"['SPART', 'WNT3A', 'WNT3']",Wnt Signaling Pathway Modulation,regulation of collateral sprouting in absence of injury,0.37914228,0.9311445881775012
+29,"['SULT1E1', 'DIO2', 'MME', 'HSD17B11', 'IDE', 'ECE1', 'ACE', 'HSD17B6', 'DIO3', 'SPP1', 'SRD5A1', 'CYP19A1']",Steroid Hormone Metabolism and Regulation,hormone catabolic process,0.4769324,0.9755198952022269
+30,"['OPRK1', 'SGIP1', 'GHSR', 'AGRP', 'NR4A3', 'GHRL', 'RXFP4', 'NPY', 'INSL5', 'MC1R', 'CFAP20']",Hypothalamic-Pituitary-Adrenal (HPA) Axis Modulation and Energy Homeostasis,positive regulation of feeding behavior,0.35214528,0.8021942033731784
+31,"['HEG1', 'PTGS2', 'RGCC', 'WNT11', 'ROCK2', 'AIF1']",Regulation of Angiogenesis and Inflammation,regulation of fibroblast growth factor production,0.40485275,0.9095300474864909
+32,"['SLC44A4', 'SLC19A2', 'SLC25A19', 'SLC19A3']",Transportome Coordination in Thiamine and Nucleotide Transport,thiamine transmembrane transport,0.77767277,0.9999181267398067
+33,"['SLC7A5', 'LLGL2', 'SLC3A2', 'SLC25A44', 'SLC6A14', 'SLC6A15', 'SLC38A7', 'SLC43A1', 'SLC7A8', 'SLC38A9', 'SLC6A20', 'SLC43A2', 'SLC6A17']",Amino Acid Transport,branched-chain amino acid transport,0.73575664,0.9980350417553627
+34,"['NHEJ1', 'TFIP11', 'TMSB4X', 'XRCC1', 'GCLM', 'ANTKMT', 'ATPSCKMT', 'XRCC4', 'AIMP2', 'RIPK3', 'MID1IP1', 'RGN']",DNA Damage Repair and Apoptosis Regulation,regulation of ligase activity,0.45606232,0.9284427705911249
+35,"['AGER', 'TNF', 'FGG', 'FGB', 'BMP7', 'GCNT2', 'IL1B', 'LCK', 'CD44', 'FGA', 'THY1', 'FLOT1', 'SKAP1', 'CEACAM6', 'IL10']",Inflammatory Response Modulation and Extracellular Matrix Interaction,positive regulation of heterotypic cell-cell adhesion,0.3157578,0.4827247420992304
+36,"['CIAO3', 'AQP11', 'GSTP1', 'SOD2', 'ADNP', 'ALAS2', 'CAV1', 'HIF1A', 'EGLN1', 'WNT7B']",Regulation of Cellular Oxygen Homeostasis and Redox Balance,gas homeostasis,0.6084173,0.9943507450466678
+37,"['RFLNB', 'RFLNA', 'ZNF664-RFLNA', 'PTHLH']",Cytoskeletal Regulation and Signal Transduction,negative regulation of chondrocyte development,0.18804982,0.07794334370394629
+38,"['FCGR2B', 'PLA2G5', 'CCR2']",Immune Regulation and Inflammatory Response Modulation,immune complex clearance by monocytes and macrophages,0.5148586,0.985917799246766
+39,"['STPG4', 'USP7', 'APOBEC1', 'OTUD4', 'USP9X', 'HNRNPAB', 'TRIM28', 'GATA3', 'DPPA3', 'A1CF', 'TOX']",Protein Homeostasis Regulation and Gene Expression Modulation,regulation of DNA demethylation,0.40152925,0.8813656459800229
+40,"['MISP', 'PAFAH1B1', 'PKHD1', 'DLG1', 'FHOD1', 'MAD2L1', 'PARD3B', 'CEP83', 'PARD3', 'EZR']",Cytoskeletal Organization and Mitotic Spindle Assembly,establishment of centrosome localization,0.6125637,0.9889471098739152
+41,"['MTRFR', 'TRIP4', 'ZNF598', 'RACK1', 'ASCC2', 'MTRES1', 'ASCC3', 'NEMF', 'LTN1']",Protein Quality Control and Ribosome-Associated Degradation,rescue of stalled ribosome,0.62329376,0.9986081545767153
+42,"['CLEC12B', 'KLRC1', 'KIR2DL1']",Immune Cell Regulation and Pathogen Recognition,natural killer cell inhibitory signaling pathway,0.48905146,0.9728999508760439
+43,"['GAR1', 'NHP2', 'NAF1']",H/ACA Ribonucleoprotein Complex Assembly,snoRNA guided rRNA pseudouridine synthesis,0.55085087,0.9946782380874406
+44,"['EPB41L5', 'EPHA2', 'AXIN1', 'NODAL']",Nodal Signaling Modulation in Cell Adhesion and Axis Formation,axial mesoderm morphogenesis,0.4680485,0.9709349926314066
+45,"['RPS6KA1', 'DDR2', 'PDGFRB', 'CYGB', 'ACTA2', 'LEP', 'GCLC']",Fibroblast Activation and Collagen Synthesis Regulation,regulation of hepatic stellate cell activation,0.6489376,0.9997543802194203
+46,"['COL2A1', 'BMP5', 'LHX1', 'SSBP3', 'PFAS', 'DDX10', 'SOX9']",Chondrogenesis Regulation,anterior head development,0.45042515,0.8995415097429179
+47,"['SIAH3', 'BAG3', 'BAG4', 'LRRK2', 'LMAN1', 'C11orf65']",Protein Quality Control and Trafficking,negative regulation of protein targeting to mitochondrion,0.35726485,0.7702636318978222
+48,"['ATP6AP1', 'CCDC115', 'ATP6V0A2', 'ATP6V1G1', 'TMEM199', 'ATP6V0D1', 'NOX1', 'FOXO1', 'ATG7', 'FAS', 'CAV1', 'ATP6V1A']",Vesicular Acidification and Autophagy Regulation,cellular response to increased oxygen levels,0.35856426,0.7202390699197642
+49,"['BMP4', 'TMEM100', 'ACVRL1', 'CTNNB1', 'GDF2', 'BTG1', 'NOTCH1', 'BMP6', 'ATOH8', 'VEZF1', 'ETV2']",Regulation of Endothelial Cell Fate and Vasculogenesis,positive regulation of endothelial cell differentiation,0.66325593,0.997789421974783
+50,"['TH', 'TNF', 'RELA', 'B2M', 'BAD', 'NTRK1', 'CHRNA2', 'NFKB1']",Apoptosis Regulation and Signal Transduction,cellular response to nicotine,0.37110907,0.7688717864745375
+51,"['LOC102724560', 'MMUT', 'MTHFR', 'DPEP1', 'MTHFD1', 'MTRR', 'CBS', 'MPST', 'CPS1', 'TST', 'BLMH', 'BHMT', 'CTH', 'NOX4']",Homocysteine Metabolism and Detoxification,homocysteine metabolic process,0.9441672,0.9999181267398067
+52,"['LRP2', 'GJC2', 'EMX1', 'LYN', 'PTPRZ1', 'CDH2', 'SIRT2']",Neural Progenitor Proliferation and Differentiation Regulation,oligodendrocyte progenitor proliferation,0.53009415,0.9822335025380711
+53,"['FNTA', 'AIPL1', 'CHURC1-FNTB', 'FNTB']",Protein Prenylation Complex Assembly and Function,protein farnesylation,0.6752564,0.9997543802194203
+54,"['TMEM38B', 'SELENON', 'CASQ2', 'P2RY6', 'CACNA1S', 'CHEK1', 'SLC8A1', 'P2RY1', 'GSTM2', 'RYR3', 'RYR1', 'RYR2', 'TMEM38A', 'TRPM2']",Intracellular Calcium Regulation and Signaling,cellular response to purine-containing compound,0.40912163,0.8635172752579008
+55,"['SPDEF', 'IL13', 'HOXA5', 'ADAMTSL2', 'WNT7B', 'AGR2']",Regulation of Airway Epithelial Cell Differentiation and Mucosal Immunity,lobar bronchus development,0.43956435,0.9544784673325691
+56,"['HS3ST5', 'TPST1', 'CHST4', 'CHST5', 'NDST1', 'HS3ST3B1', 'TPST2', 'UST']",Sulfation Pathway Modulation,protein sulfation,0.6995082,0.9996725069592272
+57,"['ROM1', 'PRPH2', 'AHI1', 'CRB1', 'NPHP4', 'BBS4', 'RP1', 'PCARE', 'IFT20', 'CNGB1', 'CDHR1', 'MFSD2A', 'IFT140', 'TOPORS']",Retinal Photoreceptor Cell Maintenance and Function,photoreceptor cell outer segment organization,0.6812677,0.998526281316522
+58,"['TMEM30A', 'ATP8A2', 'FASLG', 'ABCB4', 'PRKCD', 'ATP8A1']",Phospholipid Flipping and Apoptotic Signaling Regulation,regulation of phospholipid translocation,0.67848146,0.9996725069592272
+59,"['KMT5A', 'BRCA1', 'BEND3', 'TTLL12', 'KMT5B', 'KMT5C', 'ARID4B', 'NSD2', 'ARID4A', 'PWP1']",Chromatin Modification and DNA Damage Response,histone H4-K20 methylation,0.40027446,0.8298673653184869
+60,"['LRPPRC', 'SUPV3L1', 'SLIRP', 'PNPT1', 'PDE12', 'GRSF1']",Mitochondrial RNA Metabolism,mitochondrial RNA catabolic process,0.76895434,0.9991812673980678
+61,"['KATNB1', 'STMN2', 'TRPV4', 'SPAST']",Microtubule Dynamics Regulation,positive regulation of microtubule depolymerization,0.63580334,0.9961519567709186
+62,"['HDAC8', 'NAA50', 'WAPL', 'RAD21', 'SMC3', 'STAG3', 'STAG2', 'MAU2', 'RB1', 'STAG1', 'NIPBL', 'SMC1A', 'DDX11', 'CDCA5']",Chromosome Structure Regulation and Cohesion,establishment of sister chromatid cohesion,0.7379174,0.9995087604388406
+63,"['SPART', 'FGF13', 'ULK1', 'FSTL4', 'PTPRS', 'IFRD1', 'SPP1', 'EPHA7', 'ULK2', 'DCC']",Intracellular Signaling and Neurodevelopmental Regulation,negative regulation of collateral sprouting,0.26506594,0.23775994760111346
+64,"['SLC26A2', 'SLC35B2', 'SLC26A1', 'SLC35B3', 'PAPSS2', 'PAPSS1']",Sulfate Conjugation and Transport,purine ribonucleoside bisphosphate biosynthetic process,0.18316503,0.10504339282790241
+65,"['XRCC4', 'SLF2', 'SLF1', 'IFFO1', 'PARP3']",DNA Double-Strand Break Repair,protein localization to site of double-strand break,0.648022,0.9963975765514983
+66,"['TNF', 'FCGR1A', 'CNR1', 'CD81', 'KARS1', 'BTK', 'C3', 'PARK7', 'HLA-E', 'CCR7', 'ZP3', 'CD28', 'LTA']",Immune Response Modulation and Inflammation,positive regulation of inflammatory response to antigenic stimulus,0.64016163,0.9963975765514983
+67,"['WNT3A', 'DKK1', 'WNT5A', 'MESP1', 'WNT11']",Wnt Signaling Pathway Modulation,regulation of heart induction by canonical Wnt signaling pathway,0.58635604,0.9976256754543966
+68,"['DOCK7', 'FGF13', 'RAB10']",Intracellular Signaling and Vesicle Trafficking Regulation,establishment of neuroblast polarity,0.31806746,0.5126903553299492
+69,"['OXTR', 'SERPINE2', 'DDO', 'P2RX1', 'TACR1', 'TAC1', 'SLC6A4', 'AVPR1A', 'KLK14', 'SEMG1', 'ACVR2A', 'OXT', 'EDDM3A']",Neuroendocrine and Reproductive Regulation,insemination,0.31011868,0.5082691992795153
+70,"['CACNB3', 'FLNA', 'NOS1AP', 'RNF207', 'CAV1', 'KCNE3', 'CACNA2D1']",Regulation of Cardiac Electrophysiological Function,regulation of membrane repolarization during action potential,0.67176,0.9982806615359424
+71,"['TBC1D32', 'MFSD2A', 'IHH', 'PAX2', 'MED1']",Regulation of Cellular Differentiation and Development,retinal pigment epithelium development,0.42530224,0.8848043229081382
+72,"['NRAP', 'NEBL', 'NEB']",Sarcomere Integrity and Muscle Contraction Regulation,cardiac muscle thin filament assembly,0.68618417,0.9990993941378745
+73,"['CYP11A1', 'CYP11B1', 'BMP5', 'DKK3', 'CACNA1H', 'WNT4', 'DGKQ', 'HSD11B2', 'CYP11B2', 'REST', 'BMP2', 'H6PD']",Steroidogenesis Regulation and Modulation,cortisol metabolic process,0.48175913,0.9819060094972982
+74,"['EDNRA', 'EDN1', 'CDC42']",Endothelin Signaling and Actin Cytoskeletal Regulation,endothelin receptor signaling pathway involved in heart process,0.7930478,0.9998362534796136
+75,"['NRXN2', 'NRXN1', 'STRA6', 'CNTNAP2', 'HTT']",Synaptic Function and Neural Development,vocal learning,0.48869592,0.9416243654822335
+76,"['IFNG', 'ISCU', 'HAMP', 'ATP7A']",Iron Homeostasis and Immune Response Regulation,regulation of iron ion transmembrane transport,0.75659585,0.999263140658261
+77,"['HAL', 'UROC1', 'AMDHD1', 'FTCD']",Histidine and Urea Cycle Metabolism,histidine catabolic process to glutamate and formamide,0.74181765,0.9995906336990339
+78,"['BMP4', 'SPI1', 'FOXC2', 'EPHA2', 'WNT4', 'ACTA2', 'CD34', 'GPR4', 'NOTCH1', 'OSR1', 'PDGFB']",Developmental Signal Transduction and Angiogenesis,pericyte cell differentiation,0.590351,0.9921401670214508
+79,"['MUTYH', 'OGG1', 'NEIL3', 'MPG']",DNA Base Excision Repair (BER),depurination,0.52508366,0.9956607172097592
+80,"['ADRA2A', 'ADRA2B', 'CRH', 'ADRA2C', 'GABBR1']",Neuroendocrine Regulation of Stress Response,negative regulation of epinephrine secretion,0.36846972,0.7979367938431309
+81,"['PHLDB2', 'PTEN', 'FERMT2', 'CLASP1', 'FERMT1', 'CLASP2', 'MTOR', 'RREB1']",Intracellular Signaling and Cell Adhesion Regulation,"regulation of wound healing, spreading of epidermal cells",0.5084075,0.9643032585557557
+82,"['IL27RA', 'TBX21', 'RC3H2', 'SMAD7', 'IL2', 'RC3H1', 'ZC3H12A', 'TNFSF18', 'ZBTB7B', 'LOXL3', 'FOXP3', 'IL4']",Immunomodulation and T Cell Differentiation Regulation,negative regulation of T-helper 17 type immune response,0.38360184,0.8479613558211888
+83,"['ASL', 'CPS1', 'NAGS', 'CEBPA', 'SLC25A2', 'ARG2', 'ASS1', 'ARG1', 'SLC25A15', 'OTC']",Urea Cycle Regulation and Ammonia Detoxification,urea cycle,0.7908301,0.9998362534796136
+84,"['NAGK', 'CHIT1', 'CTBS', 'OVGP1', 'GNPDA1', 'NPL', 'GNPDA2', 'RENBP', 'CHI3L1', 'CHIA', 'CHI3L2', 'MGAT1', 'ALDH1A1', 'AMDHD2']",N-Acetylglucosamine Metabolism and Recycling,amino sugar catabolic process,0.4930956,0.9787129523497625
+85,"['CPLANE2', 'TGFBR2', 'ACVR1', 'TGFB2', 'GATA5']",Regulation of TGF-β Signaling Pathway,endocardial cushion fusion,0.16400051,0.22384149336826592
+86,"['PPP1R3D', 'PHKG2', 'PPP1CA', 'INS', 'PPP1R3B']",Glycogen Metabolism Regulation,regulation of glycogen catabolic process,0.83812904,0.9996725069592272
+87,"['SLC19A2', 'SLC25A19', 'SLC44A4', 'SLC19A3', 'SLC35F3']",Cellular Transport of Thiamine and Nucleotides,thiamine transport,0.881626,0.9998362534796136
+88,"['CARD16', 'CST7', 'NOL3', 'XIAP', 'CARD8', 'CAST', 'CARD18', 'BCL2L12']",Regulation of Inflammation and Apoptosis,inhibition of cysteine-type endopeptidase activity,0.2047219,0.15924349107581465
+89,"['PON3', 'AATF', 'ACP5']",Cellular Stress Response and Phospholipid Metabolism Regulation,negative regulation of superoxide anion generation,0.104364,0.015146553135745866
+90,"['FZD4', 'LRP5', 'FER', 'NTN4', 'NDP']",Wnt/β-catenin Signaling Pathway Modulation,extracellular matrix-cell signaling,0.43373644,0.9839528410021287
+91,"['OXCT1', 'OXCT2', 'ACAT1']",Ketone Body Metabolism,ketone body catabolic process,0.82608527,0.9995906336990339
+92,"['HORMAD1', 'RAD1', 'TRIP13']",Meiotic Chromosomal Synapsis Quality Control,meiotic recombination checkpoint signaling,0.6875323,0.9983625347961356
+93,"['VSIG4', 'CFH', 'CR1', 'SUSD4']",Regulation of Complement Activation,"regulation of complement activation, alternative pathway",0.8038528,0.9997543802194203
+94,"['KYNU', 'KMO', 'HAAO']",Kynurenine Pathway Metabolism,anthranilate metabolic process,0.73192865,0.9994268871786475
+95,"['PCDH8', 'MDGA1', 'LRFN3', 'MAPK14']",Synaptic Adhesion and Signaling Modulation,regulation of synaptic membrane adhesion,0.8020091,0.9999181267398067
+96,"['NPY', 'OPRM1', 'GHSR', 'GHRL']",Neuroendocrine Regulation of Appetite,positive regulation of appetite,0.74493873,0.9996725069592272
+97,"['BMP4', 'TGFB1', 'MYCN', 'TRUB1']",Embryonic Development and Cellular Differentiation Signaling,positive regulation of miRNA maturation,0.2512315,0.2026363189782217
+98,"['TIMP4', 'TIMP3', 'TIMP2', 'TIMP1', 'ROCK1', 'PTPN3', 'LRIG2', 'IL10']",Regulation of Extracellular Matrix Turnover and Cell Signaling Modulation,negative regulation of membrane protein ectodomain proteolysis,0.48498636,0.9613558211887997
+99,"['KIT', 'KITLG', 'ZEB2']",Hematopoietic Cell Differentiation and Proliferation,melanocyte migration,0.42931086,0.8913541837235959
