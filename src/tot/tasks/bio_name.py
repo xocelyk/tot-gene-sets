@@ -97,9 +97,19 @@ class Bio_Name(Task):
         return system_message, user_message
     
     @staticmethod
-    def propose_prompt_final_wrap(x: str, y: str='') -> str:
+    def propose_prompt_final_wrap(x: str, ys: str='') -> str:
         system_message = system_prompt.format(json_format=format_3)
-        user_message = last_step_prompt.format(input=x, y=y, format_3=json.dumps(format_3))
+        
+        choice = ''
+        for i, y in enumerate(ys, 1):
+            choice += f'{y}\n'
+        user_message = last_step_prompt.format(input=x, y=choice, format_3=json.dumps(format_3))
+        return system_message, user_message
+    
+    @staticmethod
+    def propose_prompt_sw_final_wrap(x: str, y: str='') -> str:
+        system_message = system_prompt.format(json_format=format_3)
+        user_message = last_step_sw_prompt.format(input=x, y=y, format_3=json.dumps(format_3))
         return system_message, user_message
         
     @staticmethod
@@ -117,7 +127,7 @@ class Bio_Name(Task):
             # TODO: truncate the plan part?
 #             prompt += f'Choice {i}:\n{y}\n'
             choice += f'{y}\n'
-        user_message = vote_prompt.format(input=x, choice=choice, format_2=json.dumps(format_2))
+        user_message = vote_prompt.format(input=x, choice=choice)
         return system_message, user_message
     
     @staticmethod
@@ -132,6 +142,20 @@ class Bio_Name(Task):
 #         return value_prompt.format(input=current_numbers)
     
     @staticmethod
+    def stop_prompt_wrap(x: str, ys: list) -> str:
+        system_message = system_prompt.format(json_format=format_7)
+        choice = ''
+        for i, y in enumerate(ys, 1):
+            y = json.loads(y)
+            bp = y['Biological Process']
+            # y = y.replace('Plan:\n', '')
+            # TODO: truncate the plan part?
+#             prompt += f'Choice {i}:\n{y}\n'
+            choice += f'{bp}\n'
+        user_message = stop_prompt.format(input=x, choice=choice)
+        return system_message, user_message
+    
+    @staticmethod
     def vote_outputs_unwrap(vote_outputs: list, ys: list) -> list:
         new_ys = []
         for json_str in ys:
@@ -140,35 +164,36 @@ class Bio_Name(Task):
         ys = new_ys
 
         vote_results = defaultdict(int)
-        vote_output = vote_outputs[0]
-        vote_output = vote_output.replace('\n','')
-        vote_output = json.loads(vote_output)
-        for i, y in enumerate(vote_output['Votes']):
-            vote_results[y['Biological Process']] += 1
+        for vote_output in vote_outputs:
+            vote_output = vote_output.replace('\n','')
+            vote_output = json.loads(vote_output)
+            for i, a in enumerate(vote_output['Votes']):
+                vote_results[a['Biological Process']] += 1
         values = []
         for y in ys:
             values.append(vote_results[y])
         return values
 
-        # vote_results = [0] * n_candidates
-        # for vote_output in vote_outputs:
-        #     vote_output = vote_output.replace('\n','')
-        #     vote_output = json.loads(vote_output)
-        #     vote = int(vote_output['Best Biological Process']['index'])
-        #     name = vote_output['Best Biological Process']['Biological Process']
-            
-        #     #checking if gpt gives the right index. 
-        #     if vote_output['Analysis'][vote]['Biological Process'] != name:
-        #         for i, y in enumerate(vote_output['Analysis']):
-        #             if y['Biological  Process'] == name:
-        #                 vote = i
-        #                 break
-                        
-        #     if vote in range(n_candidates):
-        #         vote_results[vote] += 1
-        #     else:
-        #         print(f'vote no match: {[vote_output]}')
-        # return vote_results
+    @staticmethod
+    def stop_outputs_unwrap(stop_outputs: list, ys: list) -> list:
+        new_ys = []
+        for json_str in ys:
+            data = json.loads(json_str)
+            new_ys.append(data["Biological Process"])
+        ys = new_ys
+
+        stop_results = defaultdict(int)
+        for stop_output in stop_outputs:
+            stop_output = stop_output.replace('\n','')
+            stop_output = json.loads(stop_output)
+            for i, a in enumerate(stop_output['Answer']):
+                if a['Specific Enough'] == False:
+                    stop_results[a['Biological Process']] += 1
+                    
+        stop_metrics = []
+        for y in ys:
+            stop_metrics.append(stop_results[y])
+        return stop_metrics
 
     @staticmethod
     def compare_prompt_wrap(x: str, ys: list) -> str:
@@ -197,7 +222,7 @@ class Bio_Name(Task):
         # NOTES: changed how we handle the response to the first step.
         # 0th step prompt returns only "Biological Perspective" because there is no need to distinguish between the previous and new biological perspectives.
         # So, no need to change the answer keys before returning the choices
-        answer = answer[0]
+#         answer = answer[0]
         answer = answer.replace('\n','')
         answer_f = json.loads(answer)
         answer_f = [answer_f['Answer 1'], answer_f['Answer 2'], answer_f['Answer 3']]
@@ -215,11 +240,10 @@ class Bio_Name(Task):
 
             
     @staticmethod
-    def process_final_answers(answer: str, y: str):
+    def process_final_answers(answer: str):
         answer = json.loads(answer)
         name = answer['Biological Process']
-        reason = answer['Reason']
-        return name, reason
+        return name
 
     
     @staticmethod
@@ -243,7 +267,7 @@ class Bio_Name(Task):
         return [json.dumps(y) for y in ys]
     
     def unwrap_similarity(self, similarity_output: list) -> str:
-        similarity_output = similarity_output[0]
+#         similarity_output = similarity_output[0]
         similarity_output = similarity_output.replace('\n','')
         similarity_output = json.loads(similarity_output)
         return similarity_output['Similarity Score']

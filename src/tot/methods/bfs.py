@@ -11,7 +11,8 @@ import argparse
 import tqdm
 import json
 from MedAgents.utils import *
-
+import time
+from tot.methods.uncertainty_utils import *
 
 def get_value(task, x, y, n_evaluate_sample, cache_value=True):
     value_prompt = task.value_prompt_wrap(x, y)
@@ -41,14 +42,41 @@ def get_votes(task, x, ys, n_evaluate_sample):
     values = task.vote_outputs_unwrap(vote_outputs, ys)
     return values
 
-def get_votes_for_bionames(task, x, ys, n_evaluate_sample, step, voting_setting, args):
-    if voting_setting == 'tools':
-        system_message, user_message  = task.vote_w_tool_prompt_wrap(x, ys, args)
-    else:
-        system_message, user_message  = task.vote_prompt_wrap(x, ys)
-    vote_outputs = gpt(system_message, user_message, n=n_evaluate_sample, stop=None)        
-    values = task.vote_outputs_unwrap(vote_outputs, ys)
+def get_votes_for_bionames(task, x, ys, n_evaluate_sample, step, voter_type, args):
+    attempts = 0
+    while attempts < 3:
+        try:
+            system_message, user_message  = task.vote_prompt_wrap(x, ys)
+            vote_outputs = gpt(system_message, user_message, n=n_evaluate_sample, stop=None)        
+            values = task.vote_outputs_unwrap(vote_outputs, ys)
+            break
+        except Exception as e:
+            print(f"Attempt {attempts + 1} failed with error: {str(e)}")
+            attempts += 1
+            if attempts >= 3:
+                print("Maximum retry attempts reached. Exiting.")
+                return None
     return values, vote_outputs
+
+def get_stop_metrics_for_bionames(task, x, ys, n_evaluate_sample, args):
+    attempts = 0
+    while attempts < 3:
+        try:
+            system_message, user_message  = task.stop_prompt_wrap(x, ys)
+#             print('user_message',user_message)
+            stop_outputs = gpt(system_message, user_message, n=n_evaluate_sample, stop=None) 
+#             print('get_stop_metrics_for_bionames -- stop_outputs', stop_outputs)
+            stop_metrics = task.stop_outputs_unwrap(stop_outputs, ys)
+            print('get_stop_metrics_for_bionames -- stop_metrics', stop_metrics)
+            stop_metrics = [1 if x >= (n_evaluate_sample/2) else 0 for x in stop_metrics] #more than half = 1, else = 0
+            break
+        except Exception as e:
+            print(f"Attempt {attempts + 1} failed with error: {str(e)}")
+            attempts += 1
+            if attempts >= 3:
+                print("Maximum retry attempts reached. Exiting.")
+                return None
+    return stop_metrics, stop_outputs
 
 def get_multivotes_for_bionames(task, x, ys, n_evaluate_sample, args):
     system_message1, user_message1  = task.vote_w_tool_prompt_wrap(x, ys, args)
@@ -80,7 +108,7 @@ def run_medagents(task, x, ys, label, args, tools):
 def get_medagents_votes(task, x, ys, label, args, use_tool=False):
     if use_tool:
         tool_analyses = []
-        tool_anal = task.get_tool_analysis(x, ys, dict, args)
+        tool_anal = task.get_tool_analyses(x, ys, dict, args)
         tool_analyses.append(tool_anal)
     else:
         tool_analyses = None
@@ -106,13 +134,61 @@ def get_samples(task, x, y, n_generate_sample, prompt_sample, stop):
     samples = gpt(prompt, n=1, stop=stop)
     return [y + _ for _ in samples]
 
-def get_samples_for_bionames(task, x, y, n_generate_sample, prompt_sample, step):
+def get_samples_for_bionames(task, x, y, n_generate_sample, prompt_sample, step, use_uncertainty=False, exploration_rate=0.0):
     system_message, user_message = task.propose_prompt_wrap(x, y, step)
-    print('system_message', 'user_message')
-    print(system_message, user_message)
-    samples = gpt(system_message, user_message, n=1)
-    samples = task.into_choices(samples, y, step)
-    return samples
+    if n_generate_sample == 1:
+        samples = gpt(system_message, user_message, n=n_generate_sample)
+        samples = task.into_choices(samples[0], y, step)
+        return samples
+    
+    elif n_generate_sample >= 2:
+        attempts = 0
+        while attempts < 3:
+            try:
+                samples = gpt(system_message, user_message, n=n_generate_sample)
+                
+                processed_samples = []
+                for sample in samples:
+                    processed_sample = task.into_choices(sample, y, step)
+                    processed_samples.append(processed_sample)
+                # Assuming group_and_frequency_analyze_by_similarity is defined and ready to be used
+                # and it handles the entire process including retries within itself as discussed.
+                new_ys, frequencies, adjusted_frequencies, grouped_items_by_index =\
+                    group_and_frequency_analyze_by_similarity(processed_samples, top_n=3, exploration_rate=exploration_rate)
+                
+                # If the function execution is successful, break out of the loop
+                break
+            except Exception as e:
+                print(f"Attempt {attempts + 1} failed with error: {str(e)}")
+                attempts += 1
+                if attempts >= 3:
+                    print("Maximum retry attempts reached. Exiting.")
+                    return None  # Or handle as appropriate for your application
+        # This section will only execute if the try block is successful before attempts run out
+        return new_ys, frequencies, adjusted_frequencies, grouped_items_by_index
+
+            
+    
+
+# def 
+# _perturb(task, x, y, n_generate_sample, prompt_sample, step, uncertainty_num):
+#     system_messages = []
+#     user_messages = []
+#     pertub_user_messages = []
+#     sample_list = []
+#     for n in uncertainty_num:
+#         system_message, user_message = task.propose_prompt_wrap(x, y, step)
+#         pertub_user_message = task.pertub_prompts(user_message)
+#         samples = gpt(system_message, pertub_user_message, n=1)
+#         samples = task.into_choices(samples, y, step)
+        
+#         system_messages.append(system_message)
+#         user_messages.append(user_message)
+#         pertub_user_messages.append(pertub_user_message)
+#         sample_list.append(samples)
+        
+#     return system_messages, user_messages, pertub_user_messages, samples
+
 
 def get_tool_reflection(task, x, ys): 
     propose_prompt = task.propose_prompt_tools(x,ys)
@@ -120,10 +196,35 @@ def get_tool_reflection(task, x, ys):
     ys = task.combine_tools_to_answer(tools_output[0], ys)
     return ys
 
-def get_final_answer_for_bionames(task, x, y, n_generate_sample, prompt_sample): 
-    system_message, user_message = task.propose_prompt_final_wrap(x, y)
+def get_final_answer_for_bionames(task, x, ys, n_generate_sample, prompt_sample, use_uncertainty=False): 
+    system_message, user_message = task.propose_prompt_final_wrap(x, ys)
+    if n_generate_sample == 1:
+        samples = gpt(system_message, user_message, n=1)
+        final_answer = task.process_final_answers(samples[0])
+        return final_answer, samples
+    
+    elif n_generate_sample >= 2:
+        samples = gpt(system_message, user_message, n=n_generate_sample)
+
+        proceesed_samples = []
+        for sample in samples:
+            final_answer = task.process_final_answers(sample)
+            proceesed_samples.append([sample])
+            
+        new_ys, frequencies, adjusted_frequencies, grouped_items_by_index = group_and_frequency_analyze_by_similarity(proceesed_samples, top_n=1, exploration_rate=0) 
+        print('new_ys',new_ys)
+        final_answer =  task.process_final_answers(new_ys[0])
+        print('final_answer',final_answer)
+        if use_uncertainty:
+            return final_answer, samples, frequencies, adjusted_frequencies, grouped_items_by_index
+        else:
+            return final_answer, samples
+        
+
+def get_final_answer_for_bionames_sw(task, x, ys, n_generate_sample, prompt_sample): 
+    system_message, user_message = task.propose_prompt_sw_final_wrap(x, ys)
     samples = gpt(system_message, user_message, n=1)
-    final_answer, samples = task.process_final_answers(samples[0], y)
+    final_answer, samples = task.process_final_answers(samples[0])
     return final_answer, samples
 
 def get_criticism_for_bionames(task, x, omit_y_path):
@@ -186,9 +287,24 @@ class Trie:
             self.root.visualize(graph, '', 'Biological Process', False)
         return graph
 
+def process_uncertainty_output(system_messages, user_messages, pertub_user_messages, output_list, x, layer_info):
+    messages = []
+    for s,u in zip(system_message, user_messages):
+        messages.append(s+u)
+    
+    uncertainty_output = {
+        "orig_instruction": user_messages[0],
+        "gt_clarification": pertub_user_messages,
+        "input": f"{x}",
+        "target": output_list,
+        "isambig": True,
+        "layer": layer_info,
+    }
+    return uncertainty_output
 
 def solve(args, task, idx, to_print=True):
-    global gpt
+    global gpt    
+    
     gpt = partial(gpt, model=args.backend, temperature=args.temperature)
     args.model_name = args.backend
     
@@ -197,8 +313,12 @@ def solve(args, task, idx, to_print=True):
     max_mem_size = 3
     trie = Trie()
     
+    exploration_rate = getattr(args, 'exploration_rate', 0)
+    stop_expansion = getattr(args, 'stop_expansion', False)
+    
     mem = []  # cache for self-reflection
     y_paths = [[]]  # current output candidate paths
+    final_ys = []
     relations = [[]]
     ys = ['']  # current output candidates
     infos = []
@@ -210,6 +330,10 @@ def solve(args, task, idx, to_print=True):
         mem = mem[-max_mem_size:]
 
         new_y_paths = []
+        frequencies = []
+        adjusted_frequencies = []
+        sorted_grouped_items = []
+        
         if step > 0:
             new_relations = []
         # generation
@@ -217,17 +341,28 @@ def solve(args, task, idx, to_print=True):
             new_ys = [get_samples(task, x, y, args.n_generate_sample, prompt_sample=args.prompt_sample, stop=task.stops[step]) for y in ys]
             
         elif args.method_generate == 'sample_bionames':
+            assert args.n_generate_sample == 1, 'args.n_generate_sample != 1'
             new_ys = []
             for i, y in enumerate(ys):
                 item = get_samples_for_bionames(task, x, y, args.n_generate_sample, prompt_sample=args.prompt_sample, step=step)
-                # new_ys.append(item)
-
                 for y in item:
                     new_ys.append(y)
                     new_y_paths.append(y_paths[i] + [y])
                     if step > 0:
                         new_relations.append(relations[i] + [json.loads(y)['Relation']])
-                
+                        
+        elif args.method_generate == 'sample_bioname_uncertainty':
+            new_ys = []
+            for i, y in enumerate(ys):
+                item, frequency, adjusted_frequency, sorted_grouped_item = get_samples_for_bionames(task, x, y, args.n_generate_sample, prompt_sample=args.prompt_sample, step=step, use_uncertainty=args.use_uncertainty, exploration_rate=exploration_rate)
+                frequencies.extend(frequency)
+                adjusted_frequencies.extend(adjusted_frequency)
+                sorted_grouped_items.extend(sorted_grouped_item)
+                for y in item:
+                    new_ys.append(y)
+                    new_y_paths.append(y_paths[i] + [y])
+                    if step > 0:
+                        new_relations.append(relations[i] + [json.loads(y)['Relation']])
         elif args.method_generate == 'propose':
             new_ys = [get_proposals(task, x, y) for y in ys] 
             
@@ -239,43 +374,60 @@ def solve(args, task, idx, to_print=True):
         ids = list(range(len(new_ys)))
         # evaluation
         if args.method_evaluate == 'vote':
-            values = get_votes(task, x, new_ys, args.n_evaluate_sample)
+            votes = get_votes(task, x, new_ys, args.n_evaluate_sample)
+            values = votes
         elif args.method_evaluate == 'value':
-            values = get_values(task, x, new_ys, args.n_evaluate_sample)
+            votes = get_values(task, x, new_ys, args.n_evaluate_sample)
+            values = votes
         elif args.method_evaluate == 'votes_for_bionames':
-            values, vote_outputs = get_votes_for_bionames(task, x, new_ys, args.n_evaluate_sample, step, None, args)
+            votes, vote_outputs = get_votes_for_bionames(task, x, new_ys, args.n_evaluate_sample, step, None, args)
+            values = votes
         elif args.method_evaluate == 'multi_voters':
-            values, vote_outputs = get_multivotes_for_bionames(task, x, new_ys, args.n_evaluate_sample, args)
+            votes, vote_outputs = get_multivotes_for_bionames(task, x, new_ys, args.n_evaluate_sample, args)
+            values = votes
+        elif args.method_evaluate == 'uncertainty_voters':
+            votes, vote_outputs = get_votes_for_bionames(task, x, new_ys, args.n_evaluate_sample, step, None, args)
+            np_votes = np.array(votes)
+            np_freq = np.array(frequencies)
+            values = np_votes * np_freq
+            values = values.tolist()
+            print(f'np_votes:{np_votes}, np_freq:{np_freq},\nvalues:{values}')
         elif args.method_evaluate == 'medagents':
             args.n_evaluate_sample = args.ans_num
             args.n_select_sample = args.ans_num
-            values, data_info = get_medagents_votes(task, x, new_ys, label, args, False)
+            votes, data_info = get_medagents_votes(task, x, new_ys, label, args, False)
             vote_outputs = data_info['raw_output']
-#             print('values', 'vote_outputs')
+            values = votes
             print(values, vote_outputs)
         elif args.method_evaluate == 'medagents_w_tools':
             args.n_evaluate_sample = args.ans_num
             args.n_select_sample = args.ans_num
-            values, data_info = get_medagents_votes(task, x, new_ys, label, args, True)
+            votes, data_info = get_medagents_votes(task, x, new_ys, label, args, True)
             vote_outputs = data_info['raw_output']
-#             print('values', 'vote_outputs')
-#             print(values, vote_outputs)
-
-            # print(' -- vote outputs --')
-            # print(vote_outputs)
-            # print(' -- values --')
-            # print(values)
-            #combine pros and cons to each perspective
-            # new_ys = combine_vote_to_answer(task, vote_outputs, new_ys)
-            # new_ys = get_tool_reflection(task, x, new_ys)
-        
+            values = votes
+            
+        stop_metrics = None
+        if stop_expansion == True:
+            stop_metrics, stop_outputs = get_stop_metrics_for_bionames(task, x, new_ys, args.n_evaluate_sample, args)
+            np_stop_metrics = np.array(stop_metrics)
+            print(f'stop_metrics: {stop_metrics}')
+            values = values * np_stop_metrics
+            values = values.tolist()
+            print(f'values:{values}')
+            
         # selection
         if args.method_select == 'sample':
             ps = np.array(values) / sum(values)
             select_ids = np.random.choice(ids, size=args.n_select_sample, p=ps).tolist()
         elif args.method_select == 'greedy':
-            select_ids = sorted(ids, key=lambda x: values[x], reverse=True)[:args.n_select_sample]
-
+            sorted_ids = sorted(ids, key=lambda x: values[x], reverse=True)[:args.n_select_sample]
+            if stop_expansion:
+                # Step 3 & 4: Check if the top 2 values have corresponding stop_metrics >= 1 and return their ids
+                select_ids = [ids[i] for i in sorted_ids if stop_metrics[i] >= 1]
+                final_ys.extend([new_ys[ids[i]] for i in sorted_ids if stop_metrics[i] == 0])
+            else:
+                select_ids = sorted_ids
+                
         select_new_y_paths = [new_y_paths[select_id] for select_id in select_ids]
         omit_y_paths = [new_y_paths[id] for id in ids if id not in select_ids]
         omit_y_paths = [[json.loads(y)['Biological Process'] for y in omit_y_path] for omit_y_path in omit_y_paths]
@@ -327,8 +479,11 @@ def solve(args, task, idx, to_print=True):
             #     print('-- Relations --')
             #     print([json.loads(y)["Relation"] for y in select_new_ys])
         
-        infos.append({'step': step, 'x': x, 'ys': ys, 'new_ys': new_ys, 'values': values, 'select_new_ys': select_new_ys})
+        infos.append({'step': step, 'x': x, 'ys': ys, 'new_ys': new_ys, 'values': values, 'votes': votes, \
+                      'select_new_ys': select_new_ys, 'frequencies':frequencies, 'adjusted_frequencies':adjusted_frequencies, \
+                      'stop_metrics': stop_metrics, 'sorted_grouped_items':sorted_grouped_items})
         ys = select_new_ys
+            
         y_paths = select_new_y_paths
         if step > 0:
             relations = select_new_relations
@@ -338,15 +493,40 @@ def solve(args, task, idx, to_print=True):
         dot = trie.visualize()
         dot.render('viz/trie_visualization_{}'.format(idx), format='png')
         print('Time taken:', time.time() - start)
-        
-        
+        #This is where we break the loop, if none of them should be continue to expand, stop here. 
+        if select_ids == []:
+            break
+            
+    if not stop_expansion:
+        final_ys = ys
+    if stop_expansion:
+        final_ys.extend(ys)
+        final_ys = list(set(final_ys))
+            
+    print('final_ys',final_ys)
+    sw_prompt = ''   
+    frequencies = []
+    sorted_grouped_items = []
     if args.task == 'bio_name':
-        final_answer, new_ys = get_final_answer_for_bionames(task, x, ys[0], args.n_generate_sample, prompt_sample=args.prompt_sample)
-        infos.append({'step': step+1, 'x': x, 'ys': ys, 'new_ys': new_ys, 'values': None, 'select_new_ys': None})
+        if args.final == 'semantic_web':
+            sw_prompt = to_semantic_web(infos)
+            final_answer, new_ys = get_final_answer_for_bionames_sw(task, x, sw_prompt, args.n_generate_sample, prompt_sample=args.prompt_sample)
+
+        else:
+            if args.use_uncertainty == False:
+                final_answer, new_ys = get_final_answer_for_bionames(task, x, final_ys, args.n_generate_sample, prompt_sample=args.prompt_sample)
+            else:
+                final_answer, samples, frequencies, adjusted_frequencies, grouped_items_by_index =\
+                    get_final_answer_for_bionames(task, x, final_ys, args.n_generate_sample, prompt_sample=args.prompt_sample, use_uncertainty=args.use_uncertainty)
+                
+            
+        infos.append({'step': step+1, 'x': x, 'ys': final_ys, 'new_ys': new_ys, 'values': None, 'select_new_ys': None, 'frequencies':frequencies, 'sorted_grouped_items':sorted_grouped_items})
     if to_print: 
         pass
         # print('solve -- ys', ys)
 
+    
+    final_path = None
     for i, path in enumerate(y_paths):
         path = [json.loads(y)['Biological Process'] for y in path]
         if path[-1].split('(')[0] == final_answer:
@@ -364,7 +544,7 @@ def solve(args, task, idx, to_print=True):
     dot.render('viz/trie_visualization_{}'.format(idx), format='png')
 
     
-    return final_answer, ys, {'steps': infos}, trie
+    return final_answer, ys, {'steps': infos}, trie, sw_prompt
 
 def naive_solve(args, task, idx, to_print=True):
     global gpt
@@ -372,3 +552,67 @@ def naive_solve(args, task, idx, to_print=True):
     x = task.get_input(idx)  # input
     ys = get_samples(task, x, '', args.n_generate_sample, args.prompt_sample, stop=None)
     return ys, {}
+
+import json
+def cut_and_sum(input_list, cut_by):
+    # Split the list into two parts
+    part1 = input_list[:cut_by]
+    part2 = input_list[cut_by:]
+    # Sum the corresponding elements of the two parts
+    summed_list = [x + y for x, y in zip(part1, part2)]
+    return summed_list
+
+def rank_by_value_and_output_indices(input_list):
+    # Pair each value with its index
+    indexed_values = list(enumerate(input_list))
+    # Sort the pairs by value, then extract the indices
+    sorted_indices = [index for index, value in sorted(indexed_values, key=lambda x: x[1], reverse=True)]
+    return sorted_indices
+
+def to_semantic_web(info):
+    dic_list = [{
+      "nodes": [{"id": "Biological Process", "edges":[]}]
+    }]
+    parents = ['Biological Process']
+    indices = [0,0]
+    count = 0
+    for j, t in enumerate(info):
+        new_parents = []
+        parent_id = 0
+        dic_list.append({"nodes":[]})
+        if t['values']:
+            for i, (y,v) in enumerate(zip(t['new_ys'], t['values'])):
+                if i <= 2:
+                    parent_id = 0
+                else:
+                    parent_id = 1
+                parent_node = parents[parent_id]
+
+                y = json.loads(y)
+                if v >= 1:
+                    new_parents.append(y['Biological Process'])  
+                dic_list[j+1]["nodes"].append({"id": y['Biological Process'], "edges": []})
+
+                if "Relation" in y:
+                    relation = y['Relation']
+                else:
+                    relation = 'is_a'
+
+                for k, d in enumerate(dic_list[j]['nodes']):
+                    d = dic_list[j]['nodes'][k]
+                    if d['id'] == parent_node:
+                        dic_list[j]['nodes'][k]['edges'].append({"to":  y['Biological Process'], "type": relation})
+                count +=1
+            # Rank by value and output indices for the summed lists
+            parents = new_parents
+            
+    # Combining all 'nodes' into the first 'nodes'
+    for additional in dic_list[1:]:  # Start from the second item
+        dic_list[0]['nodes'].extend(additional['nodes'])
+
+    # The result is now in the first item of list_of_dicts
+    combined_nodes = dic_list[0]['nodes']
+    final_structure = {'nodes': combined_nodes}
+    final_structure
+    return final_structure
+    
