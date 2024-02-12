@@ -76,6 +76,7 @@ def get_stop_metrics_for_bionames(task, x, ys, n_evaluate_sample, args):
             if attempts >= 3:
                 print("Maximum retry attempts reached. Exiting.")
                 return None
+#     error
     return stop_metrics, stop_outputs
 
 def get_multivotes_for_bionames(task, x, ys, n_evaluate_sample, args):
@@ -134,7 +135,7 @@ def get_samples(task, x, y, n_generate_sample, prompt_sample, stop):
     samples = gpt(prompt, n=1, stop=stop)
     return [y + _ for _ in samples]
 
-def get_samples_for_bionames(task, x, y, n_generate_sample, prompt_sample, step, use_uncertainty=False, exploration_rate=0.0):
+def get_samples_for_bionames(task, x, y, n_generate_sample, prompt_sample, step, use_uncertainty=False, exploration_rate=0.0, threshold=0.9):
     system_message, user_message = task.propose_prompt_wrap(x, y, step)
     if n_generate_sample == 1:
         samples = gpt(system_message, user_message, n=n_generate_sample)
@@ -154,7 +155,8 @@ def get_samples_for_bionames(task, x, y, n_generate_sample, prompt_sample, step,
                 # Assuming group_and_frequency_analyze_by_similarity is defined and ready to be used
                 # and it handles the entire process including retries within itself as discussed.
                 new_ys, frequencies, adjusted_frequencies, grouped_items_by_index =\
-                    group_and_frequency_analyze_by_similarity(processed_samples, top_n=3, exploration_rate=exploration_rate)
+                    group_and_frequency_analyze_by_similarity(processed_samples, top_n=3, \
+                                                              exploration_rate=exploration_rate, threshold=threshold)
                 
                 # If the function execution is successful, break out of the loop
                 break
@@ -167,36 +169,13 @@ def get_samples_for_bionames(task, x, y, n_generate_sample, prompt_sample, step,
         # This section will only execute if the try block is successful before attempts run out
         return new_ys, frequencies, adjusted_frequencies, grouped_items_by_index
 
-            
-    
-
-# def 
-# _perturb(task, x, y, n_generate_sample, prompt_sample, step, uncertainty_num):
-#     system_messages = []
-#     user_messages = []
-#     pertub_user_messages = []
-#     sample_list = []
-#     for n in uncertainty_num:
-#         system_message, user_message = task.propose_prompt_wrap(x, y, step)
-#         pertub_user_message = task.pertub_prompts(user_message)
-#         samples = gpt(system_message, pertub_user_message, n=1)
-#         samples = task.into_choices(samples, y, step)
-        
-#         system_messages.append(system_message)
-#         user_messages.append(user_message)
-#         pertub_user_messages.append(pertub_user_message)
-#         sample_list.append(samples)
-        
-#     return system_messages, user_messages, pertub_user_messages, samples
-
-
 def get_tool_reflection(task, x, ys): 
     propose_prompt = task.propose_prompt_tools(x,ys)
     tools_output = gpt(propose_prompt, n=1)
     ys = task.combine_tools_to_answer(tools_output[0], ys)
     return ys
 
-def get_final_answer_for_bionames(task, x, ys, n_generate_sample, prompt_sample, use_uncertainty=False): 
+def get_final_answer_for_bionames(task, x, ys, n_generate_sample, prompt_sample, use_uncertainty=False, threshold=0.9): 
     system_message, user_message = task.propose_prompt_final_wrap(x, ys)
     if n_generate_sample == 1:
         samples = gpt(system_message, user_message, n=1)
@@ -211,7 +190,7 @@ def get_final_answer_for_bionames(task, x, ys, n_generate_sample, prompt_sample,
             final_answer = task.process_final_answers(sample)
             proceesed_samples.append([sample])
             
-        new_ys, frequencies, adjusted_frequencies, grouped_items_by_index = group_and_frequency_analyze_by_similarity(proceesed_samples, top_n=1, exploration_rate=0) 
+        new_ys, frequencies, adjusted_frequencies, grouped_items_by_index = group_and_frequency_analyze_by_similarity(proceesed_samples, top_n=1, exploration_rate=0, threshold=threshold) 
         print('new_ys',new_ys)
         final_answer =  task.process_final_answers(new_ys[0])
         print('final_answer',final_answer)
@@ -315,6 +294,9 @@ def solve(args, task, idx, to_print=True):
     
     exploration_rate = getattr(args, 'exploration_rate', 0)
     stop_expansion = getattr(args, 'stop_expansion', False)
+    threshold = getattr(args, 'threshold', 0.9)
+    print('stop_expansion',stop_expansion)
+    print('threshold',threshold)
     
     mem = []  # cache for self-reflection
     y_paths = [[]]  # current output candidate paths
@@ -354,7 +336,7 @@ def solve(args, task, idx, to_print=True):
         elif args.method_generate == 'sample_bioname_uncertainty':
             new_ys = []
             for i, y in enumerate(ys):
-                item, frequency, adjusted_frequency, sorted_grouped_item = get_samples_for_bionames(task, x, y, args.n_generate_sample, prompt_sample=args.prompt_sample, step=step, use_uncertainty=args.use_uncertainty, exploration_rate=exploration_rate)
+                item, frequency, adjusted_frequency, sorted_grouped_item = get_samples_for_bionames(task, x, y, args.n_generate_sample, prompt_sample=args.prompt_sample, step=step, use_uncertainty=args.use_uncertainty, exploration_rate=exploration_rate, threshold=threshold)
                 frequencies.extend(frequency)
                 adjusted_frequencies.extend(adjusted_frequency)
                 sorted_grouped_items.extend(sorted_grouped_item)
@@ -425,9 +407,12 @@ def solve(args, task, idx, to_print=True):
                 # Step 3 & 4: Check if the top 2 values have corresponding stop_metrics >= 1 and return their ids
                 select_ids = [ids[i] for i in sorted_ids if stop_metrics[i] >= 1]
                 final_ys.extend([new_ys[ids[i]] for i in sorted_ids if stop_metrics[i] == 0])
+#                 final_ys.extend([new_ys[ids[i]] for i in sorted_ids])
             else:
                 select_ids = sorted_ids
+                final_ys.extend([new_ys[ids[i]] for i in sorted_ids])
                 
+        print('select_ids',select_ids)
         select_new_y_paths = [new_y_paths[select_id] for select_id in select_ids]
         omit_y_paths = [new_y_paths[id] for id in ids if id not in select_ids]
         omit_y_paths = [[json.loads(y)['Biological Process'] for y in omit_y_path] for omit_y_path in omit_y_paths]
@@ -497,13 +482,10 @@ def solve(args, task, idx, to_print=True):
         if select_ids == []:
             break
             
-    if not stop_expansion:
-        final_ys = ys
-    if stop_expansion:
-        final_ys.extend(ys)
-        final_ys = list(set(final_ys))
-            
-    print('final_ys',final_ys)
+    final_ys.extend(ys)
+    final_ys = list(set(final_ys))
+#     print('final_ys',final_ys)
+    
     sw_prompt = ''   
     frequencies = []
     sorted_grouped_items = []
@@ -514,10 +496,10 @@ def solve(args, task, idx, to_print=True):
 
         else:
             if args.use_uncertainty == False:
-                final_answer, new_ys = get_final_answer_for_bionames(task, x, final_ys, args.n_generate_sample, prompt_sample=args.prompt_sample)
+                final_answer, new_ys = get_final_answer_for_bionames(task, x, final_ys, args.n_generate_sample, prompt_sample=args.prompt_sample, threshold=threshold)
             else:
                 final_answer, samples, frequencies, adjusted_frequencies, grouped_items_by_index =\
-                    get_final_answer_for_bionames(task, x, final_ys, args.n_generate_sample, prompt_sample=args.prompt_sample, use_uncertainty=args.use_uncertainty)
+                    get_final_answer_for_bionames(task, x, final_ys, args.n_generate_sample, prompt_sample=args.prompt_sample, use_uncertainty=args.use_uncertainty, threshold=threshold)
                 
             
         infos.append({'step': step+1, 'x': x, 'ys': final_ys, 'new_ys': new_ys, 'values': None, 'select_new_ys': None, 'frequencies':frequencies, 'sorted_grouped_items':sorted_grouped_items})

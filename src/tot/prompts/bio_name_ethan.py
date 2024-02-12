@@ -10,6 +10,8 @@ format_0 = '''{"Answer 1": {"Step": "1", "Biological Process": "<Your first prop
             "Answer 2": {"Step": "1", "Biological Process": "<Your second proposed biological process>", "Reason": "<Why did you choose this name?>"},
             "Answer 3": {"Step": "1", "Biological Process": "<Your third proposed biological process>", "Reason": "<Why did you choose this name?>"},...}'''
 
+# format_0 = {"Answer": {"Step": "1", "Biological Process": "<Your proposed biological process>", "Reason": "<Why did you choose this name?>"}}
+
 # propose more specific biological processes
 format_1 = '''{"Answer 1": {"Step": "{step_num}",\
            "Previous Biological Process": "<The previous biological process>",\
@@ -26,7 +28,11 @@ format_1 = '''{"Answer 1": {"Step": "{step_num}",\
            "New Biological Process": "<Your third proposed biological process, more specific than the previous",\
            "Relation": "<How does the new biological process relate to the previous biological process?",\
             "Reason": "<Why did you choose this name? Which genes are relevant to this process?>"},...}'''
-
+# format_1 = {"Answer": {"Step": "{step_num}",\
+#            "Previous Biological Process": "<The previous biological process>",\
+#            "New Biological Process": "<Your proposed biological process, more specific than the previous",\
+#            "Relation": "<How does the new biological process relate to the previous biological process?",\
+#             "Reason": "<Why did you choose this name? Which genes are relevant to this process?>"}}
 
 # vote prompt
 format_2 = {'Votes': [{'Biological Process': '<The First biological process>'}, {'Biological Process': '<The Second biological process>'}]}
@@ -34,13 +40,11 @@ format_2 = {'Votes': [{'Biological Process': '<The First biological process>'}, 
 # last step prompt
 format_3 = {'Biological Process': '<The best biological process>', 'Reason': '<Your reasoning>'}
 
-format_7 = {'Answer': [
-  {'Biological Process': 'First Biological Process Name', 'Specific Enough': True or False, 'Reason': 'Your Reason'},
-  {'Biological Process': 'Second Biological Process Name', 'Specific Enough': True or False, 'Reason': 'Your Reason'},...]}
+format_7 = '''{'Answer': [{"Biological Process": "First Biological Process Name", "Specificity Score": 1~10, "Specific Enough": True or False, "Evaluation": "Provide a brief explanation for your specificity score, including considerations of relevance, uniqueness, and scientific associations. Explain whether the biological process name is specific enough based on a threshold score of 8."}, {"Biological Process": "First Biological Process Name", "Specificity Score": 1~10, "Specific Enough": True or False, "Evaluation": "Provide a brief explanation for your specificity score, including considerations of relevance, uniqueness, and scientific associations. Explain whether the biological process name is specific enough based on a threshold score of 8."},...]}'''
 
 format_6 = {'Similarity Score': '<Your similarity score>'}
 
-propose_instruction = '''You are given a set of genes, and your task is to propose at least three high-level biological processes that may be likely to be performed by the system involving expression of these genes.\n'''
+propose_instruction = '''You are given a set of genes, and your task is to propose three high-level biological processes that may be likely to be performed by the system involving expression of these genes.\n'''
 propose_one_instruction = '''You are given a set of genes, and your task is to propose one high-level biological process that may be likely to be performed by the system involving expression of these genes.\n'''
 
 propose_content = '''
@@ -51,14 +55,19 @@ Biological processes can have four relations:
 3. part of: A is part B if, whenever biological process A exists, it is as a part of biological process B. If A is part of B, then we say A is more specific than B.
 4. regulates: A regulates B if biological process A always regulates biological process B. If A regulates B, then we say B is more specific than A.
 
-These relationships create a hierarchical ontology. Your job is to propose a biological process that are as general as possible.
+These relationships create a hierarchical ontology. Your job is to propose three biological processes that are as general as possible.
 
 Here is the set of genes:
 Genes: {input}'''
-propose_prompt = propose_one_instruction + propose_content
+propose_prompt = propose_instruction + propose_content
 
 
-next_step_instruction = '''Given a set of genes and proposed biological processes describing the system, your task is to generate more specific biological processes describing the system.\n'''
+next_step_instruction = '''Given a set of genes and proposed biological processes describing the system, your task is to generate more specific biological processes describing the system. A specific biological process includes: 
+Relevance: How relevant is the biological process to the functions of the provided genes? Consider the primary functions of these genes and how they relate to the biological process in question.
+
+Uniqueness: How unique is the biological process to these genes? Assess if the biological process is commonly associated with these genes or if it's a broad process that could apply to many other genes as well.
+
+Scientific Associations: Based on scientific literature up to your last training cut-off, are there any known associations between the genes and the biological process? Highlight any direct connections or research findings that link these genes to the biological process mentioned.\n'''
 
 next_step_one_instruction = '''Given a set of genes and proposed biological processes describing the system, your task is to generate a more specific biological process describing the system.\n'''
 
@@ -70,7 +79,7 @@ Biological processes can have three relations:
 3. part of: A is part B if, whenever biological process A exists, it is as a part of biological process B. If A is part of B, then we say A is more specific than B.
 4. regulates: A regulates B if biological process A always regulates biological process B. If A regulates B, then we say B is more specific than A.
 
-You should propose one biological process that are more specific than the proposed biological process. You should describe how the proposed biological process relates to the current biological process using one of the four relations above, and then give your reasoning for why the proposed biological process describes the system.
+You should propose three biological process that are more specific than the proposed biological process. You should describe how the proposed biological processes relates to the current biological process using one of the four relations above, and then give your reasoning for why the proposed biological processes describes the system.
 
 Here is the set of genes:
 Genes: {input}
@@ -84,7 +93,15 @@ Here is the current biological process:
 next_step_prompt = next_step_instruction + next_step_content
 
 
-last_step_instruction = '''Given a set of genes and proposed biological processes describing the system, your task is to choose the most accurate biological process. The chosen biological process must come from the list of biological processes given to you\n'''
+last_step_instruction = '''Given a set of genes and proposed biological processes describing the system, your task is to choose the best biological process. The chosen biological process must come from the list of biological processes given to you.\n
+
+Your evaluation should be based on the following criteria:
+Relevance: How relevant is the biological process to the functions of the provided genes? Consider the primary functions of these genes and how they relate to the biological process in question.
+
+Uniqueness: How unique is the biological process to these genes? Assess if the biological process is commonly associated with these genes or if it's a broad process that could apply to many other genes as well.
+
+Scientific Associations: Based on scientific literature up to your last training cut-off, are there any known associations between the genes and the biological process? Highlight any direct connections or research findings that link these genes to the biological process mentioned.\n
+'''
 
 last_step_content = '''
 Genes: {input}
@@ -123,22 +140,19 @@ stop_instruction = '''Given a list of genes representing a biological system, yo
 
 '''
 stop_content = '''
-Examples of biological processes and their evaluation:
+Given a list of gene names and names of biological processes, your task is to evaluate the specificity of each biological process name to the provided set of genes on a scale from 1 to 10. A specificity score of 1 indicates that the biological process name is very general and not closely related to the genes, while a score of 10 indicates that the biological process name is highly specific and closely related to the genes. Your evaluation should be based on the following criteria:
 
-1. Gene set: [TGFBR2, BMPR1A, BMPR2, ZFPM1, HEY2], Biological Process: "tricuspid valve morphogenesis", Specific Enough: True
-2. Gene set: [TGFBR2, BMPR1A, BMPR2, ZFPM1, HEY2], Biological Process: "valve morphogenesis", Specific Enough: False.
-3. Gene set: [IL15, CYP24A1, FOLR1, FOXA2, BRIP1, GAS6, TRIM24, PHEX, FES, CASR, LPL, GDAP1, PIM1, FGF23, ATP2B1, NR1H4, DCPS, MED1, SRF, SFRP1, CYP27B1, BGLAP, PENK, MN1, FOLR2, HMOX1, PDK2, USF2, NCOA1, USF1, XBP1, KANK2, COL1A1, POSTN, LEP, RXRB, SNAI2, CDKN2B, VDR, SNW1, NDOR1, RXRA], Biological Process: "cellular response to nutrient", Specific Enough: True.
-4. Gene set: [IL15, CYP24A1, FOLR1, FOXA2, BRIP1, GAS6, TRIM24, PHEX, FES, CASR, LPL, GDAP1, PIM1, FGF23, ATP2B1, NR1H4, DCPS, MED1, SRF, SFRP1, CYP27B1, BGLAP, PENK, MN1, FOLR2, HMOX1, PDK2, USF2, NCOA1, USF1, XBP1, KANK2, COL1A1, POSTN, LEP, RXRB, SNAI2, CDKN2B, VDR, SNW1, NDOR1, RXRA], Biological Process: "cellular metabolic process", Specific Enough: False.
-5. Gene set: [VPS13B, ACTL7A, AGFG1, SOX30, SPACA1, PLA2G3, ACRBP, MFSD14A, PAFAH1B1, RFX2, ZPBP, FABP9, CCDC136, GARIN1A, TMF1, GARIN1B, SPINK2, TBPL1, NECTIN2, ACTL9, ZPBP2, PLN, TBC1D20, SPPL2C, KNL1], Biological Process: "acrosome assembly", Specific Enough: True.
-6. Gene set: [VPS13B, ACTL7A, AGFG1, SOX30, SPACA1, PLA2G3, ACRBP, MFSD14A, PAFAH1B1, RFX2, ZPBP, FABP9, CCDC136, GARIN1A, TMF1, GARIN1B, SPINK2, TBPL1, NECTIN2, ACTL9, ZPBP2, PLN, TBC1D20, SPPL2C, KNL1], Biological Process: "gamete maturation", Specific Enough: False.
-7. Gene set: [DRD3, ASCL1], Biological Process: "musculoskeletal movement, spinal reflex action", Specific Enough: True.
-8. Gene set: [DRD3, ASCL1], Biological Process: "reflex actions", Specific Enough: False.
-9. Gene set: [OLFM1, TGFBR2, BMP2, TGFB2, TBX5, APLNR, HEYL, EFNA1, MDM4, GJA5, BMPR2, SLIT3, HEY1, NOTCH1, GATA4, MDM2, TWIST1, CCN1, ACVR1, SMAD4, HEY2, SOX4, SMAD6, BMPR1A, DCHS1, ZFPM1, TBX20], Biological Process: "atrioventricular valve development" , Specific Enough: True.
-10. Gene set: [OLFM1, TGFBR2, BMP2, TGFB2, TBX5, APLNR, HEYL, EFNA1, MDM4, GJA5, BMPR2, SLIT3, HEY1, NOTCH1, GATA4, MDM2, TWIST1, CCN1, ACVR1, SMAD4, HEY2, SOX4, SMAD6, BMPR1A, DCHS1, ZFPM1, TBX20], Biological Process: "Cardiac valve development", Specific Enough: False.
+Relevance: How relevant is the biological process to the functions of the provided genes? Consider the primary functions of these genes and how they relate to the biological process in question.
 
-Input Genes: {input}
+Uniqueness: How unique is the biological process to these genes? Assess if the biological process is commonly associated with these genes or if it's a broad process that could apply to many other genes as well.
 
-Biological Processes to Evaluate: {choice}
+Scientific Associations: Based on scientific literature up to your last training cut-off, are there any known associations between the genes and the biological process? Highlight any direct connections or research findings that link these genes to the biological process mentioned.
+
+Remember, a specificity score of 8 or above indicates that the biological process name is "specific enough" for the provided genes. Evaluate whether each provided biological process name meets this threshold based on the criteria outlined above. The "Specific Enough" field should be "True" if the specificity score is 8 or above, indicating that the name is specific enough, and "False" if the score is below 8.
+
+Gene Set: {input}
+
+Biological Processes: {choice}
 '''
 
 stop_prompt = stop_instruction + stop_content

@@ -102,7 +102,9 @@ class Bio_Name(Task):
         
         choice = ''
         for i, y in enumerate(ys, 1):
-            choice += f'{y}\n'
+            y = json.loads(y)
+            bp = y['Biological Process']
+            choice += f'{bp}\n'
         user_message = last_step_prompt.format(input=x, y=choice, format_3=json.dumps(format_3))
         return system_message, user_message
     
@@ -152,6 +154,7 @@ class Bio_Name(Task):
             # TODO: truncate the plan part?
 #             prompt += f'Choice {i}:\n{y}\n'
             choice += f'{bp}\n'
+        print('choice',choice)
         user_message = stop_prompt.format(input=x, choice=choice)
         return system_message, user_message
     
@@ -187,9 +190,12 @@ class Bio_Name(Task):
             stop_output = stop_output.replace('\n','')
             stop_output = json.loads(stop_output)
             for i, a in enumerate(stop_output['Answer']):
-                if a['Specific Enough'] == False:
-                    stop_results[a['Biological Process']] += 1
-                    
+                if type(a['Specific Enough']) == bool:
+                    if a['Specific Enough'] == False :
+                        stop_results[a['Biological Process']] += 1
+                elif type(a['Specific Enough']) == str:
+                    if a['Specific Enough'].lower == 'false' :
+                        stop_results[a['Biological Process']] += 1
         stop_metrics = []
         for y in ys:
             stop_metrics.append(stop_results[y])
@@ -226,6 +232,7 @@ class Bio_Name(Task):
         answer = answer.replace('\n','')
         answer_f = json.loads(answer)
         answer_f = [answer_f['Answer 1'], answer_f['Answer 2'], answer_f['Answer 3']]
+#         answer_f = [answer_f['Answer']]
         new_answer = []
         if step_num == 0:
             for a in answer_f:
