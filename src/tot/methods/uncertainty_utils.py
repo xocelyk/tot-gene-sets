@@ -3,6 +3,7 @@ from transformers import AutoTokenizer, AutoModel
 from sklearn.metrics.pairwise import cosine_similarity
 import torch
 from collections import Counter, defaultdict
+from typing import List
     
 import numpy as np
 import json
@@ -69,6 +70,69 @@ def group_and_frequency_analyze_by_similarity(ys_list, top_n=3, exploration_rate
 
     return new_ys, frequencies, adjusted_frequencies, grouped_items_by_index
 
+def explore_step_threshold_random_sample(ys_list: List[List[str]], exploration_rate: float=0.1) -> List:
+    '''
+    ys_list should be an array of num_samples x num_bio_processes (in our case, 3)
+    We want do sampling over each column of ys_list, i.e. for each bio_process index
+    For each bio process index, with probability exploration_rate, choose a random term from the column;
+    with probability 1-exploration_rate, choose the term with the highest frequency
+    '''
+
+    num_samples = len(ys_list)
+    num_bio_processes = len(ys_list[0])
+    results = np.zeros(num_bio_processes)
+    for i in range(num_bio_processes):
+        bio_process_terms = [ys_list[j][i] for j in range(num_samples)]
+        if np.random.rand() < exploration_rate:
+            results[i] = np.random.choice(bio_process_terms)
+        else:
+            results[i] = Counter(bio_process_terms).most_common(1)[0][0]
+    return results
+
+def explore_step_temperature(ys_list: List[List[str]], temperature: float=0.7, eps=1e-3) -> List:
+    '''
+    Performs temperature sampling index-wise over each biological process index
+    In other words, performs random sampling over frequency distribution, but after applying a temperature transformation to encourage more or less exploration
+    Temperature = 0 corresponds to argmax, temperature < 1 discourages exploration relative to random sampling, temperature > 1 encourages exploration relative to random sampling
+    '''
+
+    num_samples = len(ys_list)
+    bp1_candidates = [ys_list[j][0] for j in range(num_samples)]
+    bp2_candidates = [ys_list[j][1] for j in range(num_samples)]
+    bp3_candidates = [ys_list[j][2] for j in range(num_samples)]
+
+    def temperature_transform_probs(probs, temperature):
+        # takes prob
+        # if temperature = 0, assign equal probability to the argmax terms
+        if temperature == 0:
+            max_indices = np.where(probs == np.max(probs))[0]
+            probs = np.zeros(len(probs))
+            probs[max_indices] = 1 / len(max_indices)
+            return probs
+
+        logits = np.log(probs) / (temperature + eps)
+        probs = np.exp(logits) / np.sum(np.exp(logits))
+        return probs
+
+    bp1_counts = Counter(bp1_candidates)
+    bp1_terms = list(bp1_counts.keys())
+    bp1_probs = np.array([bp1_counts[bp1_terms[j]] for j in range(len(bp1_terms))]) / num_samples
+    bp1_probs = temperature_transform_probs(bp1_probs, temperature)
+    bp1_sample = np.random.choice(bp1_terms, p=bp1_probs)
+
+    bp2_counts = Counter(bp2_candidates)
+    bp2_terms = list(bp2_counts.keys())
+    bp2_probs = np.array([bp2_counts[bp2_terms[j]] for j in range(len(bp2_terms))]) / num_samples
+    bp2_probs = temperature_transform_probs(bp2_probs, temperature)
+    bp2_sample = np.random.choice(bp2_terms, p=bp2_probs)
+
+    bp3_counts = Counter(bp3_candidates)
+    bp3_terms = list(bp3_counts.keys())
+    bp3_probs = np.array([bp3_counts[bp3_terms[j]] for j in range(len(bp3_terms))]) / num_samples
+    bp3_probs = temperature_transform_probs(bp3_probs, temperature)
+    bp3_sample = np.random.choice(bp3_terms, p=bp3_probs)
+
+    return [bp1_sample, bp2_sample, bp3_sample]
 
 
 
@@ -144,3 +208,28 @@ def getSentenceEmbedding(sentence, tokenizer, model):
 
 
 #     return new_ys, frequencies, grouped_items_by_index
+
+if __name__ == '__main__':
+    ys = [
+            [1, 2, 3],
+            [1, 2, 3],
+            [3, 2, 1],
+            [3, 1, 2],
+            [2, 1, 3],
+          ]
+    
+    for i in range(5):
+        print(explore_step_temperature(ys, 0))
+    print()
+    for i in range(5):
+        print(explore_step_temperature(ys, 0.7))
+    print()
+    for i in range(5):
+        print(explore_step_temperature(ys, 1))
+    print()
+    for i in range(5):
+        print(explore_step_temperature(ys, 1.5))
+    print()
+    for i in range(5):
+        print(explore_step_temperature(ys, 10))
+
