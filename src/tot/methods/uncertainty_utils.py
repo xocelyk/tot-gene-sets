@@ -11,7 +11,7 @@ import json
 SapBERT_tokenizer = AutoTokenizer.from_pretrained('cambridgeltl/SapBERT-from-PubMedBERT-fulltext')
 SapBERT_model = AutoModel.from_pretrained('cambridgeltl/SapBERT-from-PubMedBERT-fulltext')
 
-def group_and_frequency_analyze_by_similarity(ys_list, top_n=3, exploration_rate=0.1):
+def group_and_frequency_analyze_by_similarity(ys_list, top_n=3, exploration_rate=0.1, threshold=0.9):
     # Flatten the list to process all items, including duplicates
     ys = [item for items in ys_list for item in items]
     all_items_flat = [json.loads(item)['Biological Process'] for items in ys_list for item in items]
@@ -22,7 +22,6 @@ def group_and_frequency_analyze_by_similarity(ys_list, top_n=3, exploration_rate
     similarity_matrix = cosine_similarity(all_items_embeddings)
 
     # Group items based on similarity, considering threshold
-    threshold = 0.98
     groups = []
     for i in range(len(all_items_flat)):
         grouped = False
@@ -232,4 +231,3 @@ if __name__ == '__main__':
     print()
     for i in range(5):
         print(explore_step_temperature(ys, 10))
-
