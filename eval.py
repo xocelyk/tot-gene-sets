@@ -79,7 +79,7 @@ if MODE == 'tot':
     save_filename = 'results2/tot_eval_1_gen_1_voter_5steps.pkl'
     print(f'saving to...{save_filename}')
     # TODO: test indices
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=True)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices)+1, preload=True)
     
 elif MODE == 'tot_certainty':
     #gpt-3.5-turbo-1106
@@ -90,7 +90,7 @@ elif MODE == 'tot_certainty':
     save_filename = 'results2/tot_eval_uncertainty_5steps_15gen_th09.pkl'
     print(f'saving to...{save_filename}')
     # TODO: test indices
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=False)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices)+1, preload=False)
     
 elif MODE == 'tot_certainty_explore':
     #gpt-3.5-turbo-1106
@@ -101,7 +101,7 @@ elif MODE == 'tot_certainty_explore':
     save_filename = 'results2/tot_eval_uncertainty_5steps_explore.pkl'
     print(f'saving to...{save_filename}')
     # TODO: test indices
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=False)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices)+1, preload=False)
     
 elif MODE == 'tot_certainty_stopping':
     #gpt-3.5-turbo-1106
@@ -112,7 +112,7 @@ elif MODE == 'tot_certainty_stopping':
     save_filename = 'results2/tot_eval_uncertainty_5steps_stop_expand.pkl'
     print(f'saving to...{save_filename}')
     # TODO: test indices
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=False)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices)+1, preload=False)
     
 elif MODE == 'tot_certainty_explore_n_stopexand':
     #gpt-3.5-turbo-1106
@@ -123,7 +123,7 @@ elif MODE == 'tot_certainty_explore_n_stopexand':
     save_filename = 'results2/tot_eval_uncertainty_5steps_explore_stop_expand.pkl'
     print(f'saving to...{save_filename}')
     # TODO: test indices
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=False)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices)+1, preload=False)
 
 elif MODE == 'tot_certainty_gpt4':
     #gpt-3.5-turbo-1106
@@ -134,7 +134,7 @@ elif MODE == 'tot_certainty_gpt4':
     save_filename = 'results2/tot_eval_uncertainty_5steps_gpt4.pkl'
     print(f'saving to...{save_filename}')
     # TODO: test indices
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=True)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices)+1, preload=True)
     
 elif MODE == 'tot_no_certainty':
     #gpt-3.5-turbo-1106
@@ -145,7 +145,7 @@ elif MODE == 'tot_no_certainty':
     save_filename = 'results2/tot2_eval_5steps_no_certainty_9nodes.pkl'
     print(f'saving to...{save_filename}')
     # TODO: test indices
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=True)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices)+1, preload=True)
     
 elif MODE == 'tot_no_certainty_stopexpand':
     #gpt-3.5-turbo-1106
@@ -156,7 +156,7 @@ elif MODE == 'tot_no_certainty_stopexpand':
     save_filename = 'results2/tot2_eval_5steps_no_certainty_stop_expand.pkl'
     print(f'saving to...{save_filename}')
     # TODO: test indices
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=False)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices)+1, preload=False)
 
 elif MODE == 'tot_profiler':
     args = argparse.Namespace(backend='gpt-4-1106-preview', temperature=0.7, task='bio_name', naive_run=False, \
@@ -167,7 +167,7 @@ elif MODE == 'tot_profiler':
                          )      
     task = Bio_Name()
     save_filename = 'results2/eval_gprofiler_eval.pkl'
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=False)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices)+1, preload=False)
 
 elif MODE == 'few_shot':
     save_filename = 'few_shot_eval.pkl'
