@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_140045533643152" [label="Biological Process"]
+	"Biological Process_140045533643152Gene expression_140046885483344" [label="Gene expression (7)" shape=circle]
+	"Biological Process_140045533643152" -> "Biological Process_140045533643152Gene expression_140046885483344" [label=""]
+	"Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088" [label="Dentinogenesis (5)" shape=circle]
+	"Biological Process_140045533643152Gene expression_140046885483344" -> "Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088" [label=regulates]
+	"Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088Odontoblast differentiation_140045532578512" [label="Odontoblast differentiation (5)" shape=circle]
+	"Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088" -> "Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088Odontoblast differentiation_140045532578512" [label="is a"]
+	"Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088Odontoblast differentiation_140045532578512Dentin matrix formation_140045326525456" [label="Dentin matrix formation (10)" shape=circle]
+	"Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088Odontoblast differentiation_140045532578512" -> "Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088Odontoblast differentiation_140045532578512Dentin matrix formation_140045326525456" [label="has part"]
+	"Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088Odontoblast differentiation_140045532578512Dentin matrix formation_140045326525456Dentin sialophosphoprotein (DSPP) processing_140045327332496" [label="Dentin sialophosphoprotein (DSPP) processing (5)" shape=circle]
+	"Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088Odontoblast differentiation_140045532578512Dentin matrix formation_140045326525456" -> "Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088Odontoblast differentiation_140045532578512Dentin matrix formation_140045326525456Dentin sialophosphoprotein (DSPP) processing_140045327332496" [label="has part"]
+	"Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088Odontoblast differentiation_140045532578512Dentin matrix formation_140045326525456Mineralization of dentin matrix_140045327330448" [label="Mineralization of dentin matrix (5)" shape=circle]
+	"Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088Odontoblast differentiation_140045532578512Dentin matrix formation_140045326525456" -> "Biological Process_140045533643152Gene expression_140046885483344Dentinogenesis_140045326531088Odontoblast differentiation_140045532578512Dentin matrix formation_140045326525456Mineralization of dentin matrix_140045327330448" [label="is a"]
+	"Biological Process_140045533643152Gene expression_140046885483344Dental enamel formation_140045327279632" [label="Dental enamel formation" shape=circle]
+	"Biological Process_140045533643152Gene expression_140046885483344" -> "Biological Process_140045533643152Gene expression_140046885483344Dental enamel formation_140045327279632" [label=regulates]
+	"Biological Process_140045533643152Gene expression_140046885483344Odontogenesis_140045327273488" [label="Odontogenesis (5)" shape=circle]
+	"Biological Process_140045533643152Gene expression_140046885483344" -> "Biological Process_140045533643152Gene expression_140046885483344Odontogenesis_140045327273488" [label=regulates]
+	"Biological Process_140045533643152Gene Expression_140045327169808" [label="Gene Expression (3)" shape=circle]
+	"Biological Process_140045533643152" -> "Biological Process_140045533643152Gene Expression_140045327169808" [label=""]
+}

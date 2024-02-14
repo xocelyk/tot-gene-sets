@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_140046648158736" [label="Biological Process"]
+	"Biological Process_140046648158736Gene Expression_140046648623056" [label="Gene Expression (5)" shape=circle]
+	"Biological Process_140046648158736" -> "Biological Process_140046648158736Gene Expression_140046648623056" [label=""]
+	"Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760" [label="Protein Folding (5)" shape=circle]
+	"Biological Process_140046648158736Gene Expression_140046648623056" -> "Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760" [label="has part"]
+	"Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216" [label="Chaperone-mediated protein folding (6)" shape=circle]
+	"Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760" -> "Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216" [label="has part"]
+	"Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216Proteostasis_140045533387856" [label="Proteostasis (5)" shape=circle]
+	"Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216" -> "Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216Proteostasis_140045533387856" [label=regulates]
+	"Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216Proteostasis_140045533387856Autophagy_140045532310224" [label="Autophagy (*)" shape=circle]
+	"Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216Proteostasis_140045533387856" -> "Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216Proteostasis_140045533387856Autophagy_140045532310224" [label="part of"]
+	"Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216Protein quality control via ERAD pathway_140045532313232" [label="Protein quality control via ERAD pathway (3)" shape=circle]
+	"Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216" -> "Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216Protein quality control via ERAD pathway_140045532313232" [label="part of"]
+	"Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216Protein quality control via ER-associated degradation (ERAD)_140045533352720" [label="Protein quality control via ER-associated degradation (ERAD) (2)" shape=circle]
+	"Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216" -> "Biological Process_140046648158736Gene Expression_140046648623056Protein Folding_140045532311760Chaperone-mediated protein folding_140045532387216Protein quality control via ER-associated degradation (ERAD)_140045533352720" [label="is a"]
+	"Biological Process_140046648158736Gene Expression_140046648623056Neuronal Signaling_140045532315152" [label="Neuronal Signaling (5)" shape=circle]
+	"Biological Process_140046648158736Gene Expression_140046648623056" -> "Biological Process_140046648158736Gene Expression_140046648623056Neuronal Signaling_140045532315152" [label=regulates]
+	"Biological Process_140046648158736Cellular Metabolism_140045532443472" [label="Cellular Metabolism (5)" shape=circle]
+	"Biological Process_140046648158736" -> "Biological Process_140046648158736Cellular Metabolism_140045532443472" [label=""]
+}

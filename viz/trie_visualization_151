@@ -1,0 +1,18 @@
+// Trie
+digraph {
+	"Biological Process_139771449544720" [label="Biological Process"]
+	"Biological Process_139771449544720Gene Expression_139771450836880" [label="Gene Expression (5)" shape=circle]
+	"Biological Process_139771449544720" -> "Biological Process_139771449544720Gene Expression_139771450836880" [label=""]
+	"Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808" [label="Endothelin Signaling Pathway (5)" shape=circle]
+	"Biological Process_139771449544720Gene Expression_139771450836880" -> "Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808" [label=regulates]
+	"Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808Vascular Smooth Muscle Contraction_139771453909968" [label="Vascular Smooth Muscle Contraction (10)" shape=circle]
+	"Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808" -> "Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808Vascular Smooth Muscle Contraction_139771453909968" [label=regulates]
+	"Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808Vascular Smooth Muscle Contraction_139771453909968Vasoconstriction_139771039252048" [label="Vasoconstriction (5)" shape=circle]
+	"Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808Vascular Smooth Muscle Contraction_139771453909968" -> "Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808Vascular Smooth Muscle Contraction_139771453909968Vasoconstriction_139771039252048" [label="is a"]
+	"Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808Vascular Smooth Muscle Contraction_139771453909968Vasoconstriction_139771039252048Regulation of Endothelin Signaling_139771037353040" [label="Regulation of Endothelin Signaling (*)" shape=circle]
+	"Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808Vascular Smooth Muscle Contraction_139771453909968Vasoconstriction_139771039252048" -> "Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808Vascular Smooth Muscle Contraction_139771453909968Vasoconstriction_139771039252048Regulation of Endothelin Signaling_139771037353040" [label=regulates]
+	"Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808Vascular Smooth Muscle Contraction_139771453909968Regulation of Blood Pressure_139771449552272" [label="Regulation of Blood Pressure (5)" shape=circle]
+	"Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808Vascular Smooth Muscle Contraction_139771453909968" -> "Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling Pathway_139771450145808Vascular Smooth Muscle Contraction_139771453909968Regulation of Blood Pressure_139771449552272" [label=regulates]
+	"Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling_139771037363088" [label="Endothelin Signaling (5)" shape=circle]
+	"Biological Process_139771449544720Gene Expression_139771450836880" -> "Biological Process_139771449544720Gene Expression_139771450836880Endothelin Signaling_139771037363088" [label=regulates]
+}

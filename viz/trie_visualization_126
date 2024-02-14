@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_139771452568848" [label="Biological Process"]
+	"Biological Process_139771452568848Gene expression_139771451270544" [label="Gene expression (5)" shape=circle]
+	"Biological Process_139771452568848" -> "Biological Process_139771452568848Gene expression_139771451270544" [label=""]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464" [label="Retinoic acid signaling pathway (5)" shape=circle]
+	"Biological Process_139771452568848Gene expression_139771451270544" -> "Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464" [label=regulates]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrogenesis_139771448148624" [label="Chondrogenesis (5)" shape=circle]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464" -> "Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrogenesis_139771448148624" [label=regulates]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrogenesis_139771448148624Endochondral Ossification_139771452093776" [label="Endochondral Ossification (5)" shape=circle]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrogenesis_139771448148624" -> "Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrogenesis_139771448148624Endochondral Ossification_139771452093776" [label="part of"]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrogenesis_139771448148624Endochondral Ossification_139771452093776Osteoblast Differentiation_139771037677200" [label="Osteoblast Differentiation (*)" shape=circle]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrogenesis_139771448148624Endochondral Ossification_139771452093776" -> "Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrogenesis_139771448148624Endochondral Ossification_139771452093776Osteoblast Differentiation_139771037677200" [label=regulates]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrogenesis_139771448148624Differentiation of Chondrocytes_139771039305808" [label="Differentiation of Chondrocytes (5)" shape=circle]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrogenesis_139771448148624" -> "Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrogenesis_139771448148624Differentiation of Chondrocytes_139771039305808" [label="part of"]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Skeletal system development_139771037677008" [label="Skeletal system development (1)" shape=circle]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464" -> "Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Skeletal system development_139771037677008" [label=regulates]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrocyte differentiation_139771037679056" [label="Chondrocyte differentiation (4)" shape=circle]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464" -> "Biological Process_139771452568848Gene expression_139771451270544Retinoic acid signaling pathway_139771039464464Chondrocyte differentiation_139771037679056" [label=regulates]
+	"Biological Process_139771452568848Gene expression_139771451270544Retinoic acid receptor signaling pathway_139771037663952" [label="Retinoic acid receptor signaling pathway (5)" shape=circle]
+	"Biological Process_139771452568848Gene expression_139771451270544" -> "Biological Process_139771452568848Gene expression_139771451270544Retinoic acid receptor signaling pathway_139771037663952" [label=regulates]
+}

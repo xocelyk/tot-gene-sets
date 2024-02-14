@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_139771449907856" [label="Biological Process"]
+	"Biological Process_139771449907856Gene expression_139771450146768" [label="Gene expression (5)" shape=circle]
+	"Biological Process_139771449907856" -> "Biological Process_139771449907856Gene expression_139771450146768" [label=""]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcriptional regulation of gene expression_139771450210576" [label="Transcriptional regulation of gene expression" shape=circle]
+	"Biological Process_139771449907856Gene expression_139771450146768" -> "Biological Process_139771449907856Gene expression_139771450146768Transcriptional regulation of gene expression_139771450210576" [label=regulates]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448" [label="Transcription (5)" shape=circle]
+	"Biological Process_139771449907856Gene expression_139771450146768" -> "Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448" [label="is a"]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304" [label="Regulation of Transcription (5)" shape=circle]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448" -> "Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304" [label=regulates]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304Histone Methylation_139771450070416" [label="Histone Methylation (5)" shape=circle]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304" -> "Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304Histone Methylation_139771450070416" [label=regulates]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304Histone Methylation_139771450070416H3R2 Methylation_139771450197328" [label="H3R2 Methylation (*)" shape=circle]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304Histone Methylation_139771450070416" -> "Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304Histone Methylation_139771450070416H3R2 Methylation_139771450197328" [label="has part"]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304Histone Methylation_139771450070416Arginine Methylation_139771449784784" [label="Arginine Methylation (5)" shape=circle]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304Histone Methylation_139771450070416" -> "Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304Histone Methylation_139771450070416Arginine Methylation_139771449784784" [label="is a"]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304Histone Methylation_139771450070416H3K4 Methylation_139771449779600" [label="H3K4 Methylation" shape=circle]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304Histone Methylation_139771450070416" -> "Biological Process_139771449907856Gene expression_139771450146768Transcription_139771449770448Regulation of Transcription_139771449908304Histone Methylation_139771450070416H3K4 Methylation_139771449779600" [label="is a"]
+	"Biological Process_139771449907856Gene expression_139771450146768Transcription initiation_139771449782288" [label="Transcription initiation (5)" shape=circle]
+	"Biological Process_139771449907856Gene expression_139771450146768" -> "Biological Process_139771449907856Gene expression_139771450146768Transcription initiation_139771449782288" [label="part of"]
+}

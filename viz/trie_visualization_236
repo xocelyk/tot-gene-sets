@@ -1,0 +1,14 @@
+// Trie
+digraph {
+	"Biological Process_140045531172304" [label="Biological Process"]
+	"Biological Process_140045531172304Gene expression_140046647680656" [label="Gene expression (7)" shape=circle]
+	"Biological Process_140045531172304" -> "Biological Process_140045531172304Gene expression_140046647680656" [label=""]
+	"Biological Process_140045531172304Gene expression_140046647680656Polyamine metabolism_140045531449168" [label="Polyamine metabolism (8)" shape=circle]
+	"Biological Process_140045531172304Gene expression_140046647680656" -> "Biological Process_140045531172304Gene expression_140046647680656Polyamine metabolism_140045531449168" [label=regulates]
+	"Biological Process_140045531172304Gene expression_140046647680656Polyamine metabolism_140045531449168Spermidine biosynthetic process_140046886295568" [label="Spermidine biosynthetic process (8)" shape=circle]
+	"Biological Process_140045531172304Gene expression_140046647680656Polyamine metabolism_140045531449168" -> "Biological Process_140045531172304Gene expression_140046647680656Polyamine metabolism_140045531449168Spermidine biosynthetic process_140046886295568" [label="is a"]
+	"Biological Process_140045531172304Gene expression_140046647680656Polyamine metabolism_140045531449168Spermidine biosynthetic process_140046886295568Spermine biosynthetic process_140045531449680" [label="Spermine biosynthetic process (5)" shape=circle]
+	"Biological Process_140045531172304Gene expression_140046647680656Polyamine metabolism_140045531449168Spermidine biosynthetic process_140046886295568" -> "Biological Process_140045531172304Gene expression_140046647680656Polyamine metabolism_140045531449168Spermidine biosynthetic process_140046886295568Spermine biosynthetic process_140045531449680" [label="is a"]
+	"Biological Process_140045531172304Gene expression_140046647680656Polyamine metabolism_140045531449168Spermidine biosynthetic process_140046886295568Spermine biosynthetic process_140045531449680Spermine catabolic process_140047079914384" [label="Spermine catabolic process (*)" shape=circle]
+	"Biological Process_140045531172304Gene expression_140046647680656Polyamine metabolism_140045531449168Spermidine biosynthetic process_140046886295568Spermine biosynthetic process_140045531449680" -> "Biological Process_140045531172304Gene expression_140046647680656Polyamine metabolism_140045531449168Spermidine biosynthetic process_140046886295568Spermine biosynthetic process_140045531449680Spermine catabolic process_140047079914384" [label=regulates]
+}

@@ -1,0 +1,20 @@
+// Trie
+digraph {
+	"Biological Process_139771039755792" [label="Biological Process"]
+	"Biological Process_139771039755792Gene Expression_139771038248656" [label="Gene Expression (5)" shape=circle]
+	"Biological Process_139771039755792" -> "Biological Process_139771039755792Gene Expression_139771038248656" [label=""]
+	"Biological Process_139771039755792Gene Expression_139771038248656Cytokine Signaling_139771038220112" [label="Cytokine Signaling (4)" shape=circle]
+	"Biological Process_139771039755792Gene Expression_139771038248656" -> "Biological Process_139771039755792Gene Expression_139771038248656Cytokine Signaling_139771038220112" [label=regulates]
+	"Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600" [label="Cytokine-mediated Signaling Pathway (5)" shape=circle]
+	"Biological Process_139771039755792Gene Expression_139771038248656" -> "Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600" [label=regulates]
+	"Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600Interleukin-6 Signaling Pathway_139771449901200" [label="Interleukin-6 Signaling Pathway (5)" shape=circle]
+	"Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600" -> "Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600Interleukin-6 Signaling Pathway_139771449901200" [label="is a"]
+	"Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600Interleukin-6 Signaling Pathway_139771449901200STAT3-Mediated Signaling_139771038250576" [label="STAT3-Mediated Signaling (5)" shape=circle]
+	"Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600Interleukin-6 Signaling Pathway_139771449901200" -> "Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600Interleukin-6 Signaling Pathway_139771449901200STAT3-Mediated Signaling_139771038250576" [label=regulates]
+	"Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600Interleukin-6 Signaling Pathway_139771449901200STAT3-Mediated Signaling_139771038250576JAK-STAT Signaling Pathway_139771037385872" [label="JAK-STAT Signaling Pathway (*)" shape=circle]
+	"Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600Interleukin-6 Signaling Pathway_139771449901200STAT3-Mediated Signaling_139771038250576" -> "Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600Interleukin-6 Signaling Pathway_139771449901200STAT3-Mediated Signaling_139771038250576JAK-STAT Signaling Pathway_139771037385872" [label="is a"]
+	"Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600Interleukin-6 Signaling Pathway_139771449901200Activation of STAT3 Signaling by Interleukin-6_139771038311056" [label="Activation of STAT3 Signaling by Interleukin-6 (5)" shape=circle]
+	"Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600Interleukin-6 Signaling Pathway_139771449901200" -> "Biological Process_139771039755792Gene Expression_139771038248656Cytokine-mediated Signaling Pathway_139771037387600Interleukin-6 Signaling Pathway_139771449901200Activation of STAT3 Signaling by Interleukin-6_139771038311056" [label="is a"]
+	"Biological Process_139771039755792Gene Expression_139771038248656Cytokine Signaling Pathway_139771037398224" [label="Cytokine Signaling Pathway (1)" shape=circle]
+	"Biological Process_139771039755792Gene Expression_139771038248656" -> "Biological Process_139771039755792Gene Expression_139771038248656Cytokine Signaling Pathway_139771037398224" [label=regulates]
+}

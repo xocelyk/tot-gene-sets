@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_140046886291856" [label="Biological Process"]
+	"Biological Process_140046886291856Gene expression_140046887198736" [label="Gene expression (7)" shape=circle]
+	"Biological Process_140046886291856" -> "Biological Process_140046886291856Gene expression_140046887198736" [label=""]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600" [label="Muscle development (5)" shape=circle]
+	"Biological Process_140046886291856Gene expression_140046887198736" -> "Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600" [label=regulates]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840" [label="Muscle protein degradation (6)" shape=circle]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600" -> "Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840" [label="has part"]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840Calpain-mediated muscle protein degradation_140046886271056" [label="Calpain-mediated muscle protein degradation (5)" shape=circle]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840" -> "Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840Calpain-mediated muscle protein degradation_140046886271056" [label="is a"]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840Calpain-mediated muscle protein degradation_140046886271056Regulation of calpain activity_140046886367184" [label="Regulation of calpain activity (*)" shape=circle]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840Calpain-mediated muscle protein degradation_140046886271056" -> "Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840Calpain-mediated muscle protein degradation_140046886271056Regulation of calpain activity_140046886367184" [label=regulates]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840Calpain-mediated proteolysis_140046886221584" [label="Calpain-mediated proteolysis (5)" shape=circle]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840" -> "Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840Calpain-mediated proteolysis_140046886221584" [label="is a"]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840Proteolysis of sarcomere_140046886300048" [label="Proteolysis of sarcomere" shape=circle]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840" -> "Biological Process_140046886291856Gene expression_140046887198736Muscle development_140046886259600Muscle protein degradation_140046886269840Proteolysis of sarcomere_140046886300048" [label="is a"]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle cell differentiation_140047091323664" [label="Muscle cell differentiation (5)" shape=circle]
+	"Biological Process_140046886291856Gene expression_140046887198736" -> "Biological Process_140046886291856Gene expression_140046887198736Muscle cell differentiation_140047091323664" [label=regulates]
+	"Biological Process_140046886291856Gene expression_140046887198736Muscle contraction_140046886256080" [label="Muscle contraction" shape=circle]
+	"Biological Process_140046886291856Gene expression_140046887198736" -> "Biological Process_140046886291856Gene expression_140046887198736Muscle contraction_140046886256080" [label=regulates]
+}

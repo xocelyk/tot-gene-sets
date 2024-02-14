@@ -1,0 +1,20 @@
+// Trie
+digraph {
+	"Biological Process_140047100171408" [label="Biological Process"]
+	"Biological Process_140047100171408Gene expression_140045531172880" [label="Gene expression (5)" shape=circle]
+	"Biological Process_140047100171408" -> "Biological Process_140047100171408Gene expression_140045531172880" [label=""]
+	"Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800" [label="Amino acid transport (9)" shape=circle]
+	"Biological Process_140047100171408Gene expression_140045531172880" -> "Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800" [label=regulates]
+	"Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Neutral amino acid transport_140045532640400" [label="Neutral amino acid transport (5)" shape=circle]
+	"Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800" -> "Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Neutral amino acid transport_140045532640400" [label="is a"]
+	"Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Neutral amino acid transport_140045532640400Leucine transport_140045531077392" [label="Leucine transport (5)" shape=circle]
+	"Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Neutral amino acid transport_140045532640400" -> "Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Neutral amino acid transport_140045532640400Leucine transport_140045531077392" [label="is a"]
+	"Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Neutral amino acid transport_140045532640400Leucine transport_140045531077392Leucine uptake_140045531179088" [label="Leucine uptake (*)" shape=circle]
+	"Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Neutral amino acid transport_140045532640400Leucine transport_140045531077392" -> "Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Neutral amino acid transport_140045532640400Leucine transport_140045531077392Leucine uptake_140045531179088" [label="is a"]
+	"Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Neutral amino acid transport_140045532640400Leucine transport_140045531077392mTOR signaling pathway_140045531316432" [label="mTOR signaling pathway (5)" shape=circle]
+	"Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Neutral amino acid transport_140045532640400Leucine transport_140045531077392" -> "Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Neutral amino acid transport_140045532640400Leucine transport_140045531077392mTOR signaling pathway_140045531316432" [label=regulates]
+	"Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Branched-chain amino acid transport_140045531331024" [label="Branched-chain amino acid transport (5)" shape=circle]
+	"Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800" -> "Biological Process_140047100171408Gene expression_140045531172880Amino acid transport_140045533982800Branched-chain amino acid transport_140045531331024" [label="is a"]
+	"Biological Process_140047100171408Gene Expression_140045533197456" [label="Gene Expression (5)" shape=circle]
+	"Biological Process_140047100171408" -> "Biological Process_140047100171408Gene Expression_140045533197456" [label=""]
+}

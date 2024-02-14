@@ -1,0 +1,14 @@
+// Trie
+digraph {
+	"Biological Process_140047080298832" [label="Biological Process"]
+	"Biological Process_140047080298832Gene Expression_140046647781328" [label="Gene Expression (9)" shape=circle]
+	"Biological Process_140047080298832" -> "Biological Process_140047080298832Gene Expression_140046647781328" [label=""]
+	"Biological Process_140047080298832Gene Expression_140046647781328Neurotransmitter Transport_140045530884560" [label="Neurotransmitter Transport (6)" shape=circle]
+	"Biological Process_140047080298832Gene Expression_140046647781328" -> "Biological Process_140047080298832Gene Expression_140046647781328Neurotransmitter Transport_140045530884560" [label=regulates]
+	"Biological Process_140047080298832Gene Expression_140046647781328Neurotransmitter Transport_140045530884560Dopamine Transport_140045532591312" [label="Dopamine Transport (6)" shape=circle]
+	"Biological Process_140047080298832Gene Expression_140046647781328Neurotransmitter Transport_140045530884560" -> "Biological Process_140047080298832Gene Expression_140046647781328Neurotransmitter Transport_140045530884560Dopamine Transport_140045532591312" [label="is a"]
+	"Biological Process_140047080298832Gene Expression_140046647781328Neurotransmitter Transport_140045530884560Dopamine Transport_140045532591312Dopamine Reuptake_140045532635216" [label="Dopamine Reuptake (5)" shape=circle]
+	"Biological Process_140047080298832Gene Expression_140046647781328Neurotransmitter Transport_140045530884560Dopamine Transport_140045532591312" -> "Biological Process_140047080298832Gene Expression_140046647781328Neurotransmitter Transport_140045530884560Dopamine Transport_140045532591312Dopamine Reuptake_140045532635216" [label=regulates]
+	"Biological Process_140047080298832Gene Expression_140046647781328Neurotransmitter Transport_140045530884560Dopamine Transport_140045532591312Dopamine Reuptake_140045532635216Dopamine Transporter Activity_140045530887504" [label="Dopamine Transporter Activity (*)" shape=circle]
+	"Biological Process_140047080298832Gene Expression_140046647781328Neurotransmitter Transport_140045530884560Dopamine Transport_140045532591312Dopamine Reuptake_140045532635216" -> "Biological Process_140047080298832Gene Expression_140046647781328Neurotransmitter Transport_140045530884560Dopamine Transport_140045532591312Dopamine Reuptake_140045532635216Dopamine Transporter Activity_140045530887504" [label="is a"]
+}

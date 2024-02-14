@@ -1,0 +1,18 @@
+// Trie
+digraph {
+	"Biological Process_139771038333328" [label="Biological Process"]
+	"Biological Process_139771038333328Gene expression_139771450027536" [label="Gene expression (5)" shape=circle]
+	"Biological Process_139771038333328" -> "Biological Process_139771038333328Gene expression_139771450027536" [label=""]
+	"Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096" [label="Membrane trafficking (5)" shape=circle]
+	"Biological Process_139771038333328Gene expression_139771450027536" -> "Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096" [label=regulates]
+	"Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096Endocytosis_139771450205520" [label="Endocytosis (5)" shape=circle]
+	"Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096" -> "Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096Endocytosis_139771450205520" [label="is a"]
+	"Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096Endocytosis_139771450205520Clathrin-Mediated Endocytosis_139771451206416" [label="Clathrin-Mediated Endocytosis (6)" shape=circle]
+	"Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096Endocytosis_139771450205520" -> "Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096Endocytosis_139771450205520Clathrin-Mediated Endocytosis_139771451206416" [label="is a"]
+	"Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096Endocytosis_139771450205520Clathrin-Mediated Endocytosis_139771451206416Clathrin-Coated Pit Formation_139771038237520" [label="Clathrin-Coated Pit Formation (*)" shape=circle]
+	"Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096Endocytosis_139771450205520Clathrin-Mediated Endocytosis_139771451206416" -> "Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096Endocytosis_139771450205520Clathrin-Mediated Endocytosis_139771451206416Clathrin-Coated Pit Formation_139771038237520" [label="has part"]
+	"Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096Endocytosis_139771450205520Clathrin-Mediated Endocytosis_139771451206416Caveolae-Mediated Endocytosis_139771038237712" [label="Caveolae-Mediated Endocytosis (5)" shape=circle]
+	"Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096Endocytosis_139771450205520Clathrin-Mediated Endocytosis_139771451206416" -> "Biological Process_139771038333328Gene expression_139771450027536Membrane trafficking_139771449670096Endocytosis_139771450205520Clathrin-Mediated Endocytosis_139771451206416Caveolae-Mediated Endocytosis_139771038237712" [label="is a"]
+	"Biological Process_139771038333328Gene expression_139771450027536Lipid raft localization_139771038244944" [label="Lipid raft localization (5)" shape=circle]
+	"Biological Process_139771038333328Gene expression_139771450027536" -> "Biological Process_139771038333328Gene expression_139771450027536Lipid raft localization_139771038244944" [label=regulates]
+}

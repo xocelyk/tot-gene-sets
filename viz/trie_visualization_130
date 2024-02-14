@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_139771037691088" [label="Biological Process"]
+	"Biological Process_139771037691088Gene Expression_139771039217616" [label="Gene Expression (5)" shape=circle]
+	"Biological Process_139771037691088" -> "Biological Process_139771037691088Gene Expression_139771039217616" [label=""]
+	"Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952" [label="Polyadenylation (5)" shape=circle]
+	"Biological Process_139771037691088Gene Expression_139771039217616" -> "Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952" [label="part of"]
+	"Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952Alternative polyadenylation_139771037729744" [label="Alternative polyadenylation (5)" shape=circle]
+	"Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952" -> "Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952Alternative polyadenylation_139771037729744" [label="is a"]
+	"Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952Alternative polyadenylation_139771037729744Regulation of alternative polyadenylation_139771039301584" [label="Regulation of alternative polyadenylation (10)" shape=circle]
+	"Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952Alternative polyadenylation_139771037729744" -> "Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952Alternative polyadenylation_139771037729744Regulation of alternative polyadenylation_139771039301584" [label=regulates]
+	"Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952Alternative polyadenylation_139771037729744Regulation of alternative polyadenylation_139771039301584Regulation of mRNA stability_139771037870480" [label="Regulation of mRNA stability (*)" shape=circle]
+	"Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952Alternative polyadenylation_139771037729744Regulation of alternative polyadenylation_139771039301584" -> "Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952Alternative polyadenylation_139771037729744Regulation of alternative polyadenylation_139771039301584Regulation of mRNA stability_139771037870480" [label=regulates]
+	"Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952Cleavage and Polyadenylation of Pre-mRNA_139771037873168" [label="Cleavage and Polyadenylation of Pre-mRNA (5)" shape=circle]
+	"Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952" -> "Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952Cleavage and Polyadenylation of Pre-mRNA_139771037873168" [label="is a"]
+	"Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952Alternative Polyadenylation_139771037874576" [label="Alternative Polyadenylation" shape=circle]
+	"Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952" -> "Biological Process_139771037691088Gene Expression_139771039217616Polyadenylation_139771453727952Alternative Polyadenylation_139771037874576" [label="is a"]
+	"Biological Process_139771037691088Gene Expression_139771039217616Post-transcriptional Modification_139771037870352" [label="Post-transcriptional Modification (5)" shape=circle]
+	"Biological Process_139771037691088Gene Expression_139771039217616" -> "Biological Process_139771037691088Gene Expression_139771039217616Post-transcriptional Modification_139771037870352" [label="part of"]
+	"Biological Process_139771037691088Gene Expression_139771039217616Oxidative Stress Response_139771037876176" [label="Oxidative Stress Response" shape=circle]
+	"Biological Process_139771037691088Gene Expression_139771039217616" -> "Biological Process_139771037691088Gene Expression_139771039217616Oxidative Stress Response_139771037876176" [label=regulates]
+}

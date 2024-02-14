@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_140047097486864" [label="Biological Process"]
+	"Biological Process_140047097486864Gene Expression_140045533070288" [label="Gene Expression (5)" shape=circle]
+	"Biological Process_140047097486864" -> "Biological Process_140047097486864Gene Expression_140045533070288" [label=""]
+	"Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920" [label="Neuropeptide Signaling (5)" shape=circle]
+	"Biological Process_140047097486864Gene Expression_140045533070288" -> "Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920" [label=regulates]
+	"Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Social Behavior Regulation_140045532830544" [label="Social Behavior Regulation (5)" shape=circle]
+	"Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920" -> "Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Social Behavior Regulation_140045532830544" [label=regulates]
+	"Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Social Behavior Regulation_140045532830544Maternal Behavior Regulation_140045529456592" [label="Maternal Behavior Regulation (5)" shape=circle]
+	"Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Social Behavior Regulation_140045532830544" -> "Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Social Behavior Regulation_140045532830544Maternal Behavior Regulation_140045529456592" [label="is a"]
+	"Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Social Behavior Regulation_140045532830544Maternal Behavior Regulation_140045529456592Maternal Bonding_140045530380816" [label="Maternal Bonding (*)" shape=circle]
+	"Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Social Behavior Regulation_140045532830544Maternal Behavior Regulation_140045529456592" -> "Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Social Behavior Regulation_140045532830544Maternal Behavior Regulation_140045529456592Maternal Bonding_140045530380816" [label="is a"]
+	"Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Social Behavior Regulation_140045532830544Pair Bonding Behavior_140045326704656" [label="Pair Bonding Behavior (5)" shape=circle]
+	"Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Social Behavior Regulation_140045532830544" -> "Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Social Behavior Regulation_140045532830544Pair Bonding Behavior_140045326704656" [label="is a"]
+	"Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Oxytocin Signaling_140045531569680" [label="Oxytocin Signaling (5)" shape=circle]
+	"Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920" -> "Biological Process_140047097486864Gene Expression_140045533070288Neuropeptide Signaling_140045326707920Oxytocin Signaling_140045531569680" [label="is a"]
+	"Biological Process_140047097486864Gene Expression_140045533070288Neurotransmitter Release_140045531588112" [label="Neurotransmitter Release (5)" shape=circle]
+	"Biological Process_140047097486864Gene Expression_140045533070288" -> "Biological Process_140047097486864Gene Expression_140045533070288Neurotransmitter Release_140045531588112" [label=regulates]
+	"Biological Process_140047097486864Gene expression_140045326706832" [label="Gene expression (5)" shape=circle]
+	"Biological Process_140047097486864" -> "Biological Process_140047097486864Gene expression_140045326706832" [label=""]
+}

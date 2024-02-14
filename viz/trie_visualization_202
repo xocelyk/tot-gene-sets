@@ -1,0 +1,20 @@
+// Trie
+digraph {
+	"Biological Process_140047076155344" [label="Biological Process"]
+	"Biological Process_140047076155344Gene Expression_140046648618256" [label="Gene Expression (7)" shape=circle]
+	"Biological Process_140047076155344" -> "Biological Process_140047076155344Gene Expression_140046648618256" [label=""]
+	"Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640" [label="DNA Repair (9)" shape=circle]
+	"Biological Process_140047076155344Gene Expression_140046648618256" -> "Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640" [label=regulates]
+	"Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination_140046648270544" [label="Homologous Recombination (5)" shape=circle]
+	"Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640" -> "Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination_140046648270544" [label="is a"]
+	"Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination_140046648270544Double-Strand Break Repair_140045533595088" [label="Double-Strand Break Repair (5)" shape=circle]
+	"Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination_140046648270544" -> "Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination_140046648270544Double-Strand Break Repair_140045533595088" [label="is a"]
+	"Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination_140046648270544Double-Strand Break Repair_140045533595088Fanconi Anemia Pathway_140046886198288" [label="Fanconi Anemia Pathway (*)" shape=circle]
+	"Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination_140046648270544Double-Strand Break Repair_140045533595088" -> "Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination_140046648270544Double-Strand Break Repair_140045533595088Fanconi Anemia Pathway_140046886198288" [label="is a"]
+	"Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination_140046648270544Crossing Over_140045533552208" [label="Crossing Over (5)" shape=circle]
+	"Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination_140046648270544" -> "Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination_140046648270544Crossing Over_140045533552208" [label="is a"]
+	"Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination Repair_140045533933648" [label="Homologous Recombination Repair (5)" shape=circle]
+	"Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640" -> "Biological Process_140047076155344Gene Expression_140046648618256DNA Repair_140045533882640Homologous Recombination Repair_140045533933648" [label="is a"]
+	"Biological Process_140047076155344Gene expression_140047081265168" [label="Gene expression" shape=circle]
+	"Biological Process_140047076155344" -> "Biological Process_140047076155344Gene expression_140047081265168" [label=""]
+}

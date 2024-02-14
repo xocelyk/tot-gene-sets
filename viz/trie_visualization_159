@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_139771038248400" [label="Biological Process"]
+	"Biological Process_139771038248400Gene expression_139771450073488" [label="Gene expression (5)" shape=circle]
+	"Biological Process_139771038248400" -> "Biological Process_139771038248400Gene expression_139771450073488" [label=""]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440" [label="Protease activity (5)" shape=circle]
+	"Biological Process_139771038248400Gene expression_139771450073488" -> "Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440" [label=regulates]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal barrier function_139771462613328" [label="Epidermal barrier function (5)" shape=circle]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440" -> "Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal barrier function_139771462613328" [label="part of"]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal barrier function_139771462613328Keratinocyte differentiation_139771450196048" [label="Keratinocyte differentiation (5)" shape=circle]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal barrier function_139771462613328" -> "Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal barrier function_139771462613328Keratinocyte differentiation_139771450196048" [label="is a"]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal barrier function_139771462613328Keratinocyte differentiation_139771450196048Cornification_139771450146512" [label="Cornification (*)" shape=circle]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal barrier function_139771462613328Keratinocyte differentiation_139771450196048" -> "Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal barrier function_139771462613328Keratinocyte differentiation_139771450196048Cornification_139771450146512" [label="is a"]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal barrier function_139771462613328Antimicrobial defense_139771038304080" [label="Antimicrobial defense (5)" shape=circle]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal barrier function_139771462613328" -> "Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal barrier function_139771462613328Antimicrobial defense_139771038304080" [label="part of"]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal keratinocyte differentiation_139771037395280" [label="Epidermal keratinocyte differentiation (5)" shape=circle]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440" -> "Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal keratinocyte differentiation_139771037395280" [label=regulates]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal proteolysis_139771037397584" [label="Epidermal proteolysis" shape=circle]
+	"Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440" -> "Biological Process_139771038248400Gene expression_139771450073488Protease activity_139771450207440Epidermal proteolysis_139771037397584" [label="is a"]
+	"Biological Process_139771038248400Gene expression_139771450073488Proteolysis_139771037400912" [label="Proteolysis (5)" shape=circle]
+	"Biological Process_139771038248400Gene expression_139771450073488" -> "Biological Process_139771038248400Gene expression_139771450073488Proteolysis_139771037400912" [label=regulates]
+}

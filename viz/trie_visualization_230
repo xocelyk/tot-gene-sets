@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_140047098894160" [label="Biological Process"]
+	"Biological Process_140047098894160Gene Expression_140045531422928" [label="Gene Expression (7)" shape=circle]
+	"Biological Process_140047098894160" -> "Biological Process_140047098894160Gene Expression_140045531422928" [label=""]
+	"Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224" [label="Oxytocin Receptor Signaling (5)" shape=circle]
+	"Biological Process_140047098894160Gene Expression_140045531422928" -> "Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224" [label=regulates]
+	"Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Bonding Behavior_140045530714064" [label="Social Bonding Behavior (5)" shape=circle]
+	"Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224" -> "Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Bonding Behavior_140045530714064" [label=regulates]
+	"Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Bonding Behavior_140045530714064Maternal Behavior_140045530725328" [label="Maternal Behavior (5)" shape=circle]
+	"Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Bonding Behavior_140045530714064" -> "Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Bonding Behavior_140045530714064Maternal Behavior_140045530725328" [label=regulates]
+	"Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Bonding Behavior_140045530714064Maternal Behavior_140045530725328Maternal Bonding_140045530713936" [label="Maternal Bonding (*)" shape=circle]
+	"Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Bonding Behavior_140045530714064Maternal Behavior_140045530725328" -> "Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Bonding Behavior_140045530714064Maternal Behavior_140045530725328Maternal Bonding_140045530713936" [label="is a"]
+	"Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Bonding Behavior_140045530714064Trust Behavior_140045531524816" [label="Trust Behavior (5)" shape=circle]
+	"Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Bonding Behavior_140045530714064" -> "Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Bonding Behavior_140045530714064Trust Behavior_140045531524816" [label="is a"]
+	"Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Behavior_140045530671760" [label="Social Behavior (5)" shape=circle]
+	"Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224" -> "Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling_140046648638224Social Behavior_140045530671760" [label=regulates]
+	"Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling Pathway_140045530715216" [label="Oxytocin Receptor Signaling Pathway (5)" shape=circle]
+	"Biological Process_140047098894160Gene Expression_140045531422928" -> "Biological Process_140047098894160Gene Expression_140045531422928Oxytocin Receptor Signaling Pathway_140045530715216" [label=regulates]
+	"Biological Process_140047098894160Gene expression_140045530716624" [label="Gene expression (3)" shape=circle]
+	"Biological Process_140047098894160" -> "Biological Process_140047098894160Gene expression_140045530716624" [label=""]
+}

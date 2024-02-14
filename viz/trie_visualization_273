@@ -1,0 +1,16 @@
+// Trie
+digraph {
+	"Biological Process_140046648300688" [label="Biological Process"]
+	"Biological Process_140046648300688Gene Expression_140045534123920" [label="Gene Expression (8)" shape=circle]
+	"Biological Process_140046648300688" -> "Biological Process_140046648300688Gene Expression_140045534123920" [label=""]
+	"Biological Process_140046648300688Gene Expression_140045534123920Amino Acid Transport_140045531000208" [label="Amino Acid Transport (6)" shape=circle]
+	"Biological Process_140046648300688Gene Expression_140045534123920" -> "Biological Process_140046648300688Gene Expression_140045534123920Amino Acid Transport_140045531000208" [label=regulates]
+	"Biological Process_140046648300688Gene Expression_140045534123920Amino Acid Transport_140045531000208Neutral Amino Acid Transport_140045327324752" [label="Neutral Amino Acid Transport (8)" shape=circle]
+	"Biological Process_140046648300688Gene Expression_140045534123920Amino Acid Transport_140045531000208" -> "Biological Process_140046648300688Gene Expression_140045534123920Amino Acid Transport_140045531000208Neutral Amino Acid Transport_140045327324752" [label="is a"]
+	"Biological Process_140046648300688Gene Expression_140045534123920Amino Acid Transport_140045531000208Neutral Amino Acid Transport_140045327324752Branched-Chain Amino Acid Transport_140045325627536" [label="Branched-Chain Amino Acid Transport (10)" shape=circle]
+	"Biological Process_140046648300688Gene Expression_140045534123920Amino Acid Transport_140045531000208Neutral Amino Acid Transport_140045327324752" -> "Biological Process_140046648300688Gene Expression_140045534123920Amino Acid Transport_140045531000208Neutral Amino Acid Transport_140045327324752Branched-Chain Amino Acid Transport_140045325627536" [label="is a"]
+	"Biological Process_140046648300688Gene Expression_140045534123920Amino Acid Transport_140045531000208Neutral Amino Acid Transport_140045327324752Branched-Chain Amino Acid Transport_140045325627536Leucine Transport_140045325429648" [label="Leucine Transport (*)" shape=circle]
+	"Biological Process_140046648300688Gene Expression_140045534123920Amino Acid Transport_140045531000208Neutral Amino Acid Transport_140045327324752Branched-Chain Amino Acid Transport_140045325627536" -> "Biological Process_140046648300688Gene Expression_140045534123920Amino Acid Transport_140045531000208Neutral Amino Acid Transport_140045327324752Branched-Chain Amino Acid Transport_140045325627536Leucine Transport_140045325429648" [label="is a"]
+	"Biological Process_140046648300688Gene expression_140045325553104" [label="Gene expression" shape=circle]
+	"Biological Process_140046648300688" -> "Biological Process_140046648300688Gene expression_140045325553104" [label=""]
+}

@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_140047110689872" [label="Biological Process"]
+	"Biological Process_140047110689872Gene Expression_140047113657232" [label="Gene Expression (8)" shape=circle]
+	"Biological Process_140047110689872" -> "Biological Process_140047110689872Gene Expression_140047113657232" [label=""]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376" [label="Wnt Signaling Pathway (5)" shape=circle]
+	"Biological Process_140047110689872Gene Expression_140047113657232" -> "Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376" [label=regulates]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Non-canonical Wnt Signaling Pathway_140047077616528" [label="Non-canonical Wnt Signaling Pathway (5)" shape=circle]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376" -> "Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Non-canonical Wnt Signaling Pathway_140047077616528" [label="is a"]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Non-canonical Wnt Signaling Pathway_140047077616528Planar Cell Polarity_140047104590224" [label="Planar Cell Polarity (5)" shape=circle]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Non-canonical Wnt Signaling Pathway_140047077616528" -> "Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Non-canonical Wnt Signaling Pathway_140047077616528Planar Cell Polarity_140047104590224" [label=regulates]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Non-canonical Wnt Signaling Pathway_140047077616528Planar Cell Polarity_140047104590224Convergent Extension_140047077892624" [label="Convergent Extension (*)" shape=circle]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Non-canonical Wnt Signaling Pathway_140047077616528Planar Cell Polarity_140047104590224" -> "Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Non-canonical Wnt Signaling Pathway_140047077616528Planar Cell Polarity_140047104590224Convergent Extension_140047077892624" [label=regulates]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Non-canonical Wnt Signaling Pathway_140047077616528Planar Cell Polarity Pathway_140047099124944" [label="Planar Cell Polarity Pathway (5)" shape=circle]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Non-canonical Wnt Signaling Pathway_140047077616528" -> "Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Non-canonical Wnt Signaling Pathway_140047077616528Planar Cell Polarity Pathway_140047099124944" [label=regulates]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Planar Cell Polarity (PCP) Pathway_140047077277328" [label="Planar Cell Polarity (PCP) Pathway (5)" shape=circle]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376" -> "Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Planar Cell Polarity (PCP) Pathway_140047077277328" [label=regulates]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Noncanonical Wnt Signaling Pathway_140047081527760" [label="Noncanonical Wnt Signaling Pathway" shape=circle]
+	"Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376" -> "Biological Process_140047110689872Gene Expression_140047113657232Wnt Signaling Pathway_140047077263376Noncanonical Wnt Signaling Pathway_140047081527760" [label="is a"]
+	"Biological Process_140047110689872Gene Expression_140047113657232WNT Signaling Pathway_140047081761936" [label="WNT Signaling Pathway (5)" shape=circle]
+	"Biological Process_140047110689872Gene Expression_140047113657232" -> "Biological Process_140047110689872Gene Expression_140047113657232WNT Signaling Pathway_140047081761936" [label=regulates]
+}

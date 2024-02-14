@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_139771039342736" [label="Biological Process"]
+	"Biological Process_139771039342736Gene expression_139771039240016" [label="Gene expression (5)" shape=circle]
+	"Biological Process_139771039342736" -> "Biological Process_139771039342736Gene expression_139771039240016" [label=""]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968" [label="Amino acid metabolism (5)" shape=circle]
+	"Biological Process_139771039342736Gene expression_139771039240016" -> "Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968" [label=regulates]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine cleavage_139771039788496" [label="Glycine cleavage (4)" shape=circle]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968" -> "Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine cleavage_139771039788496" [label="has part"]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine catabolism_139771039467408" [label="Glycine catabolism (5)" shape=circle]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968" -> "Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine catabolism_139771039467408" [label="is a"]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine catabolism_139771039467408Glycine cleavage system_139771039448976" [label="Glycine cleavage system (5)" shape=circle]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine catabolism_139771039467408" -> "Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine catabolism_139771039467408Glycine cleavage system_139771039448976" [label="has part"]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine catabolism_139771039467408Glycine cleavage system_139771039448976Glycine decarboxylase activity_139771039248272" [label="Glycine decarboxylase activity (*)" shape=circle]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine catabolism_139771039467408Glycine cleavage system_139771039448976" -> "Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine catabolism_139771039467408Glycine cleavage system_139771039448976Glycine decarboxylase activity_139771039248272" [label="is a"]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine catabolism_139771039467408Conversion of glycine to serine_139771462871568" [label="Conversion of glycine to serine (5)" shape=circle]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine catabolism_139771039467408" -> "Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine catabolism_139771039467408Conversion of glycine to serine_139771462871568" [label="has part"]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine degradation_139771039242640" [label="Glycine degradation (1)" shape=circle]
+	"Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968" -> "Biological Process_139771039342736Gene expression_139771039240016Amino acid metabolism_139771451205968Glycine degradation_139771039242640" [label="has part"]
+	"Biological Process_139771039342736Gene expression_139771039240016One-carbon metabolic process_139771039470928" [label="One-carbon metabolic process (5)" shape=circle]
+	"Biological Process_139771039342736Gene expression_139771039240016" -> "Biological Process_139771039342736Gene expression_139771039240016One-carbon metabolic process_139771039470928" [label="is a"]
+}

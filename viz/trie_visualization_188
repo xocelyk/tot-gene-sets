@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_140046648210640" [label="Biological Process"]
+	"Biological Process_140046648210640Gene expression_140047118279824" [label="Gene expression (5)" shape=circle]
+	"Biological Process_140046648210640" -> "Biological Process_140046648210640Gene expression_140047118279824" [label=""]
+	"Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552" [label="Autophagy (5)" shape=circle]
+	"Biological Process_140046648210640Gene expression_140047118279824" -> "Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552" [label=regulates]
+	"Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656" [label="Macroautophagy (9)" shape=circle]
+	"Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552" -> "Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656" [label="is a"]
+	"Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656Autophagosome formation_140046648423440" [label="Autophagosome formation (5)" shape=circle]
+	"Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656" -> "Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656Autophagosome formation_140046648423440" [label="has part"]
+	"Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656Autophagosome formation_140046648423440LC3 lipidation_140047104232912" [label="LC3 lipidation (*)" shape=circle]
+	"Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656Autophagosome formation_140046648423440" -> "Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656Autophagosome formation_140046648423440LC3 lipidation_140047104232912" [label="has part"]
+	"Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656Autophagosome maturation_140046648425872" [label="Autophagosome maturation" shape=circle]
+	"Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656" -> "Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656Autophagosome maturation_140046648425872" [label="has part"]
+	"Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656ATG4-mediated Autophagosome Maturation_140046648525712" [label="ATG4-mediated Autophagosome Maturation (5)" shape=circle]
+	"Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656" -> "Biological Process_140046648210640Gene expression_140047118279824Autophagy_140046888481552Macroautophagy_140046648536656ATG4-mediated Autophagosome Maturation_140046648525712" [label="is a"]
+	"Biological Process_140046648210640Gene expression_140047118279824Autophagy regulation_140046648415568" [label="Autophagy regulation (5)" shape=circle]
+	"Biological Process_140046648210640Gene expression_140047118279824" -> "Biological Process_140046648210640Gene expression_140047118279824Autophagy regulation_140046648415568" [label=regulates]
+	"Biological Process_140046648210640Gene Expression_140046648419856" [label="Gene Expression (5)" shape=circle]
+	"Biological Process_140046648210640" -> "Biological Process_140046648210640Gene Expression_140046648419856" [label=""]
+}

@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_140046648622416" [label="Biological Process"]
+	"Biological Process_140046648622416Gene expression_140046648412176" [label="Gene expression (5)" shape=circle]
+	"Biological Process_140046648622416" -> "Biological Process_140046648622416Gene expression_140046648412176" [label=""]
+	"Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320" [label="Embryonic development (5)" shape=circle]
+	"Biological Process_140046648622416Gene expression_140046648412176" -> "Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320" [label=regulates]
+	"Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Limb development_140046648619536" [label="Limb development (5)" shape=circle]
+	"Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320" -> "Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Limb development_140046648619536" [label="part of"]
+	"Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Limb development_140046648619536Digit patterning_140046886300880" [label="Digit patterning (9)" shape=circle]
+	"Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Limb development_140046648619536" -> "Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Limb development_140046648619536Digit patterning_140046886300880" [label="part of"]
+	"Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Limb development_140046648619536Digit patterning_140046886300880Phalanx development_140045533596944" [label="Phalanx development (*)" shape=circle]
+	"Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Limb development_140046648619536Digit patterning_140046886300880" -> "Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Limb development_140046648619536Digit patterning_140046886300880Phalanx development_140045533596944" [label="is a"]
+	"Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Limb development_140046648619536Digit patterning_140046886300880Sonic hedgehog signaling pathway_140046648534608" [label="Sonic hedgehog signaling pathway (5)" shape=circle]
+	"Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Limb development_140046648619536Digit patterning_140046886300880" -> "Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Limb development_140046648619536Digit patterning_140046886300880Sonic hedgehog signaling pathway_140046648534608" [label=regulates]
+	"Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Pattern formation_140046648688080" [label="Pattern formation (5)" shape=circle]
+	"Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320" -> "Biological Process_140046648622416Gene expression_140046648412176Embryonic development_140046648610320Pattern formation_140046648688080" [label="part of"]
+	"Biological Process_140046648622416Gene expression_140046648412176Nodal signaling pathway_140046886251664" [label="Nodal signaling pathway (5)" shape=circle]
+	"Biological Process_140046648622416Gene expression_140046648412176" -> "Biological Process_140046648622416Gene expression_140046648412176Nodal signaling pathway_140046886251664" [label=regulates]
+	"Biological Process_140046648622416Cellular metabolism_140046886390032" [label="Cellular metabolism (5)" shape=circle]
+	"Biological Process_140046648622416" -> "Biological Process_140046648622416Cellular metabolism_140046886390032" [label=""]
+}

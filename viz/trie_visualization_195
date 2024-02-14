@@ -1,0 +1,22 @@
+// Trie
+digraph {
+	"Biological Process_140046648424080" [label="Biological Process"]
+	"Biological Process_140046648424080Gene Expression_140045533886992" [label="Gene Expression (5)" shape=circle]
+	"Biological Process_140046648424080" -> "Biological Process_140046648424080Gene Expression_140045533886992" [label=""]
+	"Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672" [label="Semaphorin Signaling Pathway (5)" shape=circle]
+	"Biological Process_140046648424080Gene Expression_140045533886992" -> "Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672" [label=regulates]
+	"Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072" [label="Axon Guidance (8)" shape=circle]
+	"Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672" -> "Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072" [label="is a"]
+	"Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072Commissural Neuron Axon Guidance_140045533925776" [label="Commissural Neuron Axon Guidance (5)" shape=circle]
+	"Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072" -> "Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072Commissural Neuron Axon Guidance_140045533925776" [label="is a"]
+	"Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072Commissural Neuron Axon Guidance_140045533925776Dorsoventral Axon Guidance_140045533933008" [label="Dorsoventral Axon Guidance (*)" shape=circle]
+	"Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072Commissural Neuron Axon Guidance_140045533925776" -> "Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072Commissural Neuron Axon Guidance_140045533925776Dorsoventral Axon Guidance_140045533933008" [label="is a"]
+	"Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072Commissural Neuron Axon Guidance_140045533925776Semaphorin-Mediated Signaling Pathway_140045533345808" [label="Semaphorin-Mediated Signaling Pathway (5)" shape=circle]
+	"Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072Commissural Neuron Axon Guidance_140045533925776" -> "Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072Commissural Neuron Axon Guidance_140045533925776Semaphorin-Mediated Signaling Pathway_140045533345808" [label=regulates]
+	"Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072Neuronal Growth Cone Guidance_140045533937104" [label="Neuronal Growth Cone Guidance (5)" shape=circle]
+	"Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072" -> "Biological Process_140046648424080Gene Expression_140045533886992Semaphorin Signaling Pathway_140045533886672Axon Guidance_140045533877072Neuronal Growth Cone Guidance_140045533937104" [label="is a"]
+	"Biological Process_140046648424080Gene Expression_140045533886992Axon Guidance_140045533929616" [label="Axon Guidance (5)" shape=circle]
+	"Biological Process_140046648424080Gene Expression_140045533886992" -> "Biological Process_140046648424080Gene Expression_140045533886992Axon Guidance_140045533929616" [label=regulates]
+	"Biological Process_140046648424080Gene expression_140045533936912" [label="Gene expression (5)" shape=circle]
+	"Biological Process_140046648424080" -> "Biological Process_140046648424080Gene expression_140045533936912" [label=""]
+}

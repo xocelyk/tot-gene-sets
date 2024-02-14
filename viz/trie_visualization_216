@@ -1,0 +1,18 @@
+// Trie
+digraph {
+	"Biological Process_140046648261008" [label="Biological Process"]
+	"Biological Process_140046648261008Gene Expression_140045533086928" [label="Gene Expression (8)" shape=circle]
+	"Biological Process_140046648261008" -> "Biological Process_140046648261008Gene Expression_140045533086928" [label=""]
+	"Biological Process_140046648261008Gene Expression_140045533086928Arachidonic Acid Metabolic Process_140046888255696" [label="Arachidonic Acid Metabolic Process (5)" shape=circle]
+	"Biological Process_140046648261008Gene Expression_140045533086928" -> "Biological Process_140046648261008Gene Expression_140045533086928Arachidonic Acid Metabolic Process_140046888255696" [label="is a"]
+	"Biological Process_140046648261008Gene Expression_140045533086928Arachidonic Acid Metabolic Process_140046888255696Leukotriene Biosynthetic Process_140045534121232" [label="Leukotriene Biosynthetic Process (6)" shape=circle]
+	"Biological Process_140046648261008Gene Expression_140045533086928Arachidonic Acid Metabolic Process_140046888255696" -> "Biological Process_140046648261008Gene Expression_140045533086928Arachidonic Acid Metabolic Process_140046888255696Leukotriene Biosynthetic Process_140045534121232" [label="is a"]
+	"Biological Process_140046648261008Gene Expression_140045533086928Arachidonic Acid Metabolic Process_140046888255696Leukotriene Biosynthetic Process_140045534121232Leukotriene B4 Biosynthetic Process_140045533088016" [label="Leukotriene B4 Biosynthetic Process (10)" shape=circle]
+	"Biological Process_140046648261008Gene Expression_140045533086928Arachidonic Acid Metabolic Process_140046888255696Leukotriene Biosynthetic Process_140045534121232" -> "Biological Process_140046648261008Gene Expression_140045533086928Arachidonic Acid Metabolic Process_140046888255696Leukotriene Biosynthetic Process_140045534121232Leukotriene B4 Biosynthetic Process_140045533088016" [label="is a"]
+	"Biological Process_140046648261008Gene Expression_140045533086928Arachidonic Acid Metabolic Process_140046888255696Leukotriene Biosynthetic Process_140045534121232Leukotriene B4 Biosynthetic Process_140045533088016Arachidonic Acid Metabolic Process_140045533194960" [label="Arachidonic Acid Metabolic Process (*)" shape=circle]
+	"Biological Process_140046648261008Gene Expression_140045533086928Arachidonic Acid Metabolic Process_140046888255696Leukotriene Biosynthetic Process_140045534121232Leukotriene B4 Biosynthetic Process_140045533088016" -> "Biological Process_140046648261008Gene Expression_140045533086928Arachidonic Acid Metabolic Process_140046888255696Leukotriene Biosynthetic Process_140045534121232Leukotriene B4 Biosynthetic Process_140045533088016Arachidonic Acid Metabolic Process_140045533194960" [label="is a"]
+	"Biological Process_140046648261008Gene Expression_140045533086928Lipid Metabolism_140045533186768" [label="Lipid Metabolism (5)" shape=circle]
+	"Biological Process_140046648261008Gene Expression_140045533086928" -> "Biological Process_140046648261008Gene Expression_140045533086928Lipid Metabolism_140045533186768" [label=regulates]
+	"Biological Process_140046648261008Gene expression_140045533242576" [label="Gene expression" shape=circle]
+	"Biological Process_140046648261008" -> "Biological Process_140046648261008Gene expression_140045533242576" [label=""]
+}

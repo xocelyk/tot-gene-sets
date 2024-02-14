@@ -431,7 +431,7 @@ def solve(args, task, idx, to_print=True):
 #                 final_ys.extend([new_ys[ids[i]] for i in sorted_ids])
             else:
                 select_ids = sorted_ids
-                final_ys.extend([new_ys[ids[i]] for i in sorted_ids])
+#                 final_ys.extend([new_ys[ids[i]] for i in sorted_ids])
                 
         print('select_ids',select_ids)
         select_new_y_paths = [new_y_paths[select_id] for select_id in select_ids]

@@ -1,0 +1,18 @@
+// Trie
+digraph {
+	"Biological Process_140045324218704" [label="Biological Process"]
+	"Biological Process_140045324218704Gene expression_140045530989520" [label="Gene expression (9)" shape=circle]
+	"Biological Process_140045324218704" -> "Biological Process_140045324218704Gene expression_140045530989520" [label=""]
+	"Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296" [label="Telomerase activity (5)" shape=circle]
+	"Biological Process_140045324218704Gene expression_140045530989520" -> "Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296" [label=regulates]
+	"Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296Telomere maintenance_140045326686224" [label="Telomere maintenance (5)" shape=circle]
+	"Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296" -> "Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296Telomere maintenance_140045326686224" [label="has part"]
+	"Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296Telomere maintenance_140045326686224Telomere length regulation_140045325478160" [label="Telomere length regulation (5)" shape=circle]
+	"Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296Telomere maintenance_140045326686224" -> "Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296Telomere maintenance_140045326686224Telomere length regulation_140045325478160" [label="is a"]
+	"Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296Telomere maintenance_140045326686224Telomere length regulation_140045325478160Telomerase activity regulation_140045533092240" [label="Telomerase activity regulation (*)" shape=circle]
+	"Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296Telomere maintenance_140045326686224Telomere length regulation_140045325478160" -> "Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296Telomere maintenance_140045326686224Telomere length regulation_140045325478160Telomerase activity regulation_140045533092240" [label=regulates]
+	"Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296Telomere length maintenance_140045325317136" [label="Telomere length maintenance (5)" shape=circle]
+	"Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296" -> "Biological Process_140045324218704Gene expression_140045530989520Telomerase activity_140045324209296Telomere length maintenance_140045325317136" [label="part of"]
+	"Biological Process_140045324218704Gene expression_140045530989520Telomerase reverse transcriptase (TERT) regulation_140045323979280" [label="Telomerase reverse transcriptase (TERT) regulation (5)" shape=circle]
+	"Biological Process_140045324218704Gene expression_140045530989520" -> "Biological Process_140045324218704Gene expression_140045530989520Telomerase reverse transcriptase (TERT) regulation_140045323979280" [label=regulates]
+}
