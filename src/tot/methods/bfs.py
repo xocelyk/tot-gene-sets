@@ -80,14 +80,34 @@ def get_stop_metrics_for_bionames(task, x, ys, n_evaluate_sample, args):
     return stop_metrics, stop_outputs
 
 def get_multivotes_for_bionames(task, x, ys, n_evaluate_sample, args):
-    system_message1, user_message1  = task.vote_w_tool_prompt_wrap(x, ys, args)
-    vote_outputs1 = gpt(system_message1, user_message1, n=n_evaluate_sample, stop=None)        
-    values1 = task.vote_outputs_unwrap(vote_outputs1, ys)
-    
-    system_message2, user_message2  = task.vote_prompt_wrap(x, ys)
-    vote_outputs2 = gpt(system_message2, user_message2, n=n_evaluate_sample, stop=None)        
-    values2 = task.vote_outputs_unwrap(vote_outputs2, ys)
- 
+    attempts = 0
+    while attempts < 3:
+        try:
+            system_message1, user_message1  = task.vote_w_tool_prompt_wrap(x, ys, args)
+            vote_outputs1 = gpt(system_message1, user_message1, n=n_evaluate_sample, stop=None)        
+            values1 = task.vote_outputs_unwrap(vote_outputs1, ys)
+            break
+        except Exception as e:
+            print(f"Attempt {attempts + 1} failed with error: {str(e)}")
+            attempts += 1
+            if attempts >= 3:
+                print("Maximum retry attempts reached. Exiting.")
+                return None
+            
+    attempts = 0   
+    while attempts < 3:
+        try:
+            system_message2, user_message2  = task.vote_prompt_wrap(x, ys)
+            vote_outputs2 = gpt(system_message2, user_message2, n=n_evaluate_sample, stop=None)        
+            values2 = task.vote_outputs_unwrap(vote_outputs2, ys)
+            break
+        except Exception as e:
+            print(f"Attempt {attempts + 1} failed with error: {str(e)}")
+            attempts += 1
+            if attempts >= 3:
+                print("Maximum retry attempts reached. Exiting.")
+                return None        
+
     values = values1 + values2
     vote_outputs = vote_outputs1 + vote_outputs2
 #     print('bfs--get_multivotes_for_bionames--values', values)
@@ -144,7 +164,7 @@ def get_samples_for_bionames(task, x, y, n_generate_sample, prompt_sample, step,
     
     elif n_generate_sample >= 2:
         attempts = 0
-        while attempts < 3:
+        while attempts < 5:
             try:
                 samples = gpt(system_message, user_message, n=n_generate_sample)
                 
@@ -163,8 +183,9 @@ def get_samples_for_bionames(task, x, y, n_generate_sample, prompt_sample, step,
             except Exception as e:
                 print(f"Attempt {attempts + 1} failed with error: {str(e)}")
                 attempts += 1
-                if attempts >= 3:
+                if attempts >= 5:
                     print("Maximum retry attempts reached. Exiting.")
+                    print('sample',sample)
                     return None  # Or handle as appropriate for your application
         # This section will only execute if the try block is successful before attempts run out
         return new_ys, frequencies, adjusted_frequencies, grouped_items_by_index

@@ -231,8 +231,8 @@ class Bio_Name(Task):
 #         answer = answer[0]
         answer = answer.replace('\n','')
         answer_f = json.loads(answer)
-        answer_f = [answer_f['Answer 1'], answer_f['Answer 2'], answer_f['Answer 3']]
-#         answer_f = [answer_f['Answer']]
+#         answer_f = [answer_f['Answer 1'], answer_f['Answer 2'], answer_f['Answer 3']]
+        answer_f = [answer_f['Answer']]
         new_answer = []
         if step_num == 0:
             for a in answer_f:
