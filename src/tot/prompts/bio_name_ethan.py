@@ -3,7 +3,7 @@
 
 # CURRENTLY: generate three reasons for each step
 
-system_prompt = 'You are a helpful and knowledgable assistant to a molecular biologist. Respond to questions in JSON format, following this template: {json_format}.'
+system_prompt = 'You are a helpful and knowledgable assistant to a molecular biologist. Respond to questions in JSON format, please stictly following this template: {json_format}.' 
 
 # propose initial biological processes
 # format_0 = '''{"Answer 1": {"Step": "1", "Biological Process": "<Your first proposed biological process>", "Reason": "<Why did you choose this name?>"},

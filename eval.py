@@ -69,9 +69,9 @@ def cot_one_example(test_idx, eval_data, model):
     response = parse_cot_response(response)
     return test_gene_set, response, true_label
 
-test_indices = range(0, 301) #14
+test_indices = range(80, 301) #14
 
-MODE = 'tot_profiler'
+MODE = 'tot_profiler' #tot_basic
 
 if MODE == 'tot':
     args = argparse.Namespace(backend='gpt-3.5-turbo-1106', temperature=0.7, task='bio_name', naive_run=False, prompt_sample=None, method_generate='sample_bionames', method_evaluate='votes_for_bionames', method_select='greedy', n_generate_sample=1, n_evaluate_sample=1, n_select_sample=2, final = None, use_uncertainty=False)
@@ -84,13 +84,13 @@ if MODE == 'tot':
 elif MODE == 'tot_certainty':
     #gpt-3.5-turbo-1106
     #gpt-4-1106-preview
-    args = argparse.Namespace(backend='gpt-3.5-turbo-1106', temperature=0.7, task='bio_name', naive_run=False, prompt_sample=None, method_generate='sample_bioname_uncertainty', method_evaluate='uncertainty_voters', method_select='greedy', n_generate_sample=15, n_evaluate_sample=5, n_select_sample=2, final = None, use_uncertainty=True)
+    args = argparse.Namespace(backend='gpt-3.5-turbo-1106', temperature=1.0, task='bio_name', naive_run=False, prompt_sample=None, method_generate='sample_bioname_uncertainty', method_evaluate='uncertainty_voters', method_select='greedy', n_generate_sample=15, n_evaluate_sample=5, n_select_sample=2, final = None, use_uncertainty=True)
     task = Bio_Name()
     #'results2/tot_eval_uncertainty_5steps_abla_uncertain_False.pkl'
-    save_filename = 'results2/tot2_eval_uncertainty_5steps_th09.pkl'
+    save_filename = 'results2/tot2_eval_uncertainty_5steps_th09_temp1.pkl'
     print(f'saving to...{save_filename}')
     # TODO: test indices
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=True)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=False)
     
 elif MODE == 'tot_certainty_explore':
     #gpt-3.5-turbo-1106
@@ -145,7 +145,7 @@ elif MODE == 'tot_no_certainty':
     save_filename = 'results2/tot2_eval_15gen_5steps_no_certainty_9nodes_temp1.pkl'
     print(f'saving to...{save_filename}')
     # TODO: test indices
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=False)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=True)
     
 elif MODE == 'tot_basic':
     #gpt-3.5-turbo-1106
@@ -156,7 +156,7 @@ elif MODE == 'tot_basic':
     save_filename = 'results2/tot2_eval_15gen_5steps_no_certainty_9nodes_basicToT_temp1.pkl'
     print(f'saving to...{save_filename}')
     # TODO: test indices
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=False)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=True)
     
 elif MODE == 'tot_no_certainty_stopexpand':
     #gpt-3.5-turbo-1106
@@ -178,7 +178,7 @@ elif MODE == 'tot_profiler':
     task = Bio_Name()
     save_filename = 'results2/tot2_eval_15gen_5steps_no_certainty_9nodes_gprofiler_gpt3_temp1.pkl'
     print(f'saving to...{save_filename}')
-    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=False)
+    eval(task, args, save_filename, start_idx=min(test_indices), stop_idx=max(test_indices), preload=True)
 
 elif MODE == 'few_shot':
     save_filename = 'few_shot_eval.pkl'
